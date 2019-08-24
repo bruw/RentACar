@@ -1,5 +1,5 @@
 # Requisitos específicos
-  - [] Padronização do banco de dados.
+  - [ ] Padronização do banco de dados.
   - [] Padronização das rotas.
   - [] Autenticação com criptografia segura.
   - [] Validação de todos os formulários dos requisitos.
