@@ -1,5 +1,5 @@
 # Desenvolvimento para web 3 - UTFPR (Universidade Tecnológica Federal Do Paraná)
-# Projeto: Sistema para gerenciamento de locações de automoveis.
+# Tema: Sistema para gerenciamento de locações de automoveis.
 # Tecnologias utilizadas: html, css, php 7, apache2, mysql 5.7 
 
 # Requisitos específicos
