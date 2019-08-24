@@ -1,6 +1,9 @@
-**Curso:** Tecnologias em Sistemas para Internet UTFPR (Universidade Tecnológica Federal do Paraná).
-**Disciplina:** Desenvolvimento para web 3.
+**Curso:** Tecnologias em Sistemas para Internet UTFPR (Universidade Tecnológica Federal do Paraná).  
+
+**Disciplina:** Desenvolvimento para web 3.  
+
 **Tema do projeto:** Sistema para gerenciamento de locações de automoveis.
+
 **Tecnologias utilizadas:** html, css, php 7, apache2, mysql 5.7 
 
 # Requisitos específicos
