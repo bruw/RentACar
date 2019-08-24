@@ -3,7 +3,7 @@
 
 **Disciplina:** Desenvolvimento para web 3.  
 
-**Tecnologias utilizadas:** html, css, php 7, apache2, mysql 5.7 
+**Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
 
 **Requisitos específicos**
  - [ ] Padronização do banco de dados.
