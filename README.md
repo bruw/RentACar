@@ -6,7 +6,7 @@
 
 **Tecnologias utilizadas:** html, css, php 7, apache2, mysql 5.7 
 
-# Requisitos específicos
+**Requisitos específicos**
  - [ ] Padronização do banco de dados.
  - [ ] Padronização das rotas.
  - [ ] Autenticação com criptografia segura.
@@ -16,7 +16,7 @@
  - [ ] Testar todos os métodos dos modelos. Não precisa testar gets e sets.
  - [ ] Testar todas as rotas.
   
-# Requisitos funcionais
+**Requisitos funcionais**
 - [ ] Cadastrar usuário para gerenciar a empresa.
 - [ ] Cadastrar e editar carro para locação. Cada carro possui um valor de locação por dia.
 - [ ] Tela de locação de carro disponível.
