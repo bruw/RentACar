@@ -1,3 +1,11 @@
+.exibir-conteudo {
+  display: block;
+}
+
+.ocultar-conteudo {
+  display: none;
+}
+
 .cor-principal {
   background-color: #32CD32;
 }
@@ -25,9 +33,18 @@
   margin-top: 30px;
 }
 
+#button-login {
+  background-color: #32CD32;
+  width: 100%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
 form {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 3%;
+  margin-bottom: 10%;
 }
 
 h1 {

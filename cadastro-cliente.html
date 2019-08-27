@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="author" content="Bruno José dos Santos Wogt">
+<link type="text/css" rel="stylesheet" href="assets/libraries/materialize-v0.100.2/css/materialize.min.css">
+<link type="text/css" rel="stylesheet" href="assets/resources/styles/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<title>Cadastro de Cliente</title>
+
+<body>
+  <div class="navbar">
+    <nav class="cor-principal">
+      <div class="container">
+        <div class="nav-wrapper">
+          <a href="index.html" class="brand-logo">
+            <i class="material-icons left">directions_car</i>GuaraCar</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section>
+      <div class="container">
+        <h1>Cadastro de Cliente</h1>
+
+        <div class="input-field col s12">
+          <select id="tipo-cliente">
+            <option value="0">Pessoa Física</option>
+            <option value="1">Pessoa Jurídica</option>
+          </select>
+          <label>Tipo de Cliente</label>
+        </div>
+
+
+
+        <form id="form-pessoa-cpf" class="exibir-conteudo" action="">
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">person</i>
+              <input type="text" placeholder="Darth">
+              <label for="icon_prefix">Primeiro Nome</label>
+            </div>
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">person</i>
+              <input type="text" placeholder="Vaider">
+              <label for="icon_prefix">Sobrenome</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mail</i>
+              <input type="email" placeholder="darthvaider@estreladamorte.com">
+              <label for="icon_prefix">E-mail</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">person</i>
+              <input type="number" placeholder="000.000.000.00">
+              <label for="icon_prefix">CPF</label>
+            </div>
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">child_care</i>
+              <input type="text" placeholder="12/12/2000">
+              <label for="icon_prefix">Data de Nascimento</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_on</i>
+              <input type="number" placeholder="85070700">
+              <label for="icon_prefix">CEP</label>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">markunread_mailbox</i>
+              <input type="number" placeholder="1024">
+              <label for="icon_prefix">Número da edificação</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <button id="button-cadastro" class="waves-effect waves-light btn" type="button">
+                <i class="material-icons left">check_circle</i>Cadastrar</button>
+            </div>
+            <div class="col s12 m12 l6">
+              <button id="button-cancelar-cadastro" class="waves-effect waves-light btn" type="button">
+                <i class="material-icons left">cancel</i>Cancelar</button>
+            </div>
+          </div>
+        </form>
+
+        <form id="form-pessoa-cnpj" class="ocultar-conteudo" action="">
+          <div class="row">
+            <div class="input-field col s12 m6 l6">
+              <i class="material-icons prefix">person</i>
+              <input type="text" placeholder="Construtora Estrela da Morte">
+              <label for="icon_prefix">Nome</label>
+            </div>
+            <div class="input-field col s12 m6 l6">
+              <i class="material-icons prefix">person</i>
+              <input type="number" placeholder=" 00.000.000/0000-00">
+              <label for="icon_prefix">CNPJ</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mail</i>
+              <input type="email" placeholder="darthvaider@estreladamorte.com">
+              <label for="icon_prefix">E-mail</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_on</i>
+              <input type="number" placeholder="85070700">
+              <label for="icon_prefix">CEP</label>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">markunread_mailbox</i>
+              <input type="number" placeholder="1024">
+              <label for="icon_prefix">Número da edificação</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_city</i>
+              <input type="number" placeholder="Rua dos pedreiros">
+              <label for="icon_prefix">Rua</label>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_city</i>
+              <input type="text" placeholder="Centro">
+              <label for="icon_prefix">Bairro</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_city</i>
+              <input type="number" placeholder="Rua dos pedreiros">
+              <label for="icon_prefix">Cidade</label>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_city</i>
+              <input type="text" placeholder="Centro">
+              <label for="icon_prefix">Estado</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col s12 m12 l6">
+              <button id="button-cadastro" class="waves-effect waves-light btn" type="button">
+                <i class="material-icons left">check_circle</i>Cadastrar</button>
+            </div>
+            <div class="col s12 m12 l6">
+              <button id="button-cancelar-cadastro" class="waves-effect waves-light btn" type="button">
+                <i class="material-icons left">cancel</i>Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <section>
+    <footer class="section cor-principal">
+      <p>GuaraCar Locações de automoveis - 2019</p>
+    </footer>
+  </section>
+
+  <script src="assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
+  <script src="assets/libraries/materialize-v0.100.2/js/materialize.min.js"></script>
+  <script src="assets/resources/scripts/inicializacao.js"></script>
+</body>
+
+</html>

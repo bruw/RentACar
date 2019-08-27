@@ -18,7 +18,7 @@
       <div class="container">
         <div class="nav-wrapper">
           <a href="index.html" class="brand-logo">
-            <i class="material-icons left t">directions_car</i>GuaraCar</a>
+            <i class="material-icons left">directions_car</i>GuaraCar</a>
         </div>
       </div>
     </nav>
@@ -32,53 +32,62 @@
         <form action="">
           <div class="row">
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">person</i>Primeiro Nome</a>
+              <i class="material-icons prefix">person</i>
               <input type="text" placeholder="Darth">
+              <label for="icon_prefix">Primeiro Nome</label>
             </div>
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">person</i>Sobrenome</a>
+              <i class="material-icons prefix">person</i>
               <input type="text" placeholder="Vaider">
+              <label for="icon_prefix">Sobrenome</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12">
-              <i class="material-icons left">mail</i>Email</a>
-              <input ype="email" placeholder="darthvaider@estreladamorte.com">
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">person</i>CPF</a>
-              <input type="number" placeholder="000.000.000.00">
-            </div>
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">child_care</i>Data de Nascimento</a>
-              <input type="date" placeholder="000.000.000.00">
+              <i class="material-icons prefix">mail</i>
+              <input type="email" placeholder="darthvaider@estreladamorte.com">
+              <label for="icon_prefix">Email</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">location_on</i>CEP</a>
-              <input ype="number" placeholder="85070700">
+              <i class="material-icons prefix">person</i>
+              <input type="number" placeholder="000.000.000-00">
+              <label for="icon_prefix">CPF</label>
             </div>
-
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">markunread_mailbox</i>Número da Residência</a>
-              <input type="number" placeholder="Darth">
+              <i class="material-icons prefix">child_care</i>
+              <input type="text" placeholder="12/12/2000">
+              <label for="icon_prefix">Data de Nascimento</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">location_on</i>
+              <input type="number" placeholder="85070700">
+              <label for="icon_prefix">CEP</label>
+            </div>
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">markunread_mailbox</i>
+              <input type="number" placeholder="1024">
+              <label for="icon_prefix">Número da Residência</label>
             </div>
           </div>
 
 
           <div class="row">
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">lock</i>Senha</a>
-              <input ype="password" placeholder="********">
+              <i class="material-icons prefix">lock</i>
+              <input type="password" placeholder="********">
+              <label for="icon_prefix">Senha</label>
             </div>
             <div class="input-field col s12 m12 l6">
-              <i class="material-icons left">lock</i>Confirmar Senha</a>
-              <input ype="password" placeholder="********">
+              <i class="material-icons prefix">lock</i>
+              <input type="password" placeholder="********">
+              <label for="icon_prefix">Confirmar Senha</label>
             </div>
           </div>
 
@@ -102,6 +111,8 @@
       <p>GuaraCar Locações de automoveis - 2019</p>
     </footer>
   </section>
+
+  <script src="assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
   <script src="assets/libraries/materialize-v0.100.2/js/materialize.min.js"></script>
 </body>
 
