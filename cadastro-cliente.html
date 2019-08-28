@@ -34,135 +34,139 @@
           <label>Tipo de Cliente</label>
         </div>
 
-
-
-        <form id="form-pessoa-cpf" class="exibir-conteudo" action="">
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">person</i>
-              <input type="text" placeholder="Darth">
-              <label for="icon_prefix">Primeiro Nome</label>
+        <form action="kkkk">
+          <div id="dados-pessoa">
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">person</i>
+                <input type="text" placeholder="Darth">
+                <label for="icon_prefix">Primeiro Nome</label>
+              </div>
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">person</i>
+                <input type="text" placeholder="Vaider">
+                <label for="icon_prefix">Sobrenome</label>
+              </div>
             </div>
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">person</i>
-              <input type="text" placeholder="Vaider">
-              <label for="icon_prefix">Sobrenome</label>
+
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">mail</i>
+                <input type="email" placeholder="darthvaider@estreladamorte.com">
+                <label for="icon_prefix">E-mail</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 l2">
+                <i class="material-icons prefix">contact_phone</i>
+                <select id="tipo-contato">
+                  <option value="0">Telefone</option>
+                  <option value="1">Celular</option>
+                </select>
+                <label>Contato</label>
+              </div>
+              <div id="div-telefone" class="input-field col s12 l10">
+                <i class="material-icons prefix">phone</i>
+                <input class="input-telefone" type="text" placeholder="(00)0000-0000">
+                <label for="icon_prefix">Telefone</label>
+              </div>
+              <div id="div-celular" class="input-field col s12 l10 ocultar-conteudo">
+                <i class="material-icons prefix">phone_iphone</i>
+                <input class="input-celular" type="text" placeholder="(00)00000-0000">
+                <label for="icon_prefix">Celular</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">person</i>
+                <input id="input-cpf" type="text" class="cep" placeholder="000.000.000-00">
+                <label for="icon_prefix">CPF</label>
+              </div>
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">child_care</i>
+                <input id="input-data-nascimento" type="text" placeholder="12/12/2000">
+                <label for="icon_prefix">Data de Nascimento</label>
+              </div>
             </div>
           </div>
 
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">mail</i>
-              <input type="email" placeholder="darthvaider@estreladamorte.com">
-              <label for="icon_prefix">E-mail</label>
+          <div id="dados-empresa" class="ocultar-conteudo">
+            <div class="row">
+              <div class="input-field col s12 m6 l6">
+                <i class="material-icons prefix">person</i>
+                <input type="text" placeholder="Construtora Estrela da Morte">
+                <label for="icon_prefix">Nome</label>
+              </div>
+              <div class="input-field col s12 m6 l6">
+                <i class="material-icons prefix">person</i>
+                <input id="input-cnpj" type="text" placeholder=" 00.000.000/0000-00">
+                <label for="icon_prefix">CNPJ</label>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">person</i>
-              <input type="number" placeholder="000.000.000.00">
-              <label for="icon_prefix">CPF</label>
-            </div>
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">child_care</i>
-              <input type="text" placeholder="12/12/2000">
-              <label for="icon_prefix">Data de Nascimento</label>
+
+            <div class="row">
+              <div class="input-field col s12 l6">
+                <i class="material-icons prefix">mail</i>
+                <input type="email" placeholder="darthvaider@estreladamorte.com">
+                <label for="icon_prefix">E-mail</label>
+              </div>
+              <div class="input-field col s12 l6">
+                <i class="material-icons prefix">phone</i>
+                <input class="input-telefone" type="text" placeholder="(00)0000-0000">
+                <label for="icon_prefix">Telefone</label>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">location_on</i>
-              <input type="number" placeholder="85070700">
+              <input id="input-cep" type="text" placeholder="85070700">
               <label for="icon_prefix">CEP</label>
             </div>
 
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">markunread_mailbox</i>
-              <input type="number" placeholder="1024">
-              <label for="icon_prefix">Número da edificação</label>
+              <input id="input-numero" type="number" placeholder="1024">
+              <label for="icon_prefix">Número</label>
+            </div>
+          </div>
+
+          <div id="dados-localidade" class="ocultar-conteudo">
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-rua" type="text" placeholder="Rua dos pedreiros">
+                <label for="icon_prefix">Rua</label>
+              </div>
+
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-bairro" type="text" placeholder="Centro">
+                <label for="icon_prefix">Bairro</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-cidade" type="text" placeholder="Guarapuava">
+                <label for="icon_prefix">Cidade</label>
+              </div>
+
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-estado" type="text" placeholder="PR">
+                <label for="icon_prefix">Estado</label>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="col s12 m12 l6">
-              <button id="button-cadastro" class="waves-effect waves-light btn" type="button">
-                <i class="material-icons left">check_circle</i>Cadastrar</button>
-            </div>
-            <div class="col s12 m12 l6">
-              <button id="button-cancelar-cadastro" class="waves-effect waves-light btn" type="button">
-                <i class="material-icons left">cancel</i>Cancelar</button>
-            </div>
-          </div>
-        </form>
-
-        <form id="form-pessoa-cnpj" class="ocultar-conteudo" action="">
-          <div class="row">
-            <div class="input-field col s12 m6 l6">
-              <i class="material-icons prefix">person</i>
-              <input type="text" placeholder="Construtora Estrela da Morte">
-              <label for="icon_prefix">Nome</label>
-            </div>
-            <div class="input-field col s12 m6 l6">
-              <i class="material-icons prefix">person</i>
-              <input type="number" placeholder=" 00.000.000/0000-00">
-              <label for="icon_prefix">CNPJ</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">mail</i>
-              <input type="email" placeholder="darthvaider@estreladamorte.com">
-              <label for="icon_prefix">E-mail</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">location_on</i>
-              <input type="number" placeholder="85070700">
-              <label for="icon_prefix">CEP</label>
-            </div>
-
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">markunread_mailbox</i>
-              <input type="number" placeholder="1024">
-              <label for="icon_prefix">Número da edificação</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">location_city</i>
-              <input type="number" placeholder="Rua dos pedreiros">
-              <label for="icon_prefix">Rua</label>
-            </div>
-
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">location_city</i>
-              <input type="text" placeholder="Centro">
-              <label for="icon_prefix">Bairro</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">location_city</i>
-              <input type="number" placeholder="Rua dos pedreiros">
-              <label for="icon_prefix">Cidade</label>
-            </div>
-
-            <div class="input-field col s12 m12 l6">
-              <i class="material-icons prefix">location_city</i>
-              <input type="text" placeholder="Centro">
-              <label for="icon_prefix">Estado</label>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col s12 m12 l6">
-              <button id="button-cadastro" class="waves-effect waves-light btn" type="button">
+              <button id="button-cadastro" class="waves-effect waves-light btn" type="submit">
                 <i class="material-icons left">check_circle</i>Cadastrar</button>
             </div>
             <div class="col s12 m12 l6">
@@ -183,6 +187,7 @@
 
   <script src="assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
   <script src="assets/libraries/materialize-v0.100.2/js/materialize.min.js"></script>
+  <script src="assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
   <script src="assets/resources/scripts/inicializacao.js"></script>
 </body>
 
