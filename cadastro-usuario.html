@@ -18,10 +18,55 @@
       <div class="container">
         <div class="nav-wrapper">
           <a href="index.html" class="brand-logo">
-            <i class="material-icons left">directions_car</i>GuaraCar</a>
+            <i class="material-icons left">directions_car</i>GuaraCar
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#modal1" class="modal-trigger">
+                <i class="material-icons left">apps</i>Serviços</a></li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Serviços</h4>
+      <div class="row">
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/locacao.png">Locação
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/devolucao.png">Devolução
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/gerenciar-veiculo.png">Gerenciar Veiculos
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/usuarios.png">Gerenciar Usuários
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/gerenciar-cliente.png">Gerenciar Clientes
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/relatorio.png">Relatórios
+          </a>
         </div>
       </div>
-    </nav>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Sair</a>
+    </div>
   </div>
 
   <main>
@@ -30,15 +75,16 @@
         <h1>Cadastro de Usuário</h1>
 
         <form action="">
+          <h3>Dados pessoais</h3>
           <div class="row">
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">person</i>
-              <input type="text" placeholder="Darth">
+              <input type="text" placeholder="Larissa">
               <label for="icon_prefix">Primeiro Nome</label>
             </div>
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">person</i>
-              <input type="text" placeholder="Vaider">
+              <input type="text" placeholder="Ferreira">
               <label for="icon_prefix">Sobrenome</label>
             </div>
           </div>
@@ -46,38 +92,92 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">mail</i>
-              <input type="email" placeholder="darthvaider@estreladamorte.com">
+              <input type="email" placeholder="larissai@gmail.com">
               <label for="icon_prefix">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12 l2">
+              <i class="material-icons prefix">contact_phone</i>
+              <select id="tipo-contato">
+                <option value="0">Telefone</option>
+                <option value="1">Celular</option>
+              </select>
+              <label>Contato</label>
+            </div>
+            <div id="div-telefone" class="input-field col s12 l10">
+              <i class="material-icons prefix">phone</i>
+              <input class="input-telefone" type="text" placeholder="(00)0000-0000">
+              <label for="icon_prefix">Telefone</label>
+            </div>
+            <div id="div-celular" class="input-field col s12 l10 ocultar-conteudo">
+              <i class="material-icons prefix">phone_iphone</i>
+              <input class="input-celular" type="text" placeholder="(00)00000-0000">
+              <label for="icon_prefix">Celular</label>
             </div>
           </div>
 
           <div class="row">
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">person</i>
-              <input type="number" placeholder="000.000.000-00">
+              <input id="input-cpf" type="text" placeholder="000.000.000-00">
               <label for="icon_prefix">CPF</label>
             </div>
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">child_care</i>
-              <input type="text" placeholder="12/12/2000">
+              <input id="input-data-nascimento" type="text" placeholder="12/12/2000">
               <label for="icon_prefix">Data de Nascimento</label>
             </div>
           </div>
 
+          <h3>Endereço</h3>
           <div class="row">
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">location_on</i>
-              <input type="number" placeholder="85070700">
+              <input id="input-cep" type="text" placeholder="85070700">
               <label for="icon_prefix">CEP</label>
             </div>
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">markunread_mailbox</i>
-              <input type="number" placeholder="1024">
-              <label for="icon_prefix">Número da Residência</label>
+              <input id="input-numero" type="number" placeholder="1024">
+              <label for="icon_prefix">Número</label>
             </div>
           </div>
 
+          <div id="dados-localidade" class="ocultar-conteudo">
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-rua" type="text" placeholder="Rua dos pedreiros">
+                <label for="icon_prefix">Rua</label>
+              </div>
 
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-bairro" type="text" placeholder="Centro">
+                <label for="icon_prefix">Bairro</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">location_city</i>
+                <input id="input-cidade" type="text" placeholder="Guarapuava">
+                <label for="icon_prefix">Cidade</label>
+              </div>
+
+              <div class="input-field col s12 m12 l6">
+                <i class="material-icons prefix">
+                  <flag></flag>
+                </i>
+                <input id="input-estado" type="text" placeholder="PR">
+                <label for="icon_prefix">Estado</label>
+              </div>
+            </div>
+          </div>
+
+          <h3>Crie sua senha</h3>
           <div class="row">
             <div class="input-field col s12 m12 l6">
               <i class="material-icons prefix">lock</i>
@@ -114,6 +214,8 @@
 
   <script src="assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
   <script src="assets/libraries/materialize-v0.100.2/js/materialize.min.js"></script>
+  <script src="assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+  <script src="assets/resources/scripts/cadastro-usuario.js"></script>
 </body>
 
 </html>
