@@ -1,6 +1,7 @@
 + function() {
   $(document).ready(function() {
     $('select').material_select();
+    $('.modal').modal();
 
     $('#input-cep').mask('00000-000');
     $('.input-telefone').mask('(00)0000-0000');

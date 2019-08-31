@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="author" content="Bruno José dos Santos Wogt">
-<link type="text/css" rel="stylesheet" href="assets/libraries/materialize-v0.100.2/css/materialize.min.css">
-<link type="text/css" rel="stylesheet" href="assets/resources/styles/style.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<title>Cadastro de Cliente</title>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author" content="Bruno José dos Santos Wogt">
+  <link type="text/css" rel="stylesheet" href="assets/libraries/materialize-v0.100.2/css/materialize.min.css">
+  <link type="text/css" rel="stylesheet" href="assets/resources/styles/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Cadastro de Cliente</title>
+</head>
 
 <body>
   <div class="navbar">
@@ -15,10 +18,37 @@
       <div class="container">
         <div class="nav-wrapper">
           <a href="index.html" class="brand-logo">
-            <i class="material-icons left">directions_car</i>GuaraCar</a>
+            <i class="material-icons left">directions_car</i>GuaraCar
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#modal-servico" class="modal-trigger">
+                <i class="material-icons left">apps</i>Serviços</a></li>
+            <li><a href="index.html" class="modal-trigger">
+                <i class="material-icons left">power_settings_new</i>Encerar Sessão</a></li>
+          </ul>
+        </div>
+    </nav>
+  </div>
+
+  <div id="modal-servico" class="modal">
+    <div class="modal-content">
+      <h4>Serviços</h4>
+      <div class="row">
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/locacao.png">Locação
+          </a>
+        </div>
+        <div class="col s12 m4 l2">
+          <a href="">
+            <img id="img-locacao" src="assets/resources/img/devolucao.png">Devolução
+          </a>
         </div>
       </div>
-    </nav>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+    </div>
   </div>
 
   <main>
