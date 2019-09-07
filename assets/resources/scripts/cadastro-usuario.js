@@ -1,26 +1,15 @@
 + function() {
   $(document).ready(function() {
-    $('select').material_select();
+    //iniciallização materialize
+    $('.sidenav').sidenav();
     $('.modal').modal();
 
-    $('#input-cep').mask('00000-000');
-    $('.input-telefone').mask('(00)0000-0000');
-    $('.input-celular').mask('(00)00000-0000');
-    $('#input-cpf').mask('000.000.000-00');
-    $('#input-data-nascimento').mask('00/00/0000');
 
-    $('#tipo-contato').change(function() {
-      let opcao = $("#tipo-contato option:selected").val();
-
-      if (opcao == 0) {
-        $('#div-telefone').removeClass('ocultar-conteudo').addClass('exibir-conteudo');
-        $('#div-celular').removeClass('exibir-conteudo').addClass('ocultar-conteudo');
-      } else {
-        $('#div-telefone').removeClass('exibir-conteudo').addClass('ocultar-conteudo');
-        $('#div-celular').removeClass('ocultar-conteudo').addClass('exibir-conteudo');
-      }
-    });
-
+    //máscaras
+    $('.cep').mask('00000-000');
+    $('.cpf').mask('000.000.000-00');
+    $('.celular').mask('(00)00000-0000');
+    $('.data-nascimento').mask('00/00/0000');
 
     $('#input-cep').blur(function() {
       let cep = $(this).val().replace('-', '');
