@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="assets/libraries/materialize-v1.0.0/css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="assets/resources/styles/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Cadastro de Usuário</title>
+    <title>Veículos Disponíveis</title>
 </head>
 
 <body>
@@ -53,134 +53,41 @@
         </nav>
     </div>
 
-    <div id="modal-servico" class="modal">
-        <div class="modal-content">
-            <h4>Serviços</h4>
-            <div class="row">
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/locacao.png">
-                        <p>Locação</p>
-                    </a>
-                </div>
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/devolucao.png">
-                        <p>Devolução</p>
-                    </a>
-                </div>
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/cliente.png">
-                        <p>Gerenciar Clientes</p>
-                    </a>
-                </div>
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/usuario.png">
-                        <p>Gerenciar Usuários</p>
-                    </a>
-                </div>
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/veiculo.png">
-                        <p>Gerenciar Frota</p>
-                    </a>
-                </div>
-                <div class="col s6 m2">
-                    <a href="">
-                        <img id="img-locacao" src="assets/resources/img/relatorio.png">
-                        <p>Relátorios</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
-        </div>
-    </div>
-
     <main>
         <section>
             <div class="container">
-                <h1>Cadastro de Usuário</h1>
-
-                <form action="">
-                    <h3>Dados pessoais</h3>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">person</i>
-                            <input type="text" placeholder="Larissa">
-                            <label for="icon_prefix">Primeiro Nome</label>
-                        </div>
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">person</i>
-                            <input type="text" placeholder="Ferreira">
-                            <label for="icon_prefix">Sobrenome</label>
-                        </div>
+                <h1>Veículos Disponíveis</h1>
+                <div id="div-categoria" class="row">
+                    <div class="col s12">
+                        <form action="">
+                            <span>Categorias:</span>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Hatch</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Sedan</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>SUV</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Pick-Ups</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Furgões</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" />
+                                <span>Esportivos</span>
+                            </label>
+                        </form>
                     </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m6">
-                            <i class="material-icons prefix">mail</i>
-                            <input type="email" placeholder="larissai@gmail.com">
-                            <label for="icon_prefix">Email</label>
-                        </div>
-
-                        <div id="div-celular" class="input-field col s12 m6">
-                            <i class="material-icons prefix">phone_iphone</i>
-                            <input class="celular" type="text" placeholder="(00)00000-0000">
-                            <label for="icon_prefix">Celular</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">person</i>
-                            <input class="cpf" type="text" placeholder="000.000.000-00">
-                            <label for="icon_prefix">CPF</label>
-                        </div>
-                    </div>
-
-                    <h3>Endereço</h3>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">location_on</i>
-                            <input id="input-cep" class="cep" type="text" placeholder="85070700">
-                            <label for="icon_prefix">CEP</label>
-                        </div>
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">markunread_mailbox</i>
-                            <input id="input-numero" type="number" placeholder="1024">
-                            <label for="icon_prefix">Número</label>
-                        </div>
-                    </div>
-
-                    <h3>Crie sua senha</h3>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">lock</i>
-                            <input type="password" placeholder="********">
-                            <label for="icon_prefix">Senha</label>
-                        </div>
-                        <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">lock</i>
-                            <input type="password" placeholder="********">
-                            <label for="icon_prefix">Confirmar Senha</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m12 l6">
-                            <button id="button-cadastro" class="waves-effect waves-light btn" type="button">
-                <i class="material-icons left">check_circle</i>Cadastrar</button>
-                        </div>
-                        <div class="col s12 m12 l6">
-                            <button id="button-cancelar-cadastro" class="waves-effect waves-light btn" type="button">
-                <i class="material-icons left">cancel</i>Cancelar</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </section>
     </main>
@@ -388,6 +295,7 @@
     <script src="assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
     <script src="assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
     <script src="assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+
 </body>
 
 </html>
