@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno José dos Santos Wogt">
+    <link type="text/css" rel="stylesheet" href="../assets/libraries/materialize-v1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="../assets/resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Veículos Disponíveis</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav class="cor-principal">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="brand-logo">
+                        <i class="material-icons left">directions_car</i>RentACar
+                    </a>
+                    <a href="#" data-target="barra-mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerar Sessão
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="sidenav" id="barra-mobile">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerar Sessão
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section>
+            <div class="container">
+                <div id="div-categoria" class="row">
+                    <div class="col s12">
+                        <h4>Categorias</h4>
+                        <form id="form-categoria" action="">
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>Hatch</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>Sedãn</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>SUV</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>Pick-Ups</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>Furgões</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in">
+                                <span>Esportivos</span>
+                            </label>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="#">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="#">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <ul class="pagination">
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                <li class="active"><a href="#!">1</a></li>
+                <li class="waves-effect"><a href="#!">2</a></li>
+                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            </ul>
+        </section>
+    </main>
+
+    <div id="modal-menu-servicos" class="modal">
+        <div class="modal-content">
+            <h4>Serviços</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-locacao" class="modal-trigger">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Gerenciar Locações</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-cliente" class="modal-trigger">
+                        <img id="img-locacao" src="../assets/resources/img/cliente.png">
+                        <p>Gerenciar Clientes</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-usuario" class="modal-trigger">
+                        <img id="img-locacao" src="../assets/resources/img/usuario.png">
+                        <p>Gerenciar Usuários</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-frota" class="modal-trigger">
+                        <img id="img-locacao" src="../assets/resources/img/veiculo.png">
+                        <p>Gerenciar Frota</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-relatorio" class="modal-trigger">
+                        <img id="img-locacao" src="../assets/resources/img/relatorio.png">
+                        <p>Relátorios</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-locacao" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar locações</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Veículos disponíveis</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Devoluções</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-cliente" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Clientes</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Adicionar Cliente</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Atualizar Dados do Cliente</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-usuario" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Usuário</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Adicionar Usuário</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Atualizar Dados do Usuário</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-frota" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Frota</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Adicionar Novo Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Alterar Dados do Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Enviar Veículo para oficina</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Retornar Veículo da Oficina</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+
+    <div id="modal-gerenciar-relatorio" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Clientes</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/locacao.png">
+                        <p>Relatório de Lucros</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Relatório de Locações</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="">
+                        <img id="img-locacao" src="../assets/resources/img/devolucao.png">
+                        <p>Relatório de Reparos</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <section>
+        <footer class="section cor-principal">
+            <p>RentACar - Locações de automóveis - 2019</p>
+        </footer>
+    </section>
+
+    <script src="../assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
+    <script src="../assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
+    <script src="../assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="../assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+
+</body>
+
+</html>

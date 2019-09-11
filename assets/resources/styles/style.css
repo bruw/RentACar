@@ -28,8 +28,8 @@ span {
     margin-bottom: 60px;
 }
 
-.pagination li.disable {
-    color: green;
+.pagination li.active {
+    background-color: #228B22;
 }
 
 #div-imagens-veiculo>img {
