@@ -9,7 +9,7 @@
     <link type="text/css" rel="stylesheet" href="../assets/libraries/materialize-v1.0.0/css/materialize.min.css">
     <link type="text/css" rel="stylesheet" href="../assets/resources/styles/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Veículos Disponíveis</title>
+    <title>Devolução de Veículo</title>
 </head>
 
 <body>
@@ -56,108 +56,44 @@
     <main>
         <section>
             <div class="container">
-                <div id="div-categoria" class="row">
-                    <div class="col s12">
-                        <form id="form-categoria" action="">
-                            <h5>Categorias:</h5>
-                            <label>
-                                <input type="checkbox" class="filled-in">
-                                <span>Hatch</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="filled-in">
-                                <span>Sedãn</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="filled-in">
-                                <span>SUV</span>
-                            </label>
-                            <label>
-                                <input type="checkbox" class="filled-in">
-                                <span>Pick-Ups</span>
-                            </label>
-
-                            <button id="button-pesquisa-filtro" class="waves-effect waves-light btn-small" type="submit">
-                                    <i class="material-icons left"></i>Pesquisar</button>
-
-                        </form>
+                <h1>Devolução de Veículo</h1>
+                <form action="">
+                    <div class="row">
+                        <div class="input-field col s12 m8">
+                            <i class="material-icons prefix">assignment</i>
+                            <input id="input-chassi" type="text" value="125.852.730-98" placeholder="1024">
+                            <label for="icon_prefix">CPF</label>
+                        </div>
+                        <div class="col s12 m4">
+                            <button class="waves-effect waves-light btn" type="submit">
+                             <i class="material-icons left">search</i>Pesquisar</button>
+                        </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div id="div-dados-cliente" class="col s12 m5">
+                            <h4>Dados do cliente</h4>
+                            <p><span>Nome:</span> Fernanda Cresol</p>
+                            <p><span>CPF:</span> 125.852.730-98</p>
+                        </div>
+                        <div id="div-dados-locacao" class="col s12 m5">
+                            <h4>Dados da Locação</h4>
+                            <p><span>Veículo:</span>Fiat Argo</p>
+                            <p><span>Número do Chassi:</span>2275ca7689jj2019</p>
+                            <p><span>Data da Locação:</span> 25/08/2019</p>
+                            <p><span>Data para Devolução:</span> 30/08/2019</p>
+                            <p><span>Data Atual:</span> 30/08/2019</p>
+                            <p><span>Multa por atraso:</span> R$0.00</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="waves-effect waves-light btn right" type="submit">
+                            <i class="material-icons left">check</i>confirmar Devolução</button>
+                    </div>
+                </form>
             </div>
         </section>
 
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title">Fiat Argo</span>
-                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
-                                    nois paga.</p>
-                            </div>
-                            <div class="card-action">
-                                <p>Diária: R$95,00</p>
-                                <a href="#">Alugar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title">Fiat Argo</span>
-                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
-                                    nois paga.</p>
-                            </div>
-                            <div class="card-action">
-                                <p>Diária: R$95,00</p>
-                                <a href="#">Alugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title">Fiat Argo</span>
-                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
-                                    nois paga.</p>
-                            </div>
-                            <div class="card-action">
-                                <p>Diária: R$95,00</p>
-                                <a href="#">Alugar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s12 m6">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../assets/resources/img/carros/argo-1-0-drive-copy.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title">Fiat Argo</span>
-                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
-                                    nois paga.</p>
-                            </div>
-                            <div class="card-action">
-                                <p>Diária: R$95,00</p>
-                                <a href="#">Alugar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </main>
 
     <div id="modal-menu-servicos" class="modal">
@@ -206,7 +142,7 @@
             <h4>Gerenciar locações</h4>
             <div class="row">
                 <div class="col s6 m2">
-                    <a href="">
+                    <a href="veiculos-disponiveis.html">
                         <img id="img-locacao" src="../assets/resources/img/locacao.png">
                         <p>Veículos disponíveis</p>
                     </a>
@@ -334,15 +270,6 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
         </div>
     </div>
-
-    <section>
-        <ul class="pagination">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="veiculos-disponiveis-pag2.html">2</a></li>
-            <li class="waves-effect"><a href="veiculos-disponiveis-pag2.html"><i class="material-icons">chevron_right</i></a></li>
-        </ul>
-    </section>
 
     <section>
         <footer class="section cor-principal">
