@@ -1,4 +1,4 @@
-# Sistema para gerenciamento de locações de automoveis.
+# RentACar - Sistema para gerenciamento de locações de automoveis.
 **Curso:** Tecnologias em Sistemas para Internet UTFPR (Universidade Tecnológica Federal do Paraná).  
 
 **Disciplina:** Desenvolvimento para web 3.  
@@ -24,3 +24,4 @@
 - [ ] Retornar carro do mecânico. Volta a ser disponível. Lançar o quanto custou.
 - [ ] Relatório de locações e reparos de um carro.
 - [ ] Relatório de lucro da empresa. Considerar as locações e reparos. Filtrar por período.
+
