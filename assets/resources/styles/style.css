@@ -68,6 +68,7 @@ label span {
     margin-right: 20%;
     margin-top: 50px;
     margin-bottom: 50px;
+    border-radius: 10px;
 }
 
 #form-categoria>label {
