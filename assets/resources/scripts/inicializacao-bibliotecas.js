@@ -3,7 +3,7 @@
         //iniciallização materialize
         $('.sidenav').sidenav();
         $('.modal').modal();
-
+        $('select').formSelect();
 
         //máscaras
         $('.cep').mask('00000-000');
