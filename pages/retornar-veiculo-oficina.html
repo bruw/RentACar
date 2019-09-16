@@ -56,7 +56,35 @@
     <main>
         <section>
             <div class="container">
-                <h3>Veículo(s) na Oficina</h3>
+                <div id="div-categoria" class="row">
+                    <div class="col s12">
+                        <h3>Veículo(s) na Oficina</h3>
+                        <form id="form-categoria" class="card-panel" action="">
+                            <h5>Filtrar por Categoria:</h5>
+                            <label>
+                                        <input type="checkbox" class="filled-in" name="categoria" value="hatch">
+                                        <span>Hatch</span>
+                                    </label>
+                            <label>
+                                        <input type="checkbox" class="filled-in" name="categoria" value="sedan">
+                                        <span>Sedãn</span>
+                                    </label>
+                            <label>
+                                        <input type="checkbox" class="filled-in" name="categoria" value="suv">
+                                        <span>SUV</span>
+                                    </label>
+                            <label>
+                                        <input type="checkbox" class="filled-in" name="categoria" value="pick-ups"> 
+                                        <span>Pick-Ups</span>
+                                    </label>
+
+                            <button id="button-pesquisa-filtro" class="waves-effect waves-light btn-small  disabled" type="submit">
+                                            <i class="material-icons left"></i>Pesquisar</button>
+
+                        </form>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col s12 m6">
                         <div class="card">
@@ -75,7 +103,7 @@
                                     <label for="prefix">Valor do reparo: R$</label>
                                 </div>
 
-                                <button id="button-enviar-oficina" class="waves-effect waves-light btn" type="submit">
+                                <button class="waves-effect waves-light btn button-confirmar" type="submit">
                                     <i class="material-icons left">build</i>Finalizar reparo</button>
                             </div>
                         </div>
@@ -98,7 +126,7 @@
                                     <label for="prefix">Valor do reparo: R$</label>
                                 </div>
 
-                                <button id="button-enviar-oficina" class="waves-effect waves-light btn" type="submit">
+                                <button class="waves-effect waves-light btn button-confirmar" type="submit">
                                         <i class="material-icons left">build</i>Finalizar reparo</button>
                             </div>
                         </div>
@@ -114,31 +142,31 @@
             <div class="row ">
                 <div class="col s6 m2 ">
                     <a href="#modal-gerenciar-locacao" class="modal-trigger">
-                        <img id="img-locacao" src="../assets/resources/img/menu/locacao.png">
+                        <img src="../assets/resources/img/menu/locacao.png">
                         <p>Gerenciar Locações</p>
                     </a>
                 </div>
                 <div class="col s6 m2 ">
                     <a href="#modal-gerenciar-cliente" class="modal-trigger">
-                        <img id="img-locacao" src="../assets/resources/img/menu/cliente.png">
+                        <img src="../assets/resources/img/menu/cliente.png">
                         <p>Gerenciar Clientes</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="#modal-gerenciar-usuario" class="modal-trigger">
-                        <img id="img-locacao" src="../assets/resources/img/menu/usuario.png">
+                        <img src="../assets/resources/img/menu/usuario.png">
                         <p>Gerenciar Usuários</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="#modal-gerenciar-frota" class="modal-trigger">
-                        <img id="img-locacao" src="../assets/resources/img/menu/veiculo.png">
+                        <img src="../assets/resources/img/menu/veiculo.png">
                         <p>Gerenciar Frota</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="#modal-gerenciar-relatorio" class="modal-trigger">
-                        <img id="img-locacao" src="../assets/resources/img/menu/relatorio.png">
+                        <img src="../assets/resources/img/menu/relatorio.png">
                         <p>Relátorios</p>
                     </a>
                 </div>
@@ -155,13 +183,13 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="veiculos-disponiveis.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/locacao.png">
+                        <img src="../assets/resources/img/menu/locacao.png">
                         <p>Veículos disponíveis</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="devolucao.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/devolucao.png">
+                        <img src="../assets/resources/img/menu/devolucao.png">
                         <p>Devoluções</p>
                     </a>
                 </div>
@@ -178,13 +206,13 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="cadastro-cliente.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/adicionar.png">
+                        <img src="../assets/resources/img/menu/adicionar.png">
                         <p>Adicionar Cliente</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="atualizar-dados-cliente.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/atualizar-dados.png">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
                         <p>Atualizar Dados do Cliente</p>
                     </a>
                 </div>
@@ -201,13 +229,13 @@
             <div class="row">
                 <div class="col s6 m2 ">
                     <a href="cadastro-usuario.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/adicionar.png">
+                        <img src="../assets/resources/img/menu/adicionar.png">
                         <p>Adicionar Usuário</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="atualizar-dados-usuario.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/atualizar-dados.png">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
                         <p>Atualizar Dados do Usuário</p>
                     </a>
                 </div>
@@ -224,25 +252,25 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="cadastro-veiculo.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/locacao.png">
+                        <img src="../assets/resources/img/menu/locacao.png">
                         <p>Adicionar Novo Veículo</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="atualizar-dados-veiculo.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/atualizar-dados.png">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
                         <p>Alterar Dados do Veículo</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="enviar-veiculo-oficina.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/enviar-oficina.png">
+                        <img src="../assets/resources/img/menu/enviar-oficina.png">
                         <p>Enviar Veículo para oficina</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="retornar-veiculo-oficina.html">
-                        <img id="img-locacao" src="../assets/resources/img/menu/retornar-oficina.png">
+                        <img src="../assets/resources/img/menu/retornar-oficina.png">
                         <p>Retornar Veículo da Oficina</p>
                     </a>
                 </div>
@@ -260,19 +288,19 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href=" ">
-                        <img id="img-locacao" src="../assets/resources/img/menu/relatorio-lucros.png">
+                        <img src="../assets/resources/img/menu/relatorio-lucros.png">
                         <p>Relatório de Lucros</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href=" ">
-                        <img id="img-locacao" src="../assets/resources/img/menu/locacao.png">
+                        <img src="../assets/resources/img/menu/locacao.png">
                         <p>Relatório de Locações</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href=" ">
-                        <img id="img-locacao" src="../assets/resources/img/menu/enviar-oficina.png">
+                        <img src="../assets/resources/img/menu/enviar-oficina.png">
                         <p>Relatório de Reparos</p>
                     </a>
                 </div>
@@ -284,6 +312,14 @@
     </div>
 
     <section>
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+    </section>
+
+    <section>
         <footer class="section cor-principal">
             <p>RentACar - Locações de automóveis - 2019</p>
         </footer>
@@ -293,6 +329,7 @@
     <script src="../assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
     <script src="../assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
     <script src="../assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+    <script src="../assets/resources/scripts/pesquisa-categoria.js"></script>
 
 </body>
 
