@@ -14,6 +14,14 @@
     text-align: right;
 }
 
+#form-nova-locacao h4 {
+    text-align: center;
+}
+
+#form-nova-locacao p {
+    font-size: 20px;
+}
+
 #p-mensagem {
     text-align: center;
     color: red;
@@ -36,34 +44,34 @@
     margin-top: 30px;
 }
 
-#div-dados-cliente {
+.div-dados-cliente {
     margin-right: 10%;
 }
 
-#div-dados-cliente h4 {
+.div-dados-cliente h4 {
     text-align: left;
 }
 
-#div-dados-cliente span {
+.div-dados-cliente span {
     font-weight: bold;
 }
 
-#div-dados-locacao h4 {
+.div-dados-locacao h4 {
     text-align: left;
 }
 
-#div-dados-locacao span {
+.div-dados-locacao span {
     font-weight: bold;
 }
 
-#div-dados-locacao>p:nth-child(7) {
+.div-dados-locacao>p:nth-child(7) {
     color: red;
-    font-size: 20px;
+    font-size: 30px;
 }
 
-#div-dados-locacao>p:last-child {
+.div-dados-locacao>p:last-child {
     color: green;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 label span {

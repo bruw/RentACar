@@ -4,6 +4,7 @@
         $('.sidenav').sidenav();
         $('.modal').modal();
         $('select').formSelect();
+        $('.datepicker').datepicker();
 
         //máscaras
         $('.cep').mask('00000-000');
