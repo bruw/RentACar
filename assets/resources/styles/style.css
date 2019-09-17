@@ -14,6 +14,22 @@
     text-align: right;
 }
 
+#div-filtro-data {
+    margin-top: 30px;
+}
+
+#button-pesquisar-relatorio {
+    margin-top: 30px;
+}
+
+#div-relatorio-lucro {
+    margin-top: 80px;
+}
+
+#div-relatorio-locacao table {
+    text-align: center;
+}
+
 #form-nova-locacao h4 {
     text-align: center;
 }
