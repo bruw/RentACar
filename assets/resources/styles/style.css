@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'edgeracer';
+    src: url('../fonts/edge_racer/edgeracer.ttf');
+}
+
+.font-edgeracer {
+    font-family: 'edgeracer';
+}
+
 .exibir-conteudo {
     display: block;
 }
@@ -241,23 +250,15 @@ form {
 }
 
 h1 {
-    font-size: 400%;
+    font-size: 40px;
     text-align: center;
     font-style: thin;
     margin-top: 40px;
     margin-bottom: 50px;
 }
 
-h2 {
-    margin-left: 3%;
-}
-
-h3 {
-    margin: 40px;
-    text-align: center;
-}
-
 h4 {
+    margin-bottom: 30px;
     text-align: center;
 }
 
