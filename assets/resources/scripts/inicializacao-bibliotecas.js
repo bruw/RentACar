@@ -1,4 +1,4 @@
-+ function() {
+(function() {
     $(document).ready(function() {
         //iniciallização materialize
         $('.sidenav').sidenav();
@@ -11,4 +11,4 @@
         $('.cpf').mask('000.000.000-00');
         $('.celular').mask('(00)00000-0000');
     });
-}();
+})();
