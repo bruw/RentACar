@@ -5,8 +5,6 @@
 
 **Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
 
-**GitHub Pages:** https://bruw.github.io/RentACar-Web3/
-
 **Requisitos específicos**
  - [ ] Padronização do banco de dados.
  - [ ] Padronização das rotas.
