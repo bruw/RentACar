@@ -3,6 +3,11 @@
     src: url('../fonts/edge_racer/edgeracer.ttf');
 }
 
+.table-total{
+    border: 1px solid black;
+    margin-bottom: 40px;
+}
+
 .font-edgeracer {
     font-family: 'edgeracer';
 }

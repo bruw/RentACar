@@ -61,9 +61,8 @@
                     <div class="input-field col s12">
                         <i class="material-icons prefix">filter_list</i>
                         <select id="select-relatorio">
-                            <option value="1">Relatórios de locações de um veículo</option>
-                            <option value="2">Relatórios de reparos de um veículo</option>
-                            <option value="3">Relatórios de Lucros da Empresa</option>
+                            <option value="1">Relatório de Locações e Reparos de um Veículo</option>
+                            <option value="3">Relatório de Lucros da Empresa</option>
                         </select>
                         <label>Categorias Relatório</label>
                     </div>
@@ -78,7 +77,8 @@
                 <div id="div-filtro-data" class="row ocultar-conteudo">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">date_range</i>
-                        <input type="text" class="datepicker" placeholder="Clique aqui para selecionar a data de ínicio">
+                        <input type="text" class="datepicker"
+                            placeholder="Clique aqui para selecionar a data de ínicio">
                         <label for="icon_prefix">Data de Ínicio</label>
                     </div>
                     <div class="input-field col s12 m6">
@@ -89,7 +89,8 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <button id="button-pesquisar-relatorio" class="waves-effect waves-light btn button-pesquisar" type="submit">
+                        <button id="button-pesquisar-relatorio" class="waves-effect waves-light btn button-pesquisar"
+                            type="submit">
                             <i class="material-icons left">search</i>Pesquisar
                         </button>
                     </div>
@@ -102,113 +103,87 @@
                     </div>
                 </div>
                 <div id="div-relatorio-locacao" class="row">
-                    <h4>Histórico de locações</h4>
+                    <h4>Histórico de locações e Reparos do Veículo</h4>
+                    <div class="col s12 table-total">
+                        <table>
+                            <tr>
+                                <th>TOTAL LOCAÇÕES</th>
+                                <th>TOTAL REPAROS</th>
+                                <th>LUCRO</th>
+                            </tr>
+                            <tr>
+                                <th>R$380.00</th>
+                                <th>R$190.00</th>
+                                <th>+R$190.00</th>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+
                     <div class="col s12">
                         <table>
                             <tr>
-                                <th>Data de Locação</th>
+                                <th>Data de Locação / Reparo</th>
                                 <th>Data de Devolução</th>
-                                <th>Valor da Diária</th>
-                                <th>Total</th>
+                                <th>Valor da Locação</th>
+                                <th>Valor do Reparo</th>
                             </tr>
                             <tr>
                                 <th>1/08/2019</th>
                                 <th>2/08/2019</th>
                                 <th>R$95.00</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                             </tr>
                             <tr>
                                 <th>4/08/2019</th>
                                 <th>5/08/2019</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                                 <th>R$95.00</th>
                             </tr>
                             <tr>
                                 <th>8/08/2019</th>
                                 <th>9/08/2019</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                                 <th>R$95.00</th>
                             </tr>
                             <tr>
                                 <th>12/08/2019</th>
                                 <th>13/08/2019</th>
                                 <th>R$95.00</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                             </tr>
                             <tr>
                                 <th>15/08/2019</th>
                                 <th>16/08/2019</th>
                                 <th>R$95.00</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                             </tr>
                             <tr>
                                 <th>20/08/2019</th>
                                 <th>21/08/2019</th>
                                 <th>R$95.00</th>
-                                <th>R$95.00</th>
-                            </tr>
-                            <tr>
-                                <th>22/08/2019</th>
-                                <th>23/08/2019</th>
-                                <th>R$95.00</th>
-                                <th>R$95.00</th>
-                            </tr>
-                            <tr>
-                                <th>24/08/2019</th>
-                                <th>25/08/2019</th>
-                                <th>R$95.00</th>
-                                <th>R$95.00</th>
-                            </tr>
-                            <tr>
-                                <th>26/08/2019</th>
-                                <th>27/08/2019</th>
-                                <th>R$95.00</th>
-                                <th>R$95.00</th>
-                            </tr>
-                            <tr>
-                                <th>28/08/2019</th>
-                                <th>29/08/2019</th>
-                                <th>R$95.00</th>
-                                <th>R$95.00</th>
+                                <th>--</th>
                             </tr>
                         </table>
                     </div>
                 </div>
 
-                <div id="div-relatorio-manutencao" class="row ocultar-conteudo">
-                    <h4>Histórico de Manutenções</h4>
-                    <div class="col s12">
+                <div id="div-relatorio-lucro" class="row ocultar-conteudo">
+                    <h4>Relatório de Lucros</h4>
+                    <div class="col s12 table-total">
                         <table>
                             <tr>
-                                <th>Data de Entrada Oficina</th>
-                                <th>Data de Saida Oficina</th>
-                                <th>Valor do Reparo</th>
+                                <th>TOTAL LOCAÇÕES</th>
+                                <th>TOTAL REPAROS</th>
+                                <th>LUCRO TOTAL</th>
                             </tr>
                             <tr>
-                                <th>1/04/2019</th>
-                                <th>5/04/2019</th>
-                                <th>R$250.00</th>
-                            </tr>
-                            <tr>
-                                <th>12/06/2019</th>
-                                <th>12/06/2019</th>
-                                <th>R$50.00</th>
-                            </tr>
-                            <tr>
-                                <th>25/07/2019</th>
-                                <th>30/07/2019</th>
+                                <th>R$2.500</th>
                                 <th>R$500.00</th>
-                            </tr>
-                            <tr>
-                                <th>12/09/2019</th>
-                                <th>17/09/2019</th>
-                                <th>R$100.00</th>
+                                <th>+R$2.000</th>
                             </tr>
                         </table>
                     </div>
-                </div>
-                <div id="div-relatorio-lucro" class="row ocultar-conteudo">
-                    <h4>Relatório de Lucros</h4>
                     <div class="col s12">
                         <table>
                             <tr>
@@ -227,38 +202,31 @@
                             </tr>
                             <tr>
                                 <th>2019</th>
-                                <th>junho</th>
+                                <th>julho</th>
                                 <th>R$500.00</th>
                                 <th>R$100.00</th>
                                 <th>R$400.00</th>
                             </tr>
                             <tr>
                                 <th>2019</th>
-                                <th>junho</th>
+                                <th>agosto</th>
                                 <th>R$500.00</th>
                                 <th>R$100.00</th>
                                 <th>R$400.00</th>
                             </tr>
                             <tr>
                                 <th>2019</th>
-                                <th>junho</th>
+                                <th>setembro</th>
                                 <th>R$500.00</th>
                                 <th>R$100.00</th>
                                 <th>R$400.00</th>
                             </tr>
                             <tr>
                                 <th>2019</th>
-                                <th>junho</th>
+                                <th>outubro</th>
                                 <th>R$500.00</th>
                                 <th>R$100.00</th>
                                 <th>R$400.00</th>
-                            </tr>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                                <th>TOTAL LOCAÇÕES: R$2.500</th>
-                                <th>TOTAL REPAROS: R$500.00</th>
-                                <th>LUCRO TOTAL: R$2.000</th>
                             </tr>
                         </table>
                     </div>
