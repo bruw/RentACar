@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno José dos Santos Wogt">
+    <link type="text/css" rel="stylesheet" href="../assets/libraries/materialize-v1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="../assets/resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Veículos Disponíveis</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav class="cor-principal">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo">
+                        <i class="material-icons left">directions_car</i>RentACar
+                    </a>
+                    <a href="#" data-target="barra-mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerar Sessão
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="sidenav" id="barra-mobile">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerar Sessão
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section>
+            <div class="container">
+                <div id="div-categoria" class="row">
+                    <div class="col s12">
+                        <form id="form-categoria" class="card-panel" action="">
+                            <h5>Filtrar por Categoria:</h5>
+                            <label>
+                                <input type="checkbox" class="filled-in" name="categoria" value="hatch">
+                                <span>Hatch</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" name="categoria" value="sedan">
+                                <span>Sedãn</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" name="categoria" value="suv">
+                                <span>SUV</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filled-in" name="categoria" value="pick-ups"> 
+                                <span>Pick-Ups</span>
+                            </label>
+
+                            <button id="button-pesquisa-filtro" class="waves-effect waves-light btn-small  disabled" type="submit">
+                                <i class="material-icons left"></i>Pesquisar
+                            </button>
+                        </form>
+                        <h4 class="font-edgeracer">Veículos disponíveis</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/veiculos/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="nova-locacao.html">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/veiculos/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="nova-locacao.html">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/veiculos/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="nova-locacao.html">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="../assets/resources/img/veiculos/argo-1-0-drive-copy.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title">Fiat Argo</span>
+                                <p>Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! Viva Forevis aptent taciti sociosqu ad litora torquent. In elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia
+                                    nois paga.</p>
+                            </div>
+                            <div class="card-action">
+                                <p>Diária: R$95,00</p>
+                                <a href="nova-locacao.html" class="modal-trigger">Alugar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-menu-servicos" class="modal">
+        <div class="modal-content">
+            <h4>Serviços</h4>
+            <div class="row ">
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-locacao" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Gerenciar Locações</p>
+                    </a>
+                </div>
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-cliente" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/cliente.png">
+                        <p>Gerenciar Clientes</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-usuario" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/usuario.png">
+                        <p>Gerenciar Usuários</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-frota" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/veiculo.png">
+                        <p>Gerenciar Frota</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="relatorios.html" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/relatorio.png">
+                        <p>Relátorios</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-locacao" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar locações</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="veiculos-disponiveis.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Veículos disponíveis</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="devolucao.html">
+                        <img src="../assets/resources/img/menu/devolucao.png">
+                        <p>Devoluções</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-cliente" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Clientes</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-cliente.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Cliente</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-cliente.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Cliente</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-usuario" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Usuário</h4>
+            <div class="row">
+                <div class="col s6 m2 ">
+                    <a href="cadastro-usuario.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Usuário</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-usuario.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Usuário</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-frota" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Frota</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-veiculo.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Adicionar Novo Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-veiculo.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Alterar Dados do Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="enviar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/enviar-oficina.png">
+                        <p>Enviar Veículo para oficina</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="retornar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/retornar-oficina.png">
+                        <p>Retornar Veículo da Oficina</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+    <section>
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="veiculos-disponiveis-pag2.html">2</a></li>
+            <li class="waves-effect"><a href="veiculos-disponiveis-pag2.html"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+    </section>
+
+    <section>
+        <footer class="section cor-principal">
+            <p>RentACar - Locações de automóveis - 2019</p>
+        </footer>
+    </section>
+
+    <script src="../assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
+    <script src="../assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
+    <script src="../assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="../assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+    <script src="../assets/resources/scripts/pesquisa-categoria.js"></script>
+
+
+</body>
+
+</html>
