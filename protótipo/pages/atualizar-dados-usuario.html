@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno José dos Santos Wogt">
+    <link type="text/css" rel="stylesheet" href="../assets/libraries/materialize-v1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="../assets/resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Alterar dados dos Usuários</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav class="cor-principal">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo">
+                        <i class="material-icons left">directions_car</i>RentACar
+                    </a>
+                    <a href="#" data-target="barra-mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerrar  Sessão
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="sidenav" id="barra-mobile">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerrar  Sessão
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section>
+            <div class="container">
+                <h1 class="font-edgeracer">Atualizar Dados do Usuário</h1>
+                <form action="">
+                    <div class="row">
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">person</i>
+                            <input id="input-cpf" class="cpf" type="text" class="cep" value="041.221.000-00" placeholder="000.000.000-00">
+                            <label for="icon_prefix">CPF</label>
+                        </div>
+                        <div class="col s12 m6">
+                            <button class="waves-effect waves-light btn button-pesquisar" type="submit">
+                            <i class="material-icons left">search</i>Pesquisar
+                        </button>
+                        </div>
+                    </div>
+                    <div id="div-dados-pessoa">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l6">
+                                <i class="material-icons prefix">person</i>
+                                <input type="text" value="Fernanda" placeholder="Darth">
+                                <label for="icon_prefix">Primeiro Nome</label>
+                            </div>
+                            <div class="input-field col s12 m12 l6">
+                                <i class="material-icons prefix">person</i>
+                                <input type="text" value="Batista" placeholder="Vaider">
+                                <label for="icon_prefix">Sobrenome</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div id="div-celular" class="input-field col s12 m6">
+                                <i class="material-icons prefix">phone_iphone</i>
+                                <input class="celular" type="text" value="(42)99999-9999" placeholder="(00)00000-0000">
+                                <label for="icon_prefix">Celular</label>
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <i class="material-icons prefix">mail</i>
+                                <input type="email" value="fernanda@email.com" placeholder="darthvaider@estreladamorte.com">
+                                <label for="icon_prefix">E-mail</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12 m12 l6">
+                                <i class="material-icons prefix">location_on</i>
+                                <input id="input-cep" class="cep" type="text" value="85070700" placeholder="85070700">
+                                <label for="icon_prefix">CEP</label>
+                            </div>
+
+                            <div class="input-field col s12 m12 l6">
+                                <i class="material-icons prefix">markunread_mailbox</i>
+                                <input id="input-numero" type="number" value="75" placeholder="1024">
+                                <label for="icon_prefix">Número</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s12 m12 l6">
+                                <button class="waves-effect waves-light btn button-confirmar" type="submit">
+                                <i class="material-icons left">check_circle</i>Confirmar Mudanças
+                            </button>
+                            </div>
+                            <div class="col s12 m12 l6">
+                                <button class="waves-effect waves-light btn button-cancelar" type="submit">
+                                <i class="material-icons left">cancel</i>Cancelar
+                            </button>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+
+            </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-menu-servicos" class="modal">
+        <div class="modal-content">
+            <h4>Serviços</h4>
+            <div class="row ">
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-locacao" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Gerenciar Locações</p>
+                    </a>
+                </div>
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-cliente" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/cliente.png">
+                        <p>Gerenciar Clientes</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-usuario" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/usuario.png">
+                        <p>Gerenciar Usuários</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-frota" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/veiculo.png">
+                        <p>Gerenciar Frota</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="relatorios.html" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/relatorio.png">
+                        <p>Relátorios</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-locacao" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar locações</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="veiculos-disponiveis.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Veículos disponíveis</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="devolucao.html">
+                        <img src="../assets/resources/img/menu/devolucao.png">
+                        <p>Devoluções</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-cliente" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Clientes</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-cliente.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Cliente</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-cliente.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Cliente</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-usuario" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Usuário</h4>
+            <div class="row">
+                <div class="col s6 m2 ">
+                    <a href="cadastro-usuario.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Usuário</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-usuario.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Usuário</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-frota" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Frota</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-veiculo.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Adicionar Novo Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-veiculo.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Alterar Dados do Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="enviar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/enviar-oficina.png">
+                        <p>Enviar Veículo para oficina</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="retornar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/retornar-oficina.png">
+                        <p>Retornar Veículo da Oficina</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <section>
+        <footer class="section cor-principal">
+            <p>RentACar - Locações de automóveis - 2019</p>
+        </footer>
+    </section>
+
+    <script src="../assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
+    <script src="../assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
+    <script src="../assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="../assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+
+</body>
+
+</html>

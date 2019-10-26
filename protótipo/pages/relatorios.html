@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Bruno José dos Santos Wogt">
+    <link type="text/css" rel="stylesheet" href="../assets/libraries/materialize-v1.0.0/css/materialize.min.css">
+    <link type="text/css" rel="stylesheet" href="../assets/resources/styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Relatórios</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <nav class="cor-principal">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo">
+                        <i class="material-icons left">directions_car</i>RentACar
+                    </a>
+                    <a href="#!" data-target="barra-mobile" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul class="right hide-on-med-and-down">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerrar  Sessão
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="sidenav" id="barra-mobile">
+                        <li>
+                            <a href="#modal-menu-servicos" class="modal-trigger">
+                                <i class="material-icons left">apps</i>Serviços
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../index.html" class="modal-trigger">
+                                <i class="material-icons left">power_settings_new</i>Encerrar  Sessão
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+        <section>
+            <div class="container">
+                <h1 class="font-edgeracer">Relatórios</h1>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">filter_list</i>
+                        <select id="select-relatorio">
+                            <option value="1">Relatório de Locações e Reparos de um Veículo</option>
+                            <option value="3">Relatório de Lucros da Empresa</option>
+                        </select>
+                        <label>Categorias Relatório</label>
+                    </div>
+                </div>
+                <div id="div-pesquisa-chassi" class="row">
+                    <div class="input-field col s12 m12">
+                        <i class="material-icons prefix">directions_car</i>
+                        <input id="input-chassi" type="text" value="2275ca7689jj2019" placeholder="1234cb4321dd34yp9">
+                        <label for="icon_prefix">Número do Chassi do Veículo</label>
+                    </div>
+                </div>
+                <div id="div-filtro-data" class="row ocultar-conteudo">
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">date_range</i>
+                        <input type="text" class="datepicker"
+                            placeholder="Clique aqui para selecionar a data de ínicio">
+                        <label for="icon_prefix">Data de Ínicio</label>
+                    </div>
+                    <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">date_range</i>
+                        <input type="text" class="datepicker" placeholder="Clique aqui para selecionar a data final">
+                        <label for="icon_prefix">Data de Fim</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <button id="button-pesquisar-relatorio" class="waves-effect waves-light btn button-pesquisar"
+                            type="submit">
+                            <i class="material-icons left">search</i>Pesquisar
+                        </button>
+                    </div>
+                </div>
+                <div id="div-informacao-veiculo" class="row">
+                    <div class="input-field col s12">
+                        <h4>Informações do Veículo</h4>
+                        <p><span>Veículo:</span> Fiat Argo</p>
+                        <p><span>Número do Chassi:</span> 2275ca7689jj2019</p>
+                    </div>
+                </div>
+                <div id="div-relatorio-locacao" class="row">
+                    <h4>Histórico de locações e Reparos do Veículo</h4>
+                    <div class="col s12 table-total">
+                        <table>
+                            <tr>
+                                <th>TOTAL LOCAÇÕES</th>
+                                <th>TOTAL REPAROS</th>
+                                <th>LUCRO</th>
+                            </tr>
+                            <tr>
+                                <th>R$380.00</th>
+                                <th>R$190.00</th>
+                                <th>+R$190.00</th>
+                            </tr>
+                        </table>
+                        <br>
+                    </div>
+
+                    <div class="col s12">
+                        <table>
+                            <tr>
+                                <th>Data de Locação / Reparo</th>
+                                <th>Data de Devolução</th>
+                                <th>Valor da Locação</th>
+                                <th>Valor do Reparo</th>
+                            </tr>
+                            <tr>
+                                <th>1/08/2019</th>
+                                <th>2/08/2019</th>
+                                <th>R$95.00</th>
+                                <th>--</th>
+                            </tr>
+                            <tr>
+                                <th>4/08/2019</th>
+                                <th>5/08/2019</th>
+                                <th>--</th>
+                                <th>R$95.00</th>
+                            </tr>
+                            <tr>
+                                <th>8/08/2019</th>
+                                <th>9/08/2019</th>
+                                <th>--</th>
+                                <th>R$95.00</th>
+                            </tr>
+                            <tr>
+                                <th>12/08/2019</th>
+                                <th>13/08/2019</th>
+                                <th>R$95.00</th>
+                                <th>--</th>
+                            </tr>
+                            <tr>
+                                <th>15/08/2019</th>
+                                <th>16/08/2019</th>
+                                <th>R$95.00</th>
+                                <th>--</th>
+                            </tr>
+                            <tr>
+                                <th>20/08/2019</th>
+                                <th>21/08/2019</th>
+                                <th>R$95.00</th>
+                                <th>--</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="div-relatorio-lucro" class="row ocultar-conteudo">
+                    <h4>Relatório de Lucros</h4>
+                    <div class="col s12 table-total">
+                        <table>
+                            <tr>
+                                <th>TOTAL LOCAÇÕES</th>
+                                <th>TOTAL REPAROS</th>
+                                <th>LUCRO TOTAL</th>
+                            </tr>
+                            <tr>
+                                <th>R$2.500</th>
+                                <th>R$500.00</th>
+                                <th>+R$2.000</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col s12">
+                        <table>
+                            <tr>
+                                <th>Ano</th>
+                                <th>Mês</th>
+                                <th>Locações R$</th>
+                                <th>Reparos R$</th>
+                                <th>Total R$</th>
+                            </tr>
+                            <tr>
+                                <th>2019</th>
+                                <th>junho</th>
+                                <th>R$500.00</th>
+                                <th>R$100.00</th>
+                                <th>R$400.00</th>
+                            </tr>
+                            <tr>
+                                <th>2019</th>
+                                <th>julho</th>
+                                <th>R$500.00</th>
+                                <th>R$100.00</th>
+                                <th>R$400.00</th>
+                            </tr>
+                            <tr>
+                                <th>2019</th>
+                                <th>agosto</th>
+                                <th>R$500.00</th>
+                                <th>R$100.00</th>
+                                <th>R$400.00</th>
+                            </tr>
+                            <tr>
+                                <th>2019</th>
+                                <th>setembro</th>
+                                <th>R$500.00</th>
+                                <th>R$100.00</th>
+                                <th>R$400.00</th>
+                            </tr>
+                            <tr>
+                                <th>2019</th>
+                                <th>outubro</th>
+                                <th>R$500.00</th>
+                                <th>R$100.00</th>
+                                <th>R$400.00</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-menu-servicos" class="modal">
+        <div class="modal-content">
+            <h4>Serviços</h4>
+            <div class="row ">
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-locacao" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Gerenciar Locações</p>
+                    </a>
+                </div>
+                <div class="col s6 m2 ">
+                    <a href="#modal-gerenciar-cliente" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/cliente.png">
+                        <p>Gerenciar Clientes</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-usuario" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/usuario.png">
+                        <p>Gerenciar Usuários</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="#modal-gerenciar-frota" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/veiculo.png">
+                        <p>Gerenciar Frota</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="relatorios.html" class="modal-trigger">
+                        <img src="../assets/resources/img/menu/relatorio.png">
+                        <p>Relátorios</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-locacao" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar locações</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="veiculos-disponiveis.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Veículos disponíveis</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="devolucao.html">
+                        <img src="../assets/resources/img/menu/devolucao.png">
+                        <p>Devoluções</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-cliente" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Clientes</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-cliente.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Cliente</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-cliente.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Cliente</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-usuario" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Usuário</h4>
+            <div class="row">
+                <div class="col s6 m2 ">
+                    <a href="cadastro-usuario.html">
+                        <img src="../assets/resources/img/menu/adicionar.png">
+                        <p>Adicionar Usuário</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-usuario.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Atualizar Dados do Usuário</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+
+    <div id="modal-gerenciar-frota" class="modal">
+        <div class="modal-content">
+            <h4>Gerenciar Frota</h4>
+            <div class="row">
+                <div class="col s6 m2">
+                    <a href="cadastro-veiculo.html">
+                        <img src="../assets/resources/img/menu/locacao.png">
+                        <p>Adicionar Novo Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="atualizar-dados-veiculo.html">
+                        <img src="../assets/resources/img/menu/atualizar-dados.png">
+                        <p>Alterar Dados do Veículo</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="enviar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/enviar-oficina.png">
+                        <p>Enviar Veículo para oficina</p>
+                    </a>
+                </div>
+                <div class="col s6 m2">
+                    <a href="retornar-veiculo-oficina.html">
+                        <img src="../assets/resources/img/menu/retornar-oficina.png">
+                        <p>Retornar Veículo da Oficina</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
+        </div>
+    </div>
+    <section>
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+    </section>
+
+    <section>
+        <footer class="section cor-principal">
+            <p>RentACar - Locações de automóveis - 2019</p>
+        </footer>
+    </section>
+
+    <script src="../assets/libraries/jquery-v3.4.1/jquery-3.4.1.js"></script>
+    <script src="../assets/libraries/materialize-v1.0.0/js/materialize.min.js"></script>
+    <script src="../assets/libraries/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js"></script>
+    <script src="../assets/resources/scripts/inicializacao-bibliotecas.js"></script>
+    <script src="../assets/resources/scripts/relatorios.js"></script>
+</body>
+
+</html>
