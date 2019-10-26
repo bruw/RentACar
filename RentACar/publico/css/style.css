@@ -1,0 +1,278 @@
+@font-face {
+    font-family: 'edgeracer';
+    src: url('edgeracer.ttf');
+}
+
+.table-total{
+    border: 1px solid black;
+    margin-bottom: 40px;
+}
+
+.font-edgeracer {
+    font-family: 'edgeracer';
+}
+
+.exibir-conteudo {
+    display: block;
+}
+
+.ocultar-conteudo {
+    display: none;
+}
+
+.cor-principal {
+    background-color: #228B22;
+}
+
+#div-filtro-data {
+    margin-top: 30px;
+}
+
+#button-pesquisar-relatorio {
+    margin-top: 30px;
+}
+
+#div-relatorio-lucro {
+    margin-top: 80px;
+}
+
+#div-relatorio-locacao table {
+    text-align: center;
+}
+
+#form-nova-locacao h4 {
+    text-align: center;
+}
+
+#form-nova-locacao p {
+    font-size: 20px;
+}
+
+#form-enviar-oficina h4 {
+    margin-top: 60px;
+}
+
+#form-enviar-oficina span {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#form-enviar-oficina p {
+    font-size: 20px;
+}
+
+#div-problema-veiculo {
+    margin-top: 30px;
+}
+
+.div-dados-cliente {
+    margin-right: 10%;
+}
+
+.div-dados-cliente h4 {
+    text-align: left;
+}
+
+.div-dados-cliente span {
+    font-weight: bold;
+}
+
+.div-dados-locacao h4 {
+    text-align: left;
+}
+
+.div-dados-locacao span {
+    font-weight: bold;
+}
+
+.div-dados-locacao>p:nth-child(7) {
+    color: red;
+    font-size: 30px;
+}
+
+.div-dados-locacao>p:last-child {
+    color: green;
+    font-size: 30px;
+}
+
+label span {
+    margin: 10px;
+}
+
+[type="checkbox"].filled-in:not(:checked)+span:not(.lever):after {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #fafafa;
+    top: 0px;
+    z-index: 0;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e65100;
+    background-color: #e65100;
+    z-index: 0;
+}
+
+.card-panel {
+    padding: 5px;
+}
+
+.card {
+    margin: 30px;
+}
+
+#form-categoria {
+    text-align: center;
+    background-color: #228B22;
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+}
+
+#form-categoria h5 {
+    white-space: nowrap;
+    color: #ffffff;
+}
+
+#form-categoria>label {
+    color: white;
+}
+
+#form-categoria>button {
+    background-color: #e65100;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.pagination li.active {
+    background-color: #228B22;
+}
+
+#div-imagens-veiculo>img {
+    width: 60%;
+    height: 40%;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.modal img {
+    width: 60px;
+    margin-top: 30px;
+    margin-left: 28%;
+}
+
+.modal p {
+    width: 100%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+#button-login {
+    background-color: #228B22;
+    width: 100%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+
+/*Notificação login sem senha*/
+
+#p-mensagem {
+    text-align: center;
+    color: red;
+}
+
+.button-pesquisar {
+    background-color: #e65100;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.button-pesquisar:hover {
+    background-color: #e65100;
+}
+
+.button-pesquisar:focus {
+    background-color: #e65100;
+}
+
+.button-confirmar {
+    background-color: #228B22;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-confirmar:hover {
+    background-color: #228B22;
+}
+
+.button-confirmar:focus {
+    background-color: #228B22;
+}
+
+.button-cancelar {
+    background-color: #d50000;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.button-cancelar:hover {
+    background-color: #d50000;
+}
+
+.button-cancelar:focus {
+    background-color: #d50000;
+}
+
+#button-enviar-oficina {
+    width: 100%;
+    background-color: #e65100;
+}
+
+form {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: center;
+    font-style: thin;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+h4 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+footer>p {
+    color: white;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}

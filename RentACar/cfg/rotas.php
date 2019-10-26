@@ -2,6 +2,10 @@
 
 $rotas = [
     '/' => [
-        'GET' => '\Controlador\RaizControlador#index',
+        'GET' => '\Controlador\LoginControlador#index',
+    ],
+
+    '/frota' => [
+        'GET' => '\Controlador\CarrosDisponiveisControlador#carros',
     ],
 ];
