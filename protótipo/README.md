@@ -1,4 +1,4 @@
-# RentACar - Avaliacao 1
+# RentACar - Avaliação 1
 Protótipo de telas e funcionalidades do software RentACar.
 Primeira Avaliação da disciplina de desenvolvimento web 3.
 
