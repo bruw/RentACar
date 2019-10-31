@@ -1,4 +1,4 @@
-# RentACar - Sistema para gerenciamento de locações de automoveis.
+# RentACar - Software para gerenciamento de locações de automóveis.
 **Curso:** Tecnologias em Sistemas para Internet UTFPR (Universidade Tecnológica Federal do Paraná).  
 
 **Disciplina:** Desenvolvimento para web 3.  
