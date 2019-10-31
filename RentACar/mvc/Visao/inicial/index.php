@@ -3,7 +3,7 @@
         <div class="container">
             <h1>Acesso ao Sistema</h1>
             <p id="p-mensagem">**VERSÃO SEM SENHA / CLIQUE EM "ENTRAR"**</p>
-            <form action="<?=URL_RAIZ . 'frota'?>" method="get">
+            <form action="<?=URL_RAIZ . 'locacoes/carros-disponiveis'?>" method="get">
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="material-icons prefix">person</i>

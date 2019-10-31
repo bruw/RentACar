@@ -32,9 +32,9 @@
         </footer>
     </section>
 
-    <script src=<?= URL_JS . "/jquery-3.4.1.min.js" ?>></script>
-    <script src=<?= URL_JS . "/materialize.min.js" ?>></script>
-    <script src=<?= URL_JS . "/index.js" ?>></script>
+    <script src=<?= URL_JS . "jquery-3.4.1.min.js" ?>></script>
+    <script src=<?= URL_JS . "materialize.min.js" ?>></script>
+    <script src=<?= URL_JS . "index.js" ?>></script>
 
 </body>
 

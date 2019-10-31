@@ -1,5 +1,5 @@
 RewriteEngine On
 
 # Se não for para a pasta pública, executa o index.php
-RewriteCond %{REQUEST_FILENAME} !rentacar-web3/publico/
+RewriteCond %{REQUEST_FILENAME} !RentACar/publico/
 RewriteRule ^ index.php
