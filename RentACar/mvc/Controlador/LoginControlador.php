@@ -5,6 +5,6 @@ class LoginControlador extends Controlador
 {
     public function index()
     {
-        $this->visao('inicial/index.php',[],'login/index.php');
+        $this->visao('inicial/index.php',[],'index.php');
     }
 }

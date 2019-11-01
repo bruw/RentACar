@@ -75,3 +75,8 @@ CREATE TABLE reparos(
     FOREIGN KEY(id_veiculo) REFERENCES veiculos (id)
    
 );
+
+
+ALTER TABLE clientes ADD UNIQUE idx_cpf_clientes(cpf);
+ALTER TABLE usuarios ADD UNIQUE idx_cpf_usuarios(cpf);
+ALTER TABLE veiculos ADD UNIQUE idx_chassi_veiculos(chassi);
