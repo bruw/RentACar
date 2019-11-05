@@ -6,10 +6,10 @@ use \PDO;
 use \Framework\DW3BancoDeDados;
 
 class Cliente extends Modelo
-{   
+{
     const INSERIR = 'INSERT INTO clientes(primeiro_nome, sobrenome, cpf, celular, email, cep, numero) 
-    VALUES (?, ?, ?, ?, ?, ?, ?)'; 
-    
+    VALUES (?, ?, ?, ?, ?, ?, ?)';
+
     private $id;
     private $primeiroNome;
     private $sobrenome;
@@ -19,9 +19,16 @@ class Cliente extends Modelo
     private $cep;
     private $numero;
 
-    public function __construct($primeiroNome, $sobrenome, $cpf, $celular,
-    $email, $cep, $numero, $id = null)
-    {
+    public function __construct(
+        $primeiroNome,
+        $sobrenome,
+        $cpf,
+        $celular,
+        $email,
+        $cep,
+        $numero,
+        $id = null
+    ) {
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->cpf = $cpf;
@@ -40,7 +47,7 @@ class Cliente extends Modelo
 
     public function getPrimeiroNome()
     {
-       return $this->primeiroNome;
+        return $this->primeiroNome;
     }
 
     public function setPrimeiroNome($primeiroNome)
@@ -50,7 +57,7 @@ class Cliente extends Modelo
 
     public function getSobrenome()
     {
-       return $this->sobrenome;
+        return $this->sobrenome;
     }
 
     public function setSobrenome($sobrenome)
@@ -60,7 +67,7 @@ class Cliente extends Modelo
 
     public function getCpf()
     {
-       return $this->cpf;
+        return $this->cpf;
     }
 
     public function setCpf($cpf)
@@ -70,7 +77,7 @@ class Cliente extends Modelo
 
     public function getCelular()
     {
-       return $this->celular;
+        return $this->celular;
     }
 
     public function setCelular($celular)
@@ -80,7 +87,7 @@ class Cliente extends Modelo
 
     public function getEmail()
     {
-       return $this->email;
+        return $this->email;
     }
 
     public function setEmail($email)
@@ -90,7 +97,7 @@ class Cliente extends Modelo
 
     public function getCep()
     {
-       return $this->cep;
+        return $this->cep;
     }
 
     public function setCep($cep)
@@ -100,7 +107,7 @@ class Cliente extends Modelo
 
     public function getNumero()
     {
-       return $this->numero;
+        return $this->numero;
     }
 
     public function setNumero($numero)
@@ -111,6 +118,16 @@ class Cliente extends Modelo
     public function salvar()
     {
         $this->inserir();
+    }
+
+    public function removerMascara($atributo)
+    {
+       $atributo = str_replace("(", "", $atributo);
+       $atributo = str_replace(")", "", $atributo);
+       $atributo = str_replace("-", "", $atributo);
+       $atributo = str_replace(".", "", $atributo);
+       
+       return $atributo;
     }
 
     public function inserir()
@@ -128,5 +145,4 @@ class Cliente extends Modelo
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
-
 }
