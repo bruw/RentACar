@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">mail</i>
-                    <input type="email" name="email" placeholder="darthvaider@estreladamorte.com">
+                    <input type="text" name="email" placeholder="darthvaider@estreladamorte.com">
                     <label for="icon_prefix">E-mail</label>
                 </div>
             </div>

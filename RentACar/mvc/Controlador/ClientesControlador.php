@@ -35,10 +35,8 @@ class ClientesControlador extends Controlador
         $cliente->salvar();
 
         $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        
     }
-
-    public function buscar()
-    { }
 
     public function sucesso()
     {

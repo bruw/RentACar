@@ -2,6 +2,8 @@
 
 namespace Controlador;
 
+use \Modelo\Veiculo;
+
 class FrotaControlador extends Controlador
 {
     public function criar()
@@ -22,5 +24,20 @@ class FrotaControlador extends Controlador
     public function oficina()
     {
         $this->visao('frota/oficina.php',[],'principal.php');
+    }
+
+    public function armazenar()
+    {
+        $veiculo = new Veiculo(
+            $_POST['chassi'], 
+            $_POST['montadora'], 
+            $_POST['modelo'], 
+            $_POST['categoria'],
+            $_POST['preco'],
+            $_POST['descricao']
+        );
+
+        $veiculo->salvar();
+        $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
     }
 }

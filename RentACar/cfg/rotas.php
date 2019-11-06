@@ -29,6 +29,9 @@ $rotas = [
         'GET' => '\Controlador\ClientesControlador#sucesso',
     ],
 
+    '/usuarios' => [
+        'POST' => '\Controlador\UsuariosControlador#armazenar',
+    ],
 
     '/usuarios/criar' => [
         'GET' => '\Controlador\UsuariosControlador#criar',
@@ -38,6 +41,9 @@ $rotas = [
         'GET' => '\Controlador\UsuariosControlador#atualizar',
     ],
 
+    '/frota' => [
+        'POST' => '\Controlador\FrotaControlador#armazenar',
+    ],
 
     '/frota/criar' => [
         'GET' => '\Controlador\FrotaControlador#criar',

@@ -5,10 +5,10 @@ namespace Modelo;
 use \PDO;
 use \Framework\DW3BancoDeDados;
 
-class Cliente extends Modelo
+class Usuario extends Modelo
 {
-    const INSERIR = 'INSERT INTO clientes(primeiro_nome, sobrenome, cpf, celular, email, cep, numero) 
-    VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const INSERIR = 'INSERT INTO usuarios(primeiro_nome, sobrenome, cpf, celular, email, cep, numero, senha) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 
     private $id;
     private $primeiroNome;
@@ -18,17 +18,20 @@ class Cliente extends Modelo
     private $email;
     private $cep;
     private $numero;
+    private $senha;
+    private $senhaPlana;
 
     public function __construct(
-        $primeiroNome,
-        $sobrenome,
-        $cpf,
-        $celular,
-        $email,
-        $cep,
-        $numero,
+        $primeiroNome, 
+        $sobrenome, 
+        $cpf, 
+        $celular, 
+        $email, 
+        $cep, 
+        $numero, 
+        $senhaPlana, 
         $id = null
-    ) {
+    ) { 
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->cpf = $cpf;
@@ -36,9 +39,10 @@ class Cliente extends Modelo
         $this->email = $email;
         $this->cep = $cep;
         $this->numero = $numero;
+        $this->senhaPlana = $senhaPlana;
+        $this->senha = password_hash($senhaPlana, PASSWORD_BCRYPT);
         $this->id = $id;
     }
-
 
     public function getId()
     {
@@ -115,9 +119,9 @@ class Cliente extends Modelo
         $this->numero = $numero;
     }
 
-    public function salvar()
+    public function verificarSenha($senhaPlana)
     {
-        $this->inserir();
+        return password_verify($senhaPlana, $this->senha);
     }
 
     public function removerMascara($atributo)
@@ -130,6 +134,10 @@ class Cliente extends Modelo
        return $atributo;
     }
 
+    public function salvar()
+    {
+        $this->inserir();
+    }
 
     public function inserir()
     {
@@ -142,25 +150,9 @@ class Cliente extends Modelo
         $comando->bindValue(5, $this->email, PDO::PARAM_STR);
         $comando->bindValue(6, $this->cep, PDO::PARAM_STR);
         $comando->bindValue(7, $this->numero, PDO::PARAM_STR);
+        $comando->bindValue(8, $this->senha, PDO::PARAM_STR);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
-    }
-
-    public static function buscarId($id)
-    {
-        $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
-        $comando->bindValue(1, $id, PDO::PARAM_INT);
-        $comando->execute();
-        $registro = $comando->fetch();
-        return new Contato(
-            $registro['primeiroNome'],
-            $registro['sobrenome'],
-            $registro['cpf'],
-            $registro['celular'],
-            $registro['email'],
-            $registro['cep'],
-            $registro['numero'],
-        );
     }
 }

@@ -24,7 +24,7 @@ CREATE TABLE clientes(
     email VARCHAR(60) DEFAULT NULL,
     cep CHAR(8) NOT NULL,
     numero CHAR(5) NOT NULL,
-    
+    senha CHAR(60) NOT NULL,
     PRIMARY KEY(id)
     
 );
@@ -34,13 +34,14 @@ CREATE TABLE veiculos(
     chassi CHAR(17) NOT NULL,
     montadora VARCHAR(60) NOT NULL,
     modelo VARCHAR(25) NOT NULL,
-    categoria VARCHAR(20) NOT NULL,
+    id_categoria VARCHAR(20) NOT NULL,
     preco_diaria DOUBLE NOT NULL,
     descricao TEXT NOT NULL,
     status_oficina CHAR(1) NOT NULL,
     status_locacao CHAR(1) NOT NULL,
 
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    FOREIGN KEY(id_categoria) REFERENCES categorias (id)
     
 );
 
@@ -76,7 +77,19 @@ CREATE TABLE reparos(
    
 );
 
+CREATE TABLE categorias (
+	id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(20) NOT NULL,
+    
+    PRIMARY KEY(id)
+)
+
 
 ALTER TABLE clientes ADD UNIQUE idx_cpf_clientes(cpf);
 ALTER TABLE usuarios ADD UNIQUE idx_cpf_usuarios(cpf);
 ALTER TABLE veiculos ADD UNIQUE idx_chassi_veiculos(chassi);
+
+INSERT INTO categorias (nome) VALUES ('Hatch');
+INSERT INTO categorias (nome) VALUES ('Sedãn');
+INSERT INTO categorias (nome) VALUES ('SUV');
+INSERT INTO categorias (nome) VALUES ('Pick-Ups');
