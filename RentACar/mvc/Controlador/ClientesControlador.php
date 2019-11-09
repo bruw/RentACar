@@ -32,10 +32,18 @@ class ClientesControlador extends Controlador
         $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
         $cliente->setCep($cliente->removerMascara($cliente->getCep()));
 
-        $cliente->salvar();
+        $cliente->setPrimeiroNome(strtolower($cliente->getPrimeiroNome()));
+        $cliente->setSobrenome(strtolower($cliente->getSobrenome()));
+        $cliente->setEmail(strtolower($cliente->getEmail()));
 
-        $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
-        
+        if($cliente->isValido()){
+            $cliente->salvar();
+            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        }else{
+            $this->setErros($cliente->getValidacaoErros());
+            $this->visao('clientes/criar.php',[],'principal.php');
+        }
+       
     }
 
     public function sucesso()

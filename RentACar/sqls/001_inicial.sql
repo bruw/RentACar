@@ -36,7 +36,6 @@ CREATE TABLE veiculos(
     modelo VARCHAR(25) NOT NULL,
     id_categoria VARCHAR(20) NOT NULL,
     preco_diaria DOUBLE NOT NULL,
-    descricao TEXT NOT NULL,
     status_oficina CHAR(1) NOT NULL,
     status_locacao CHAR(1) NOT NULL,
 

@@ -155,4 +155,47 @@ class Usuario extends Modelo
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
+
+    protected function verificarErros()
+    {
+       $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
+       $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
+       $patternCpf = "/^[0-9]{11}$/";
+       $patternCelular = "/^[0-9]{10,20}$/";
+       $patternCep = "/^[0-9]{8}$/";
+       $patternNumero = "/^[0-9]{1,5}$/";
+       $patternSenha = "/^[0-9]{4,8}$/";
+
+        if(strpos($this->email, "@") === false){
+            $this->setErroMensagem('email', 'Email Inválido... Faltou o @');
+        }
+
+        if(preg_match($patternPrimeiroNome, $this->primeiroNome) == false){
+            $this->setErroMensagem('primeiroNome', 'Primeiro nome não pode conter dígitos, ser vazio ou conter espaços');
+        }
+        
+        if(preg_match($patternSobrenome, $this->sobrenome) == false){
+            $this->setErroMensagem('sobrenome', 'Sobrenome não pode conter dígitos ou ser vazio');
+        }
+
+        if(preg_match($patternCpf, $this->cpf) == false){
+            $this->setErroMensagem('cpf', 'Cpf deve possuir 11 dígitos sem letras');
+        }
+
+        if(preg_match($patternCelular, $this->celular) == false){
+            $this->setErroMensagem('celular', 'Celular deve possuir no mínimo 10 dígitos sem letras');
+        }
+
+        if(preg_match($patternCep, $this->cep) == false){
+            $this->setErroMensagem('cep', 'Cep deve possuir 8 dígitos');
+        }
+
+        if(preg_match($patternNumero, $this->numero) == false){
+            $this->setErroMensagem('numero', 'Número deve possuir no mínimo 1 e no máximo 5 dígitos ');
+        }
+
+        if(preg_match($patternSenha, $this->senhaPlana) == false){
+            $this->setErroMensagem('senha', 'Apenas números. Mínimo 4, máximo 8 dígitos. ');
+        }
+    }
 }

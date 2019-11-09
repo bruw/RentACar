@@ -5,27 +5,28 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">directions_car</i>
-                    <input id="input-chassi" type="text" name="chassi" placeholder="1234cb4321dd34yp9">
+                    <input id="input-chassi" type="text" name="chassi" value="<?= $this->getPost('chassi') ?>" placeholder="1234cb4321dd34yp9">
                     <label for="icon_prefix">Número do Chassi</label>
+                    <?php $this->incluirVisao('util/formErro.php', ['campo' => 'chassi']) ?>
                 </div>
             </div>
             <div id="div-dados-veiculo">
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">build</i>
-                        <input type="text" name="montadora" placeholder="Fiat">
+                        <input type="text" name="montadora" value="<?= $this->getPost('montadora') ?>" placeholder="Fiat">
                         <label for="icon_prefix">Montadora</label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">directions_car</i>
-                        <input type="text" name="modelo" placeholder="Argo">
+                        <input type="text" name="modelo" value="<?= $this->getPost('modelo') ?>"placeholder="Argo">
                         <label for="icon_prefix">Modelo</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">filter_list</i>
-                        <select name="categoria">
+                        <select name="categoria" value="<?= $this->getPost('categoria') ?>">
                             <option value="1">Hatch</option>
                             <option value="2">Sedãn</option>
                             <option value="3">SUV</option>
@@ -35,15 +36,9 @@
                     </div>
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">monetization_on</i>
-                        <input type="text" name="preco" placeholder="95,00">
+                        <input type="text" name="preco" value="<?= $this->getPost('preco') ?>" placeholder="95,00">
                         <label for="icon_prefix">Preço Diária</label>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">description</i>
-                            <textarea class="materialize-textarea" name="descricao" placeholder="Veículo 4x4 - OFF Road"></textarea>
-                            <label for="icon_prefix">Descrição</label>
-                        </div>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'precoDiaria']) ?>
                     </div>
                     <div class="row">
                         <div id="div-imagens-veiculo" class="input-field col s12">
@@ -52,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m12">
-                            <input id="input-imagem" name="foto" type="file" accept="image/*">
+                            <input id="input-imagem" name="foto" type="file">
                         </div>
                     </div>
 

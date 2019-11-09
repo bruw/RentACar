@@ -33,8 +33,16 @@ class UsuariosControlador extends Controlador
         $usuario->setCelular($usuario->removerMascara($usuario->getCelular()));
         $usuario->setCep($usuario->removerMascara($usuario->getCep()));
 
-        $usuario->salvar();
+        $usuario->setPrimeiroNome(strtolower($usuario->getPrimeiroNome()));
+        $usuario->setSobrenome(strtolower($usuario->getSobrenome()));
+        $usuario->setEmail(strtolower($usuario->getEmail()));
 
-        $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        if($usuario->isValido()){
+            $usuario->salvar();
+            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        }else{
+            $this->setErros($usuario->getValidacaoErros());
+            $this->visao('usuarios/criar.php',[],'principal.php');
+        }
     }
 }

@@ -61,31 +61,31 @@
             <div class="row ">
                 <div class="col s6 m2 ">
                     <a href="#modal-gerenciar-locacao" class="modal-trigger">
-                        <img src="../publico/img/servicos/locacao.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/locacao.png'?>">
                         <p>Gerenciar Locações</p>
                     </a>
                 </div>
                 <div class="col s6 m2 ">
                     <a href="#modal-gerenciar-cliente" class="modal-trigger">
-                        <img src="../publico/img/servicos/cliente.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/cliente.png'?>">
                         <p>Gerenciar Clientes</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="#modal-gerenciar-usuario" class="modal-trigger">
-                        <img src="../publico/img/servicos/usuario.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/usuario.png'?>">
                         <p>Gerenciar Usuários</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="#modal-gerenciar-frota" class="modal-trigger">
-                        <img src="../publico/img/servicos/oficina.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/oficina.png'?>">
                         <p>Gerenciar Frota</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'relatorios/relatorios'?>" class="modal-trigger">
-                        <img src="../publico/img/servicos/relatorio.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/relatorio.png'?>">
                         <p>Relátorios</p>
                     </a>
                 </div>
@@ -102,13 +102,13 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'locacoes/carros-disponiveis' ?>">
-                        <img src="../publico/img/servicos/locacao.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/locacao.png'?>">
                         <p>Veículos disponíveis</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'locacoes/devolucao' ?>">
-                        <img src="../publico/img/servicos/devolucao.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/devolucao.png'?>">
                         <p>Devoluções</p>
                     </a>
                 </div>
@@ -126,13 +126,13 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'clientes/criar'?>">
-                        <img src="../publico/img/servicos/adicionar.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/adicionar.png'?>">
                         <p>Adicionar Cliente</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'clientes/atualizar'?>">
-                        <img src="../publico/img/servicos/atualizar-dados.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png'?>">
                         <p>Atualizar Dados do Cliente</p>
                     </a>
                 </div>
@@ -149,13 +149,13 @@
             <div class="row">
                 <div class="col s6 m2 ">
                     <a href="<?= URL_RAIZ . 'usuarios/criar'?>">
-                        <img src="../publico/img/servicos/adicionar.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/adicionar.png'?>">
                         <p>Adicionar Usuário</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'usuarios/atualizar'?>">
-                        <img src="../publico/img/servicos/atualizar-dados.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png'?>">
                         <p>Atualizar Dados do Usuário</p>
                     </a>
                 </div>
@@ -172,25 +172,25 @@
             <div class="row">
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'frota/criar'?>">
-                        <img src="../publico/img/servicos/locacao.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/locacao.png'?>">
                         <p>Adicionar Novo Veículo</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'frota/atualizar'?>">
-                        <img src="../publico/img/servicos/atualizar-dados.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png'?>">
                         <p>Alterar Dados do Veículo</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'frota/enviar-oficina'?>">
-                        <img src="../publico/img/servicos/enviar-oficina.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/enviar-oficina.png'?>">
                         <p>Enviar Veículo para oficina</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
                     <a href="<?= URL_RAIZ . 'frota/oficina'?>">
-                        <img src="../publico/img/servicos/retornar-oficina.png">
+                        <img src="<?= URL_RAIZ . 'publico/img/servicos/retornar-oficina.png'?>">
                         <p>Retornar Veículo da Oficina</p>
                     </a>
                 </div>

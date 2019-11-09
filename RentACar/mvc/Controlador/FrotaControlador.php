@@ -28,16 +28,29 @@ class FrotaControlador extends Controlador
 
     public function armazenar()
     {
+        $foto = array_key_exists('foto', $_FILES) ? $_FILES['foto'] : null;
+
         $veiculo = new Veiculo(
             $_POST['chassi'], 
             $_POST['montadora'], 
             $_POST['modelo'], 
             $_POST['categoria'],
             $_POST['preco'],
-            $_POST['descricao']
+            $foto
         );
 
-        $veiculo->salvar();
-        $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+
+        $veiculo->setChassi(strtolower($veiculo->getChassi()));
+        $veiculo->setMontadora(strtolower($veiculo->getMontadora()));
+        $veiculo->setModelo(strtolower($veiculo->getModelo()));
+
+
+        if($veiculo->isValido()){
+            $veiculo->salvar();
+            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        }else{
+            $this->setErros($veiculo->getValidacaoErros());
+            $this->visao('frota/criar.php',[],'principal.php');
+        }
     }
 }

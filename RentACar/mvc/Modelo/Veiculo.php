@@ -4,45 +4,44 @@ namespace Modelo;
 
 use \PDO;
 use \Framework\DW3BancoDeDados;
+use \Framework\DW3ImagemUpload;
 
 class Veiculo extends Modelo
 {
-    const INSERIR = 'INSERT INTO veiculos(chassi, montadora, modelo, id_categoria, preco_diaria, descricao, 
-    status_oficina, status_locacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const INSERIR = 'INSERT INTO veiculos(chassi, montadora, modelo, id_categoria, preco_diaria, 
+    status_oficina, status_locacao) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
     private $chassi; 
     private $montadora; 
     private $modelo;
+    private $idCategoria; 
     private $precoDiaria; 
-    private $descricao;
     private $statusOficina; 
     private $statusLocacao;
     private $foto;
     private $id;
-    private $idCategoria; 
+    
 
     public function __construct(
     $chassi, 
     $montadora,
     $modelo,
-    $precoDiaria, 
-    $descricao,
+    $idCategoria = 1,
+    $precoDiaria,
     $statusOficina = 0,
     $statusLocacao = 0,
     $foto = null,
-    $id = null,
-    $idCategoria = 1
+    $id = null
     ) { 
         $this->chassi=  $chassi;
         $this->montadora = $montadora;
         $this->modelo = $modelo;
+        $this->idCategoria = $idCategoria;
         $this->precoDiaria = $precoDiaria;
-        $this->descricao = $descricao;
         $this->statusOficina = $statusOficina;
         $this->statusLocacao =  $statusLocacao;
         $this->foto = $foto;
         $this->id = $id;
-        $this->idCategoria = $idCategoria;
     }
 
     public function getId()
@@ -100,16 +99,6 @@ class Veiculo extends Modelo
         $this->precoDiaria = $precoDiaria;
     }
 
-    public function getDescricao()
-    {
-        return $this->descricao;
-    }
-
-    public function setDescricao($descricao)
-    {
-        $this->descricao = $descricao;
-    }
-
     public function getStatusOficina()
     {
         return $this->statusOficina;
@@ -135,16 +124,6 @@ class Veiculo extends Modelo
         $this->inserir();
     }
 
-    /*
-    private function salvarImagem()
-    {
-        if (DW3ImagemUpload::isValida($this->foto)) {
-            $nomeCompleto = PASTA_PUBLICO . "img/veiculos{$this->id}.png";
-            DW3ImagemUpload::salvar($this->foto, $nomeCompleto);
-        }
-    }
-    */
-    
     public function inserir()
     {
         DW3BancoDeDados::getPdo()->beginTransaction();
@@ -154,11 +133,25 @@ class Veiculo extends Modelo
         $comando->bindValue(3, $this->modelo, PDO::PARAM_STR);
         $comando->bindValue(4, $this->idCategoria, PDO::PARAM_STR);
         $comando->bindValue(5, $this->precoDiaria, PDO::PARAM_STR);
-        $comando->bindValue(6, $this->descricao, PDO::PARAM_STR);
-        $comando->bindValue(7, $this->statusOficina, PDO::PARAM_STR);
-        $comando->bindValue(8, $this->statusLocacao, PDO::PARAM_STR);
+        $comando->bindValue(6, $this->statusOficina, PDO::PARAM_STR);
+        $comando->bindValue(7, $this->statusLocacao, PDO::PARAM_STR);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
+
+    protected function verificarErros()
+    {
+       $patternChassi = "/^([0-9]|[a-z]){4,17}$/";
+       $patternPrecoDiaria = "/^[1-9]{1}([0-9]{1,3})?\.[0-9]{1,3}$/";
+      
+        if(preg_match($patternChassi, $this->chassi) == false){
+            $this->setErroMensagem('chassi', 'Deve conter no mínimo 4 e no máximo 17 caracteres');
+        }
+
+        if(preg_match($patternPrecoDiaria, $this->precoDiaria) == false){
+            $this->setErroMensagem('precoDiaria', 'Valor mínimo R$1.00 e Máximo R$999.999 (Usar "." ao invés de ",")');
+        }
+    }
+
 }
