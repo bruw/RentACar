@@ -8,31 +8,31 @@ use \Framework\DW3ImagemUpload;
 
 class Veiculo extends Modelo
 {
-    const INSERIR = 'INSERT INTO veiculos(chassi, montadora, modelo, id_categoria, preco_diaria, 
+    const INSERIR = 'INSERT INTO veiculos(chassi, montadora, modelo, id_categoria, preco_diaria,
     status_oficina, status_locacao) VALUES (?, ?, ?, ?, ?, ?, ?)';
 
-    private $chassi; 
-    private $montadora; 
+    private $chassi;
+    private $montadora;
     private $modelo;
-    private $idCategoria; 
-    private $precoDiaria; 
-    private $statusOficina; 
-    private $statusLocacao;
+    private $idCategoria;
+    private $precoDiaria;
     private $foto;
+    private $statusOficina;
+    private $statusLocacao;
     private $id;
-    
+
 
     public function __construct(
-    $chassi, 
+    $chassi,
     $montadora,
     $modelo,
     $idCategoria = 1,
     $precoDiaria,
+    $foto = null,
     $statusOficina = 0,
     $statusLocacao = 0,
-    $foto = null,
     $id = null
-    ) { 
+    ) {
         $this->chassi=  $chassi;
         $this->montadora = $montadora;
         $this->modelo = $modelo;
@@ -40,15 +40,16 @@ class Veiculo extends Modelo
         $this->precoDiaria = $precoDiaria;
         $this->statusOficina = $statusOficina;
         $this->statusLocacao =  $statusLocacao;
-        $this->foto = $foto;
         $this->id = $id;
+        $this->foto = $foto;
+
     }
 
     public function getId()
     {
         return $this->id;
     }
-   
+
     public function getIdCategoria()
     {
         return $this->id;
@@ -122,7 +123,19 @@ class Veiculo extends Modelo
     public function salvar()
     {
         $this->inserir();
+        $this->salvarImagem();
     }
+
+    public function getImagem()
+    {
+        $imagemNome = "{$this->id}.png";
+        if (!DW3ImagemUpload::existe($imagemNome)) {
+            $imagemNome = 'padrao.png';
+        }
+        return $imagemNome;
+    }
+
+
 
     public function inserir()
     {
@@ -140,17 +153,29 @@ class Veiculo extends Modelo
         DW3BancoDeDados::getPdo()->commit();
     }
 
+    private function salvarImagem()
+    {
+      if (DW3ImagemUpload::isValida($this->foto)) {
+        $nomeCompleto = PASTA_PUBLICO . "img/veiculos/{$this->id}.png";
+            DW3ImagemUpload::salvar($this->foto, $nomeCompleto);
+      }
+    }
+
     protected function verificarErros()
     {
        $patternChassi = "/^([0-9]|[a-z]){4,17}$/";
        $patternPrecoDiaria = "/^[1-9]{1}([0-9]{1,3})?\.[0-9]{1,3}$/";
-      
+
         if(preg_match($patternChassi, $this->chassi) == false){
             $this->setErroMensagem('chassi', 'Deve conter no mínimo 4 e no máximo 17 caracteres');
         }
 
         if(preg_match($patternPrecoDiaria, $this->precoDiaria) == false){
             $this->setErroMensagem('precoDiaria', 'Valor mínimo R$1.00 e Máximo R$999.999 (Usar "." ao invés de ",")');
+        }
+
+        if (DW3ImagemUpload::existeUpload($this->foto)  && !DW3ImagemUpload::isValida($this->foto)) {
+            $this->setErroMensagem('foto', 'Deve ser de no máximo 500 KB.');
         }
     }
 

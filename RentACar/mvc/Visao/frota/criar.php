@@ -47,7 +47,8 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m12">
-                            <input id="input-imagem" name="foto" type="file">
+                            <input type="file" id="input-imagem" name="foto" value="<?=$this->getPost('foto')?>">
+                            <?php $this->incluirVisao('util/formErro.php', ['campo' => 'foto']) ?>
                         </div>
                     </div>
 

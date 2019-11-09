@@ -31,9 +31,9 @@ class FrotaControlador extends Controlador
         $foto = array_key_exists('foto', $_FILES) ? $_FILES['foto'] : null;
 
         $veiculo = new Veiculo(
-            $_POST['chassi'], 
-            $_POST['montadora'], 
-            $_POST['modelo'], 
+            $_POST['chassi'],
+            $_POST['montadora'],
+            $_POST['modelo'],
             $_POST['categoria'],
             $_POST['preco'],
             $foto
@@ -43,7 +43,6 @@ class FrotaControlador extends Controlador
         $veiculo->setChassi(strtolower($veiculo->getChassi()));
         $veiculo->setMontadora(strtolower($veiculo->getMontadora()));
         $veiculo->setModelo(strtolower($veiculo->getModelo()));
-
 
         if($veiculo->isValido()){
             $veiculo->salvar();

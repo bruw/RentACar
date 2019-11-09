@@ -10,9 +10,9 @@ CREATE TABLE usuarios(
     celular VARCHAR(20) NOT NULL,
     cep CHAR(8) NOT NULL,
     numero CHAR(5) NOT NULL,
-    
+
     PRIMARY KEY(id)
-    
+
 );
 
 CREATE TABLE clientes(
@@ -26,7 +26,14 @@ CREATE TABLE clientes(
     numero CHAR(5) NOT NULL,
     senha CHAR(60) NOT NULL,
     PRIMARY KEY(id)
-    
+
+);
+
+CREATE TABLE categorias (
+	id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(20) NOT NULL,
+
+    PRIMARY KEY(id)
 );
 
 CREATE TABLE veiculos(
@@ -34,14 +41,14 @@ CREATE TABLE veiculos(
     chassi CHAR(17) NOT NULL,
     montadora VARCHAR(60) NOT NULL,
     modelo VARCHAR(25) NOT NULL,
-    id_categoria VARCHAR(20) NOT NULL,
+    id_categoria INT NOT NULL,
     preco_diaria DOUBLE NOT NULL,
-    status_oficina CHAR(1) NOT NULL,
-    status_locacao CHAR(1) NOT NULL,
+    status_oficina  BOOLEAN NOT NULL DEFAULT 0,
+    status_locacao BOOLEAN NOT NULL DEFAULT 0,
 
     PRIMARY KEY(id),
     FOREIGN KEY(id_categoria) REFERENCES categorias (id)
-    
+
 );
 
 CREATE TABLE locacoes(
@@ -53,12 +60,12 @@ CREATE TABLE locacoes(
     total DOUBLE NOT NULL,
     status_locacao CHAR(1) NOT NULL,
     id_veiculo INT NOT NULL,
-    id_cliente INT NOT NULL, 
-    
+    id_cliente INT NOT NULL,
+
     PRIMARY KEY(id),
     FOREIGN KEY(id_veiculo) REFERENCES veiculos (id),
     FOREIGN KEY(id_cliente) REFERENCES clientes (id)
-    
+
 );
 
 CREATE TABLE reparos(
@@ -69,19 +76,14 @@ CREATE TABLE reparos(
     total DOUBLE DEFAULT NULL,
     status_reparo CHAR(1) NOT NULL,
     id_veiculo INT NOT NULL,
-    
-    
+
+
     PRIMARY KEY(id),
     FOREIGN KEY(id_veiculo) REFERENCES veiculos (id)
-   
+
 );
 
-CREATE TABLE categorias (
-	id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(20) NOT NULL,
-    
-    PRIMARY KEY(id)
-)
+
 
 
 ALTER TABLE clientes ADD UNIQUE idx_cpf_clientes(cpf);
