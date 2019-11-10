@@ -12,10 +12,24 @@ class ClientesControlador extends Controlador
     }
 
     public function atualizar()
-    {
-        $this->visao('clientes/atualizar.php', [], 'principal.php');
+    {  
+        $cliente = 0;
+        $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
     }
 
+    public function pesquisar()
+    {
+        $cpf = $_POST['cpf-busca'];
+        $cliente = Cliente::buscarCpf(self::removerMascara($cpf));
+        
+        $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
+    }
+
+    public function editar()
+    {
+
+    }
+    
     public function armazenar()
     {
         $cliente = new Cliente(
@@ -46,8 +60,13 @@ class ClientesControlador extends Controlador
        
     }
 
-    public function sucesso()
+    public static function removerMascara($atributo)
     {
-        $this->visao('clientes/sucesso.php');
+       $atributo = str_replace("(", "", $atributo);
+       $atributo = str_replace(")", "", $atributo);
+       $atributo = str_replace("-", "", $atributo);
+       $atributo = str_replace(".", "", $atributo);
+       
+       return $atributo;
     }
 }

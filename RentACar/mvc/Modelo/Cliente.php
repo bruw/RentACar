@@ -9,6 +9,8 @@ class Cliente extends Modelo
 {
     const INSERIR = 'INSERT INTO clientes(primeiro_nome, sobrenome, cpf, celular, email, cep, numero) 
     VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const BUSCAR_ID = 'SELECT id FROM clientes WHERE id= ?';
+    const BUSCAR_CPF = 'SELECT * FROM clientes WHERE cpf= ?';
 
     private $id;
     private $primeiroNome;
@@ -146,21 +148,22 @@ class Cliente extends Modelo
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
     }
-
-    public static function buscarId($id)
-    {
-        $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
-        $comando->bindValue(1, $id, PDO::PARAM_INT);
+    public static function buscarCpf($cpf)
+    {   
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_CPF);
+        $comando->bindValue(1, $cpf, PDO::PARAM_INT);
         $comando->execute();
         $registro = $comando->fetch();
-        return new Contato(
-            $registro['primeiroNome'],
+
+        return new Cliente(
+            $registro['primeiro_nome'],
             $registro['sobrenome'],
             $registro['cpf'],
             $registro['celular'],
             $registro['email'],
             $registro['cep'],
             $registro['numero'],
+            $registro['id']
         );
     }
 

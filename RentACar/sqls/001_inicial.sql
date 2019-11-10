@@ -24,7 +24,6 @@ CREATE TABLE clientes(
     email VARCHAR(60) DEFAULT NULL,
     cep CHAR(8) NOT NULL,
     numero CHAR(5) NOT NULL,
-    senha CHAR(60) NOT NULL,
     PRIMARY KEY(id)
 
 );

@@ -25,8 +25,8 @@ $rotas = [
         'GET' => '\Controlador\ClientesControlador#atualizar',
     ],
 
-    '/clientes/sucesso' => [
-        'GET' => '\Controlador\ClientesControlador#sucesso',
+    '/clientes/pesquisar' => [
+        'POST' => '\Controlador\ClientesControlador#pesquisar',
     ],
 
     '/usuarios' => [

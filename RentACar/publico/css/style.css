@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'edgeracer';
-    src: url('/RentACar/publico/fonts/edgeracer.ttf');
-}
-
 .table-total{
     border: 1px solid black;
     margin-bottom: 40px;
@@ -275,4 +270,4 @@ body {
 
 main {
     flex: 1 0 auto;
-}
+}   

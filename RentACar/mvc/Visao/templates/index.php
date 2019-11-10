@@ -18,7 +18,8 @@
             <div class="container">
                 <div class="nav-wrapper">
                     <a href="index.html" class="brand-logo">
-                        <i class="material-icons left t">directions_car</i>RentACar</a>
+                        <i class="material-icons left t">directions_car</i>RentACar
+                    </a>
                 </div>
             </div>
         </nav>
