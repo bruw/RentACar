@@ -133,7 +133,7 @@
                     </a>
                 </div>
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'clientes/atualizar' ?>">
+                    <a href="<?= URL_RAIZ . 'clientes/editar' ?>">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png' ?>">
                         <p>Atualizar Dados do Cliente</p>
                     </a>

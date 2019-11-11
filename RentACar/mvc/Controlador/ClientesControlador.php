@@ -11,7 +11,7 @@ class ClientesControlador extends Controlador
         $this->visao('clientes/criar.php', [], 'principal.php');
     }
 
-    public function atualizar()
+    public function editar()
     {  
         $cliente = 0;
         $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
@@ -25,11 +25,6 @@ class ClientesControlador extends Controlador
         $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
     }
 
-    public function editar()
-    {
-
-    }
-    
     public function armazenar()
     {
         $cliente = new Cliente(
@@ -59,6 +54,23 @@ class ClientesControlador extends Controlador
         }
        
     }
+
+    public function atualizar($id)
+    {
+        $cliente = Cliente::buscarId($id);
+        $cliente->setPrimeiroNome($_POST['primeiroNome']);
+        $cliente->setSobrenome($_POST['sobrenome']);
+        $cliente->setCpf($_POST['cpf']);
+        $cliente->setCelular($_POST['celular']);
+        $cliente->setEmail($_POST['email']);
+        $cliente->setCep($_POST['cep']);
+        $cliente->setNumero($_POST['numero']);
+        $cliente->salvar();
+        
+        $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        
+    }
+
 
     public static function removerMascara($atributo)
     {

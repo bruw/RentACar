@@ -13,6 +13,8 @@ $rotas = [
         'GET' => '\Controlador\LocacoesControlador#devolucao',
     ],
 
+
+
     '/clientes' => [
         'POST' => '\Controlador\ClientesControlador#armazenar',
     ],
@@ -21,13 +23,19 @@ $rotas = [
         'GET' => '\Controlador\ClientesControlador#criar',
     ],
 
-    '/clientes/atualizar' => [
-        'GET' => '\Controlador\ClientesControlador#atualizar',
+    '/clientes/editar' => [
+        'GET' => '\Controlador\ClientesControlador#editar',
     ],
 
     '/clientes/pesquisar' => [
         'POST' => '\Controlador\ClientesControlador#pesquisar',
     ],
+
+    '/clientes/atualizar/?' => [
+        'PATCH' => '\Controlador\ClientesControlador#atualizar',
+    ],
+
+  
 
     '/usuarios' => [
         'POST' => '\Controlador\UsuariosControlador#armazenar',

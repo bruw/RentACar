@@ -11,6 +11,8 @@ class Cliente extends Modelo
     VALUES (?, ?, ?, ?, ?, ?, ?)';
     const BUSCAR_ID = 'SELECT id FROM clientes WHERE id= ?';
     const BUSCAR_CPF = 'SELECT * FROM clientes WHERE cpf= ?';
+    const ATUALIZAR = 'UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, cpf = ?, celular = ?, email = ?,
+    cep = ?, numero = ? WHERE id = ?';
 
     private $id;
     private $primeiroNome;
@@ -119,7 +121,11 @@ class Cliente extends Modelo
 
     public function salvar()
     {
-        $this->inserir();
+        if ($this->id == null) {
+            $this->inserir();
+        } else {
+            $this->atualizar();
+        }
     }
 
     public function removerMascara($atributo)
@@ -132,22 +138,6 @@ class Cliente extends Modelo
        return $atributo;
     }
 
-
-    public function inserir()
-    {
-        DW3BancoDeDados::getPdo()->beginTransaction();
-        $comando = DW3BancoDeDados::prepare(self::INSERIR);
-        $comando->bindValue(1, $this->primeiroNome, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
-        $comando->bindValue(3, $this->cpf, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->celular, PDO::PARAM_STR);
-        $comando->bindValue(5, $this->email, PDO::PARAM_STR);
-        $comando->bindValue(6, $this->cep, PDO::PARAM_STR);
-        $comando->bindValue(7, $this->numero, PDO::PARAM_STR);
-        $comando->execute();
-        $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
-        DW3BancoDeDados::getPdo()->commit();
-    }
     public static function buscarCpf($cpf)
     {   
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_CPF);
@@ -166,6 +156,58 @@ class Cliente extends Modelo
             $registro['id']
         );
     }
+
+    public static function buscarId($id)
+    {
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
+        $comando->bindValue(1, $id, PDO::PARAM_INT);
+        $comando->execute();
+        $registro = $comando->fetch();
+       
+        return new Cliente(
+            $registro['primeiro_nome'],
+            $registro['sobrenome'],
+            $registro['cpf'],
+            $registro['celular'],
+            $registro['email'],
+            $registro['cep'],
+            $registro['numero'],
+            $registro['id']
+        );
+    }
+
+    public function inserir()
+    {
+        DW3BancoDeDados::getPdo()->beginTransaction();
+        $comando = DW3BancoDeDados::prepare(self::INSERIR);
+        $comando->bindValue(1, $this->primeiroNome, PDO::PARAM_STR);
+        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
+        $comando->bindValue(3, $this->cpf, PDO::PARAM_STR);
+        $comando->bindValue(4, $this->celular, PDO::PARAM_STR);
+        $comando->bindValue(5, $this->email, PDO::PARAM_STR);
+        $comando->bindValue(6, $this->cep, PDO::PARAM_STR);
+        $comando->bindValue(7, $this->numero, PDO::PARAM_STR);
+        $comando->execute();
+        $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
+        DW3BancoDeDados::getPdo()->commit();
+    }
+
+
+    public function atualizar()
+    {
+        $comando = DW3BancoDeDados::prepare(self::ATUALIZAR);
+        $comando->bindValue(1, $this->primeiroNome, PDO::PARAM_STR);
+        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
+        $comando->bindValue(3, $this->cpf, PDO::PARAM_STR);
+        $comando->bindValue(4, $this->celular, PDO::PARAM_STR);
+        $comando->bindValue(5, $this->email, PDO::PARAM_STR);
+        $comando->bindValue(6, $this->cep, PDO::PARAM_STR);
+        $comando->bindValue(7, $this->numero, PDO::PARAM_STR);
+        $comando->bindValue(8, $this->id, PDO::PARAM_INT);
+        $comando->execute();
+    }
+
+    
 
     protected function verificarErros()
     {

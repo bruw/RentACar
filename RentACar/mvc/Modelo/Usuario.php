@@ -156,6 +156,7 @@ class Usuario extends Modelo
         DW3BancoDeDados::getPdo()->commit();
     }
 
+
     protected function verificarErros()
     {
        $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";

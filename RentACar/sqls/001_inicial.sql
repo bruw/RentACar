@@ -10,6 +10,7 @@ CREATE TABLE usuarios(
     celular VARCHAR(20) NOT NULL,
     cep CHAR(8) NOT NULL,
     numero CHAR(5) NOT NULL,
+    senha CHAR(60) NOT NULL, 
 
     PRIMARY KEY(id)
 
