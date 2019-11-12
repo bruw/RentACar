@@ -6,6 +6,7 @@ use \Modelo\Cliente;
 
 class ClientesControlador extends Controlador
 {
+
     public function criar()
     {
         $this->visao('clientes/criar.php', [], 'principal.php');

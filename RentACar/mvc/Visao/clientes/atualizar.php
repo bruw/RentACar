@@ -15,7 +15,7 @@
             </div>
         </form>
 
-        <?php if ($cliente) : ?>
+        <?php if (!empty($cliente)) : ?>
             <form action="<?= URL_RAIZ . 'clientes/atualizar/' . $cliente->getId() ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
                 <div class="row">
