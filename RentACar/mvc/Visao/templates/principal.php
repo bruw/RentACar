@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="modal-trigger">
+                            <a href="<?= URL_RAIZ . 'encerrar-sessao'?>" class="modal-trigger">
                                 <i class="material-icons left">power_settings_new</i>Encerrar Sessão
                             </a>
                         </li>
@@ -43,11 +43,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="!#" class="modal-trigger">
+                            <a href="<?= URL_RAIZ . 'encerrar-sessao'?>" class="modal-trigger">
                                 <i class="material-icons left">power_settings_new</i>Encerar Sessão
                             </a>
                         </li>
                     </ul>
+                   
                 </div>
             </div>
         </nav>

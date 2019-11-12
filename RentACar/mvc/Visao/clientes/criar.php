@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">mail</i>
-                    <input type="text" name="email" value="<?= $this->getPost('email') ?>" placeholder="darthvaider@estreladamorte.com">
+                    <input type="text" name="email" value="<?= $this->getPost('email') ?>" placeholder="darthvaider@disney.com">
                     <label for="icon_prefix">E-mail</label>
                     <?php $this->incluirVisao('util/formErro.php', ['campo' => 'email']) ?>
                 </div>

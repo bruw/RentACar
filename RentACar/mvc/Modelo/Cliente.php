@@ -157,6 +157,20 @@ class Cliente extends Modelo
         );
     }
 
+    public function isCpfExiste($cliente)
+    {
+        $clienteSalvo = self::buscarCpf($cliente->getCpf());
+       
+        if($clienteSalvo->getCpf() === $this->cpf){
+            $cliente->setErroMensagem('cpf', 'Este CPF já consta em nossa base de dados...');
+
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
     public static function buscarId($id)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);

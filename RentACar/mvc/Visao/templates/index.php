@@ -25,7 +25,9 @@
         </nav>
     </div>
 
-    <?php $this->imprimirConteudo() ?>
+    <main>
+        <?php $this->imprimirConteudo() ?>
+    </main>
 
     <section>
         <footer class="section cor-principal">
@@ -35,6 +37,8 @@
 
     <script src=<?= URL_JS . "jquery-3.4.1.min.js" ?>></script>
     <script src=<?= URL_JS . "materialize.min.js" ?>></script>
+    <script src=<?= URL_JS . "jquery.mask.min.js" ?>></script>
+    <script src=<?= URL_JS . "inicializacao-bibliotecas.js" ?>></script>
     <script src=<?= URL_JS . "index.js" ?>></script>
 
 </body>

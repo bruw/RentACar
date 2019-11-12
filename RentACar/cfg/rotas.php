@@ -3,6 +3,11 @@
 $rotas = [
     '/' => [
         'GET' => '\Controlador\LoginControlador#index',
+        'POST' => '\Controlador\LoginControlador#armazenar',
+    ],
+    
+    '/encerrar-sessao' => [
+        'GET' => '\Controlador\LoginControlador#destruir',
     ],
 
     '/locacoes/carros-disponiveis' => [

@@ -9,6 +9,8 @@ class Usuario extends Modelo
 {
     const INSERIR = 'INSERT INTO usuarios(primeiro_nome, sobrenome, cpf, celular, email, cep, numero, senha) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const BUSCAR_CPF = 'SELECT * FROM usuarios WHERE cpf = ?';
+    const BUSCAR_ID = 'SELECT id FROM usuarios WHERE id= ?';
 
     private $id;
     private $primeiroNome;
@@ -22,16 +24,16 @@ class Usuario extends Modelo
     private $senhaPlana;
 
     public function __construct(
-        $primeiroNome, 
-        $sobrenome, 
-        $cpf, 
-        $celular, 
-        $email, 
-        $cep, 
-        $numero, 
-        $senhaPlana, 
+        $primeiroNome,
+        $sobrenome,
+        $cpf,
+        $celular,
+        $email,
+        $cep,
+        $numero,
+        $senhaPlana,
         $id = null
-    ) { 
+    ) {
         $this->primeiroNome = $primeiroNome;
         $this->sobrenome = $sobrenome;
         $this->cpf = $cpf;
@@ -126,12 +128,12 @@ class Usuario extends Modelo
 
     public function removerMascara($atributo)
     {
-       $atributo = str_replace("(", "", $atributo);
-       $atributo = str_replace(")", "", $atributo);
-       $atributo = str_replace("-", "", $atributo);
-       $atributo = str_replace(".", "", $atributo);
-       
-       return $atributo;
+        $atributo = str_replace("(", "", $atributo);
+        $atributo = str_replace(")", "", $atributo);
+        $atributo = str_replace("-", "", $atributo);
+        $atributo = str_replace(".", "", $atributo);
+
+        return $atributo;
     }
 
     public function salvar()
@@ -156,46 +158,90 @@ class Usuario extends Modelo
         DW3BancoDeDados::getPdo()->commit();
     }
 
+    public static function buscarCpf($cpf)
+    {
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_CPF);
+        $comando->bindValue(1, $cpf, PDO::PARAM_STR);
+        $comando->execute();
+        $registro = $comando->fetch();
+        $usuario = null;
+        
+        if ($registro) {
+            $usuario = new Usuario(
+                null,
+                null,
+                $registro['cpf'],
+                null,
+                null,
+                null,
+                null,
+                null,
+                $registro['id']
+            );
+
+            $usuario->senha = $registro['senha'];
+        }
+        return $usuario;
+    }
+
+    public static function buscarId($id)
+    {
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
+        $comando->bindValue(1, $id, PDO::PARAM_INT);
+        $comando->execute();
+        $registro = $comando->fetch();
+       
+        return new Cliente(
+            $registro['primeiro_nome'],
+            $registro['sobrenome'],
+            $registro['cpf'],
+            $registro['celular'],
+            $registro['email'],
+            $registro['cep'],
+            $registro['numero'],
+            $registro['id']
+        );
+    }
 
     protected function verificarErros()
     {
-       $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
-       $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
-       $patternCpf = "/^[0-9]{11}$/";
-       $patternCelular = "/^[0-9]{10,20}$/";
-       $patternCep = "/^[0-9]{8}$/";
-       $patternNumero = "/^[0-9]{1,5}$/";
-       $patternSenha = "/^[0-9]{4,8}$/";
+        $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
+        $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
+        $patternCpf = "/^[0-9]{11}$/";
+        $patternCelular = "/^[0-9]{10,20}$/";
+        $patternCep = "/^[0-9]{8}$/";
+        $patternNumero = "/^[0-9]{1,5}$/";
+        $patternSenha = "/^[0-9]{4,8}$/";
 
-        if(strpos($this->email, "@") === false){
+        if (strpos($this->email, "@") === false) {
             $this->setErroMensagem('email', 'Email Inválido... Faltou o @');
         }
 
-        if(preg_match($patternPrimeiroNome, $this->primeiroNome) == false){
+        if (preg_match($patternPrimeiroNome, $this->primeiroNome) == false) {
             $this->setErroMensagem('primeiroNome', 'Primeiro nome não pode conter dígitos, ser vazio ou conter espaços');
         }
-        
-        if(preg_match($patternSobrenome, $this->sobrenome) == false){
+
+        if (preg_match($patternSobrenome, $this->sobrenome) == false) {
             $this->setErroMensagem('sobrenome', 'Sobrenome não pode conter dígitos ou ser vazio');
         }
 
-        if(preg_match($patternCpf, $this->cpf) == false){
+        if (preg_match($patternCpf, $this->cpf) == false) {
             $this->setErroMensagem('cpf', 'Cpf deve possuir 11 dígitos sem letras');
         }
 
-        if(preg_match($patternCelular, $this->celular) == false){
+        if (preg_match($patternCelular, $this->celular) == false) {
             $this->setErroMensagem('celular', 'Celular deve possuir no mínimo 10 dígitos sem letras');
         }
 
-        if(preg_match($patternCep, $this->cep) == false){
+        if (preg_match($patternCep, $this->cep) == false) {
             $this->setErroMensagem('cep', 'Cep deve possuir 8 dígitos');
         }
 
-        if(preg_match($patternNumero, $this->numero) == false){
+        if (preg_match($patternNumero, $this->numero) == false) {
             $this->setErroMensagem('numero', 'Número deve possuir no mínimo 1 e no máximo 5 dígitos ');
         }
 
-        if(preg_match($patternSenha, $this->senhaPlana) == false){
+        if (preg_match($patternSenha, $this->senhaPlana) == false) {
             $this->setErroMensagem('senha', 'Apenas números. Mínimo 4, máximo 8 dígitos. ');
         }
     }
