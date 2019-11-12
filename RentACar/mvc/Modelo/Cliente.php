@@ -224,7 +224,7 @@ class Cliente extends Modelo
     
 
     protected function verificarErros()
-    {
+    {   
        $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
        $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
        $patternCpf = "/^[0-9]{11}$/";
@@ -240,9 +240,11 @@ class Cliente extends Modelo
             $this->setErroMensagem('primeiroNome', 'Primeiro nome não pode conter dígitos, ser vazio ou conter espaços');
         }
         
+     
         if(preg_match($patternSobrenome, $this->sobrenome) == false){
             $this->setErroMensagem('sobrenome', 'Sobrenome não pode conter dígitos ou ser vazio');
         }
+        
 
         if(preg_match($patternCpf, $this->cpf) == false){
             $this->setErroMensagem('cpf', 'Cpf deve possuir 11 dígitos sem letras');

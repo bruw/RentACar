@@ -5,8 +5,8 @@
     <title><?= APLICACAO_NOME ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="Bruno José dos Santos Wogt">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Bruno José dos Santos Wogt">
     <link rel="stylesheet" href="<?= URL_CSS . 'materialize.min.css' ?>">
     <link rel="stylesheet" href="<?= URL_CSS . 'style.css' ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

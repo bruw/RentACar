@@ -33,9 +33,9 @@ class UsuariosControlador extends Controlador
         $usuario->setCelular($usuario->removerMascara($usuario->getCelular()));
         $usuario->setCep($usuario->removerMascara($usuario->getCep()));
 
-        $usuario->setPrimeiroNome(strtolower($usuario->getPrimeiroNome()));
-        $usuario->setSobrenome(strtolower($usuario->getSobrenome()));
-        $usuario->setEmail(strtolower($usuario->getEmail()));
+        $usuario->setPrimeiroNome(mb_strtolower($usuario->getPrimeiroNome(),'UTF-8'));
+        $usuario->setSobrenome(mb_strtolower($usuario->getSobrenome(), 'UTF-8'));
+        $usuario->setEmail(mb_strtolower($usuario->getEmail(), 'UTF-8'));
 
         if($usuario->isValido()){
             $usuario->salvar();

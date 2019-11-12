@@ -36,13 +36,13 @@ class ClientesControlador extends Controlador
             $_POST['numero']
         );
 
+        $cliente->setPrimeiroNome(mb_strtolower($cliente->getPrimeiroNome(), 'UTF-8'));
+        $cliente->setSobrenome(mb_strtolower($cliente->getSobrenome(), 'UTF-8'));
+        $cliente->setEmail(mb_strtolower($cliente->getEmail(), 'UTF-8'));
+
         $cliente->setCpf($cliente->removerMascara($cliente->getCpf()));
         $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
         $cliente->setCep($cliente->removerMascara($cliente->getCep()));
-
-        $cliente->setPrimeiroNome(strtolower($cliente->getPrimeiroNome()));
-        $cliente->setSobrenome(strtolower($cliente->getSobrenome()));
-        $cliente->setEmail(strtolower($cliente->getEmail()));
 
 
         if($cliente->isValido() && !$cliente->isCpfExiste($cliente)){
@@ -66,9 +66,9 @@ class ClientesControlador extends Controlador
         $cliente->setCep($_POST['cep']);
         $cliente->setNumero($_POST['numero']);
 
-        $cliente->setPrimeiroNome(strtolower($cliente->getPrimeiroNome()));
-        $cliente->setSobrenome(strtolower($cliente->getSobrenome()));
-        $cliente->setEmail(strtolower($cliente->getEmail()));
+        $cliente->setPrimeiroNome(mb_strtolower($cliente->getPrimeiroNome(), 'UTF-8'));
+        $cliente->setSobrenome(mb_strtolower($cliente->getSobrenome(), 'UTF-8'));
+        $cliente->setEmail(mb_strtolower($cliente->getEmail(), 'UTF-8'));
 
         $cliente->setCpf($cliente->removerMascara($cliente->getCpf()));
         $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
