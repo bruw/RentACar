@@ -32,14 +32,6 @@
                         <?php $this->incluirVisao('util/formErro.php', ['campo' => 'sobrenome']) ?>
                     </div>
                 </div>
-                
-                <div class="row ocultar-conteudo">
-                    <div class="input-field col s12 m12 l6">
-                            <i class="material-icons prefix">person</i>
-                            <input type="hidden" class="cpf" name="cpf" value="<?= $cliente->getCpf() ?>" placeholder="000.000.000-00">
-                            <label for="icon_prefix">CPF</label>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div id="div-celular" class="input-field col s12 m6">
@@ -79,7 +71,7 @@
                         </button>
                     </div>
                     <div class="col s12 m12 l6">
-                        <button class="waves-effect waves-light btn button-cancelar" type="submit">
+                        <button class="waves-effect waves-light btn button-cancelar">
                             <i class="material-icons left">cancel</i>Cancelar
                         </button>
                     </div>

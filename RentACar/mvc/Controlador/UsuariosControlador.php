@@ -2,6 +2,7 @@
 
 namespace Controlador;
 
+use \Framework\DW3Sessao;
 use \Modelo\Usuario;
 
 class UsuariosControlador extends Controlador
@@ -14,6 +15,14 @@ class UsuariosControlador extends Controlador
     public function atualizar()
     {
         $this->visao('usuarios/atualizar.php',[],'principal.php');
+    }
+
+    public function pesquisar()
+    {
+        $cpf = $_POST['cpf-busca'];
+        $usuario = Usuario::buscarRegistroUsuario(self::removerMascara($cpf));
+        
+        $this->visao('usuarios/atualizar.php', ['usuario' => $usuario], 'principal.php');
     }
 
     public function armazenar()
@@ -37,7 +46,7 @@ class UsuariosControlador extends Controlador
         $usuario->setSobrenome(mb_strtolower($usuario->getSobrenome(), 'UTF-8'));
         $usuario->setEmail(mb_strtolower($usuario->getEmail(), 'UTF-8'));
 
-        if($usuario->isValido()){
+        if($usuario->isValido() && !Usuario::cpfExiste($usuario)){
             $usuario->salvar();
             $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
         }else{

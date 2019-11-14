@@ -9,8 +9,8 @@ class Usuario extends Modelo
 {
     const INSERIR = 'INSERT INTO usuarios(primeiro_nome, sobrenome, cpf, celular, email, cep, numero, senha) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    const BUSCAR_CPF = 'SELECT * FROM usuarios WHERE cpf = ?';
-    const BUSCAR_ID = 'SELECT id FROM usuarios WHERE id= ?';
+    const BUSCAR_REGISTRO = 'SELECT * FROM usuarios WHERE cpf = ?';
+    const BUSCAR_ID = 'SELECT id, cpf FROM usuarios WHERE id= ?';
 
     private $id;
     private $primeiroNome;
@@ -158,9 +158,9 @@ class Usuario extends Modelo
         DW3BancoDeDados::getPdo()->commit();
     }
 
-    public static function buscarCpf($cpf)
+    public static function buscarRegistroUsuario($cpf)
     {
-        $comando = DW3BancoDeDados::prepare(self::BUSCAR_CPF);
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
         $comando->bindValue(1, $cpf, PDO::PARAM_STR);
         $comando->execute();
         $registro = $comando->fetch();
@@ -168,19 +168,20 @@ class Usuario extends Modelo
         
         if ($registro) {
             $usuario = new Usuario(
-                null,
-                null,
+                $registro['primeiro_nome'],
+                $registro['sobrenome'],
                 $registro['cpf'],
-                null,
-                null,
-                null,
-                null,
+                $registro['celular'],
+                $registro['email'],
+                $registro['cep'],
+                $registro['numero'],
                 null,
                 $registro['id']
             );
 
             $usuario->senha = $registro['senha'];
         }
+
         return $usuario;
     }
 
@@ -191,16 +192,28 @@ class Usuario extends Modelo
         $comando->execute();
         $registro = $comando->fetch();
        
-        return new Cliente(
-            $registro['primeiro_nome'],
-            $registro['sobrenome'],
+        return new Usuario(
+            null,
+            null,
             $registro['cpf'],
-            $registro['celular'],
-            $registro['email'],
-            $registro['cep'],
-            $registro['numero'],
+            null,
+            null,
+            null,
+            null,
             $registro['id']
         );
+    }
+
+    public function cpfExiste($usuario)
+    {
+        $registroUsuario = self::buscarRegistroUsuario($usuario->getCpf());
+
+        if ($registroUsuario !== null) {
+            $usuario->setErroMensagem('cpf', 'Este CPF já consta em nossa base de dados...');
+            return true;
+        } else {
+            return false;
+        }
     }
 
     protected function verificarErros()

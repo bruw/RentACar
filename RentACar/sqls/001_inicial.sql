@@ -40,7 +40,7 @@ CREATE TABLE veiculos(
 	id INT NOT NULL AUTO_INCREMENT,
     chassi CHAR(17) NOT NULL,
     montadora VARCHAR(60) NOT NULL,
-    modelo VARCHAR(25) NOT NULL,
+    modelo VARCHAR(30) NOT NULL,
     id_categoria INT NOT NULL,
     preco_diaria DOUBLE NOT NULL,
     status_oficina  BOOLEAN NOT NULL DEFAULT 0,
@@ -84,13 +84,7 @@ CREATE TABLE reparos(
 );
 
 
-
-
-ALTER TABLE clientes ADD UNIQUE idx_cpf_clientes(cpf);
-ALTER TABLE usuarios ADD UNIQUE idx_cpf_usuarios(cpf);
-ALTER TABLE veiculos ADD UNIQUE idx_chassi_veiculos(chassi);
-
 INSERT INTO categorias (nome) VALUES ('Hatch');
-INSERT INTO categorias (nome) VALUES ('Sedãn');
+INSERT INTO categorias (nome) VALUES ('Sedan');
 INSERT INTO categorias (nome) VALUES ('SUV');
 INSERT INTO categorias (nome) VALUES ('Pick-Ups');

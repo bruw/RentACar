@@ -16,17 +16,19 @@
                         <i class="material-icons prefix">build</i>
                         <input type="text" name="montadora" value="<?= $this->getPost('montadora') ?>" placeholder="Fiat">
                         <label for="icon_prefix">Montadora</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'montadora']) ?>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">directions_car</i>
                         <input type="text" name="modelo" value="<?= $this->getPost('modelo') ?>"placeholder="Argo">
                         <label for="icon_prefix">Modelo</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'modelo']) ?>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">filter_list</i>
-                        <select name="categoria" value="<?= $this->getPost('categoria') ?>">
+                        <select name="categoria">
                             <option value="1">Hatch</option>
                             <option value="2">Sedãn</option>
                             <option value="3">SUV</option>
@@ -47,8 +49,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m12">
-                            <input id="input-imagem" name="foto" type="file" accept="image/*" value="<?= $this->getPost('foto')?>">
-                            <?php $this->incluirVisao('util/formErro.php', ['campo' => 'foto']) ?>
+                            <input type="file" id="input-imagem" name="foto" accept="image/*">
                         </div>
                     </div>
 

@@ -16,7 +16,7 @@
         <nav class="cor-principal">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="index.html" class="brand-logo">
+                    <a href="#" class="brand-logo">
                         <i class="material-icons left t">directions_car</i>RentACar
                     </a>
                 </div>

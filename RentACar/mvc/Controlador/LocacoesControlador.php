@@ -1,12 +1,14 @@
 <?php
 namespace Controlador;
 
+use Modelo\Veiculo;
 
 class LocacoesControlador extends Controlador
 {
     public function carrosDisponiveis()
     {
-        $this->visao('locacoes/carros-disponiveis.php',[],'principal.php');
+        $veiculo = Veiculo::buscarRegistroVeiculo(0001);
+        $this->visao('locacoes/carros-disponiveis.php',['veiculo' => $veiculo],'principal.php');
     }
 
     public function devolucao()

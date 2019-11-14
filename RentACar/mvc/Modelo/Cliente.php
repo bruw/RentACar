@@ -9,10 +9,11 @@ class Cliente extends Modelo
 {
     const INSERIR = 'INSERT INTO clientes(primeiro_nome, sobrenome, cpf, celular, email, cep, numero) 
     VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const BUSCAR_ID = 'SELECT id FROM clientes WHERE id= ?';
-    const BUSCAR_CPF = 'SELECT * FROM clientes WHERE cpf= ?';
+    const BUSCAR_ID = 'SELECT id, cpf FROM clientes WHERE id= ?';
     const ATUALIZAR = 'UPDATE clientes SET primeiro_nome = ?, sobrenome = ?, cpf = ?, celular = ?, email = ?,
     cep = ?, numero = ? WHERE id = ?';
+    const BUSCAR_REGISTRO = 'SELECT * FROM clientes WHERE cpf = ?';
+
 
     private $id;
     private $primeiroNome;
@@ -130,17 +131,17 @@ class Cliente extends Modelo
 
     public function removerMascara($atributo)
     {
-       $atributo = str_replace("(", "", $atributo);
-       $atributo = str_replace(")", "", $atributo);
-       $atributo = str_replace("-", "", $atributo);
-       $atributo = str_replace(".", "", $atributo);
-       
-       return $atributo;
+        $atributo = str_replace("(", "", $atributo);
+        $atributo = str_replace(")", "", $atributo);
+        $atributo = str_replace("-", "", $atributo);
+        $atributo = str_replace(".", "", $atributo);
+
+        return $atributo;
     }
 
-    public static function buscarCpf($cpf)
-    {   
-        $comando = DW3BancoDeDados::prepare(self::BUSCAR_CPF);
+    public static function buscarRegistroCliente($cpf)
+    {
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
         $comando->bindValue(1, $cpf, PDO::PARAM_INT);
         $comando->execute();
         $registro = $comando->fetch();
@@ -157,18 +158,16 @@ class Cliente extends Modelo
         );
     }
 
-    public function isCpfExiste($cliente)
+    public function cpfExiste($cliente)
     {
-        $clienteSalvo = self::buscarCpf($cliente->getCpf());
-       
-        if($clienteSalvo->getCpf() === $this->cpf){
-            $cliente->setErroMensagem('cpf', 'Este CPF já consta em nossa base de dados...');
+        $registroCliente = self::buscarRegistroCliente($cliente->getCpf());
 
+        if ($registroCliente->getCpf() !== null) {
+            $cliente->setErroMensagem('cpf', 'Este CPF já consta em nossa base de dados...');
             return true;
-        }else{
+        } else {
             return false;
         }
-        
     }
 
     public static function buscarId($id)
@@ -177,15 +176,15 @@ class Cliente extends Modelo
         $comando->bindValue(1, $id, PDO::PARAM_INT);
         $comando->execute();
         $registro = $comando->fetch();
-       
+
         return new Cliente(
-            $registro['primeiro_nome'],
-            $registro['sobrenome'],
+            null,
+            null,
             $registro['cpf'],
-            $registro['celular'],
-            $registro['email'],
-            $registro['cep'],
-            $registro['numero'],
+            null,
+            null,
+            null,
+            null,
             $registro['id']
         );
     }
@@ -206,7 +205,6 @@ class Cliente extends Modelo
         DW3BancoDeDados::getPdo()->commit();
     }
 
-
     public function atualizar()
     {
         $comando = DW3BancoDeDados::prepare(self::ATUALIZAR);
@@ -221,44 +219,42 @@ class Cliente extends Modelo
         $comando->execute();
     }
 
-    
-
     protected function verificarErros()
-    {   
-       $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
-       $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
-       $patternCpf = "/^[0-9]{11}$/";
-       $patternCelular = "/^[0-9]{10,20}$/";
-       $patternCep = "/^[0-9]{8}$/";
-       $patternNumero = "/^[0-9]{1,5}$/";
+    {
+        $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}$/";
+        $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
+        $patternCpf = "/^[0-9]{11}$/";
+        $patternCelular = "/^[0-9]{10,20}$/";
+        $patternCep = "/^[0-9]{8}$/";
+        $patternNumero = "/^[0-9]{1,5}$/";
 
-        if(strpos($this->email, "@") === false){
+        if (strpos($this->email, "@") === false) {
             $this->setErroMensagem('email', 'Email Inválido... Faltou o @');
         }
 
-        if(preg_match($patternPrimeiroNome, $this->primeiroNome) == false){
+        if (preg_match($patternPrimeiroNome, $this->primeiroNome) == false) {
             $this->setErroMensagem('primeiroNome', 'Primeiro nome não pode conter dígitos, ser vazio ou conter espaços');
         }
-        
-     
-        if(preg_match($patternSobrenome, $this->sobrenome) == false){
+
+
+        if (preg_match($patternSobrenome, $this->sobrenome) == false) {
             $this->setErroMensagem('sobrenome', 'Sobrenome não pode conter dígitos ou ser vazio');
         }
-        
 
-        if(preg_match($patternCpf, $this->cpf) == false){
+
+        if (preg_match($patternCpf, $this->cpf) == false) {
             $this->setErroMensagem('cpf', 'Cpf deve possuir 11 dígitos sem letras');
         }
 
-        if(preg_match($patternCelular, $this->celular) == false){
+        if (preg_match($patternCelular, $this->celular) == false) {
             $this->setErroMensagem('celular', 'Celular deve possuir no mínimo 10 dígitos sem letras');
         }
 
-        if(preg_match($patternCep, $this->cep) == false){
+        if (preg_match($patternCep, $this->cep) == false) {
             $this->setErroMensagem('cep', 'Cep deve possuir 8 dígitos');
         }
 
-        if(preg_match($patternNumero, $this->numero) == false){
+        if (preg_match($patternNumero, $this->numero) == false) {
             $this->setErroMensagem('numero', 'Número deve possuir no mínimo 1 e no máximo 5 dígitos ');
         }
     }

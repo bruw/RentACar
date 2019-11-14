@@ -1,11 +1,11 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Atualizar dados do Veículo</h1>
-        <form action="">
+        <form action="<?= URL_RAIZ . 'frota/pesquisar' ?>" method="post">
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">directions_car</i>
-                    <input id="input-chassi" type="text" value="2275ca7689jj2019" placeholder="1234cb4321dd34yp9">
+                    <input id="input-chassi" type="text" name="chassi-busca" value="<?= $this->getPost('chassi-busca') ?>" placeholder="1234cb4321dd34yp9">
                     <label for="icon_prefix">Número do Chassi</label>
                 </div>
                 <div class="col s12 m6">
@@ -14,69 +14,71 @@
                     </button>
                 </div>
             </div>
-            <div id="div-dados-veiculo">
+        </form>
+
+        <?php if (!empty($veiculo)) : ?>
+            <form action="<?= URL_RAIZ . 'frota/atualizar/' . $veiculo->getId() ?>" method="post">
+                <input type="hidden" name="_metodo" value="PATCH">
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">build</i>
-                        <input type="text" value="Fiat" placeholder="Fiat">
+                        <input type="text" name="montadora" value="<?= $veiculo->getMontadora() ?>" placeholder="Fiat">
                         <label for="icon_prefix">Montadora</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'montadora']) ?>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">directions_car</i>
-                        <input type="text" value="Argo" placeholder="Argo">
+                        <input type="text" name="modelo" value="<?= $veiculo->getModelo() ?>" placeholder="Argo">
                         <label for="icon_prefix">Modelo</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'modelo']) ?>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12 m6">
+                        <i class="material-icons prefix">directions_car</i>
+                        <input type="text" disabled value="<?= $categoria ?>">
+                        <label>Categoria Atual</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
                         <i class="material-icons prefix">filter_list</i>
-                        <select>
+                        <select name="categoria">
+                            <option value="" disabled selected>Selecionar Categoria</option>
                             <option value="1">Hatch</option>
                             <option value="2">Sedãn</option>
                             <option value="3">SUV</option>
                             <option value="4">Pick-Ups</option>
                         </select>
-                        <label>Categoria</label>
+                        <label>Mudar Categoria</label>
                     </div>
-                    <div class="input-field col s12 m6">
+
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
                         <i class="material-icons prefix">monetization_on</i>
-                        <input type="text" value="R$95.00" placeholder="95,00">
+                        <input type="text" name="precoDiaria" value="<?= $veiculo->getPrecoDiaria() ?>" placeholder="95,00">
                         <label for="icon_prefix">Preço Diária</label>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">description</i>
-                            <textarea class="materialize-textarea" placeholder="Veículo 4x4 - OFF Road">Motor 1.4, 4 portas e ar condicionado
-                                    </textarea>
-                            <label for="icon_prefix">Descrição</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="div-imagens-veiculo" class="input-field col s12">
-                            <h4>Adicionar ou Alterar Imagem</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12">
-                            <input id="input-imagem" type="file" accept="image/*">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s12 m12 l6">
-                            <button class="waves-effect waves-light btn button-confirmar" type="submit">
-                                <i class="material-icons left">check_circle</i>Confirmar Alterações
-                            </button>
-                        </div>
-                        <div class="col s12 m12 l6">
-                            <button class="waves-effect waves-light btn button-cancelar" type="submit">
-                                <i class="material-icons left">cancel</i>Cancelar
-                            </button>
-                        </div>
-
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'precoDiaria']) ?>
                     </div>
                 </div>
-        </form>
+
+                <div class="row">
+                    <div class="col s12 m12 l6">
+                        <button class="waves-effect waves-light btn button-confirmar" type="submit">
+                            <i class="material-icons left">check_circle</i>Confirmar Alterações
+                        </button>
+                    </div>
+                    <div class="col s12 m12 l6">
+                        <button class="waves-effect waves-light btn button-cancelar" type="submit">
+                            <i class="material-icons left">cancel</i>Cancelar
+                        </button>
+                    </div>
+
+                </div>
     </div>
+    </form>
+<?php endif ?>
+</div>
 </section>

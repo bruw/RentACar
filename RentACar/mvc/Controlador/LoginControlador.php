@@ -4,14 +4,15 @@ namespace Controlador;
 
 use \Modelo\Usuario;
 use \Framework\DW3Sessao;
+use Modelo\Veiculo;
 
 class LoginControlador extends Controlador
 {
     public function index()
     {   
-        $usuario= Usuario::buscarCpf('00000000001');
+        $usuario= Usuario::buscarRegistroUsuario('00000000001');
 
-        if(!$usuario){
+        if(empty($usuario)){
             $usuario = new Usuario(
                 'Fernanda', 
                 'Minueto',
@@ -26,16 +27,21 @@ class LoginControlador extends Controlador
             $usuario->salvar();
         }
 
-        $this->visao('inicial/index.php',[],'index.php');
+        if(empty(DW3Sessao::get('usuario'))){
+            $this->visao('inicial/index.php',[],'index.php');
+        }else{
+            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+        }
+           
     }
-
 
     public function armazenar()
     {
-        $usuario = Usuario::buscarCpf(self::removerMascara($_POST['cpf']));
+        $usuario = Usuario::buscarRegistroUsuario(self::removerMascara($_POST['cpf']));
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario->getId());
+            DW3Sessao::setFlash('mensagemFlash', 'Ok.');
             $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
         } else {
             $this->setErros(['login' => 'CPF ou Senha Inválida']);

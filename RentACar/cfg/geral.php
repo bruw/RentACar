@@ -3,7 +3,7 @@
 const APLICACAO_NOME = 'RentACar Locação de Veículos';
 
 // Se a URL_RAIZ mudar, verifique arquivo .htaccess
-const URL_RAIZ = '/RentAcar/RentACar/';
+const URL_RAIZ = '/RentACar/RentACar/';
 
 // Os caminhos sempre devem terminar com '/'
 

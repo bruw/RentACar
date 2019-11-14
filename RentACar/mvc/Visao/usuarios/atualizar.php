@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">person</i>
-                    <input id="input-cpf" class="cpf" type="text" class="cep" value="041.221.000-00" placeholder="000.000.000-00">
+                    <input id="input-cpf" class="cpf" type="text" name="cpf-busca" class="cep" value="<?= $this->getPost('cpf-busca')?>" placeholder="000.000.000-00">
                     <label for="icon_prefix">CPF</label>
                 </div>
                 <div class="col s12 m6">
@@ -14,6 +14,9 @@
                     </button>
                 </div>
             </div>
+        </form>
+
+        <form action="">
             <div id="div-dados-pessoa">
                 <div class="row">
                     <div class="input-field col s12 m12 l6">

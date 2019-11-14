@@ -180,7 +180,7 @@
                     </a>
                 </div>
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'frota/atualizar' ?>">
+                    <a href="<?= URL_RAIZ . 'frota/editar' ?>">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png' ?>">
                         <p>Alterar Dados do Veículo</p>
                     </a>

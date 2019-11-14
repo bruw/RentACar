@@ -10,6 +10,8 @@ $rotas = [
         'GET' => '\Controlador\LoginControlador#destruir',
     ],
 
+
+
     '/locacoes/carros-disponiveis' => [
         'GET' => '\Controlador\LocacoesControlador#carrosDisponiveis',
     ],
@@ -54,6 +56,9 @@ $rotas = [
         'GET' => '\Controlador\UsuariosControlador#atualizar',
     ],
 
+
+
+
     '/frota' => [
         'POST' => '\Controlador\FrotaControlador#armazenar',
     ],
@@ -62,9 +67,17 @@ $rotas = [
         'GET' => '\Controlador\FrotaControlador#criar',
     ],
 
-    '/frota/atualizar' => [
-        'GET' => '\Controlador\FrotaControlador#atualizar',
+    '/frota/editar' => [
+        'GET' => '\Controlador\FrotaControlador#editar',
     ], 
+
+    '/frota/atualizar/?' => [
+        'PATCH' => '\Controlador\FrotaControlador#atualizar',
+    ],
+
+    '/frota/pesquisar' => [
+        'POST' => '\Controlador\FrotaControlador#pesquisar',
+    ],
 
     '/frota/enviar-oficina' => [
         'GET' => '\Controlador\FrotaControlador#enviarOficina',
@@ -73,6 +86,8 @@ $rotas = [
     '/frota/oficina' => [
         'GET' => '\Controlador\FrotaControlador#oficina',
     ],
+
+
 
     '/relatorios/relatorios' => [
         'GET' => '\Controlador\RelatoriosControlador#relatorios',

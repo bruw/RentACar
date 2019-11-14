@@ -64,7 +64,7 @@
                     </button>
                 </div>
                 <div class="col s12 m12 l6">
-                    <button class="waves-effect waves-light btn button-cancelar" type="submit">
+                    <button class="waves-effect waves-light btn button-cancelar">
                         <i class="material-icons left">cancel</i>Cancelar
                     </button>
                 </div>
