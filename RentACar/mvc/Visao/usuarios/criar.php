@@ -2,6 +2,12 @@
     <div class="container">
         <h1 class="font-edgeracer">Cadastro de Usuário</h1>
 
+        <?php if (!empty($mensagem)) : ?>
+            <div class="msg-flash balao-flash-sucesso">
+                <p><?= $mensagem ?></p>
+            </div>
+        <?php endif ?>
+
         <form action="<?= URL_RAIZ . 'usuarios' ?>" method="post">
             <h4>Dados pessoais</h4>
             <div class="row">
@@ -22,7 +28,7 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">mail</i>
-                    <input type="email" name="email" value="<?= $this->getPost('email') ?>" placeholder="larissai@gmail.com">
+                    <input type="text" name="email" value="<?= $this->getPost('email') ?>" placeholder="larissai@gmail.com">
                     <label for="icon_prefix">Email</label>
                     <?php $this->incluirVisao('util/formErro.php', ['campo' => 'email']) ?>
                 </div>

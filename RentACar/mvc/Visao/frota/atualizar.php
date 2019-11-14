@@ -1,6 +1,19 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Atualizar dados do Veículo</h1>
+        
+        <?php if (!empty($mensagem)) : ?>
+            <div class="msg-flash balao-flash-sucesso">
+                <p><?= $mensagem ?></p>
+            </div>
+        <?php endif ?>
+
+        <?php if (!empty($naoEncontrado)) : ?>
+            <div class="msg-flash balao-flash-erro">
+                <p><?= $naoEncontrado?></p>
+            </div>
+        <?php endif ?>
+
         <form action="<?= URL_RAIZ . 'frota/pesquisar' ?>" method="post">
             <div class="row">
                 <div class="input-field col s12 m6">

@@ -211,12 +211,13 @@
     </section>
 
     <script src=<?= URL_JS . "jquery-3.4.1.min.js" ?>></script>
-    <script src=<?= URL_JS . "materialize.min.js" ?>></script>
     <script src=<?= URL_JS . "jquery.mask.min.js" ?>></script>
+    <script src=<?= URL_JS . "materialize.min.js" ?>></script>
     <script src=<?= URL_JS . "inicializacao-bibliotecas.js" ?>></script>
     <script src=<?= URL_JS . "pesquisa-categoria.js" ?>></script>
     <script src=<?= URL_JS . "imagem-veiculo.js" ?>></script>
     <script src=<?= URL_JS . "relatorios.js" ?>></script>
+    <script src=<?= URL_JS . "mensagem-flash.js" ?>></script>
 
 </body>
 

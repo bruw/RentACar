@@ -9,12 +9,16 @@ class FrotaControlador extends Controlador
 {
     public function criar()
     {
-        $this->visao('frota/criar.php', [], 'principal.php');
+        $mensagem = DW3Sessao::getFlash('mensagem');
+        $this->visao('frota/criar.php', ['mensagem' => $mensagem], 'principal.php');
     }
 
     public function editar()
     {
-        $this->visao('frota/atualizar.php', [], 'principal.php');
+        $mensagem = DW3Sessao::getFlash('mensagem');
+        $naoEncontrado = DW3Sessao::getFlash('naoEncontrado');
+
+        $this->visao('frota/atualizar.php', ['mensagem' => $mensagem, 'naoEncontrado' => $naoEncontrado], 'principal.php');
     }
 
 
@@ -38,10 +42,13 @@ class FrotaControlador extends Controlador
 
         if ($veiculo->isValido()) {
             $veiculo->salvar();
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            DW3Sessao::setFlash('mensagem', 'Veículo atualizado com sucesso!');
+
+            $this->redirecionar(URL_RAIZ . 'frota/editar');
         } else {
             $this->setErros($veiculo->getValidacaoErros());
             $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
+
             $this->visao('frota/atualizar.php', ['veiculo' => $veiculo, 'categoria' => $categoria], 'principal.php');
         }
     }
@@ -50,9 +57,14 @@ class FrotaControlador extends Controlador
     {
         $chassi = $_POST['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
-        $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
 
-        $this->visao('frota/atualizar.php', ['veiculo' => $veiculo, 'categoria' => $categoria], 'principal.php');
+        if($veiculo->getChassi() == null){
+            DW3Sessao::setFlash('naoEncontrado', 'Este veículo não existe em nossa base de dados...');
+            $this->redirecionar(URL_RAIZ . 'frota/editar');
+        }else{
+            $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
+            $this->visao('frota/atualizar.php', ['veiculo' => $veiculo, 'categoria' => $categoria], 'principal.php');
+        }
     }
 
     public function enviarOficina()
@@ -85,7 +97,8 @@ class FrotaControlador extends Controlador
 
         if ($veiculo->isValido() && !Veiculo::chassiExiste($veiculo)) {
             $veiculo->salvar();
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            DW3Sessao::setFlash('mensagem', 'Veiculo cadastrado com sucesso!');
+            $this->redirecionar(URL_RAIZ . 'frota/criar');
         } else {
             $this->setErros($veiculo->getValidacaoErros());
             $this->visao('frota/criar.php', ['veiculo' => $veiculo], 'principal.php');

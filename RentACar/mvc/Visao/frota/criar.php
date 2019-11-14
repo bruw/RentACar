@@ -1,6 +1,13 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Cadastro de Veículo</h1>
+
+        <?php if (!empty($mensagem)) : ?>
+            <div class="msg-flash balaoFlash">
+                <p><?= $mensagem ?></p>
+            </div>
+        <?php endif ?>
+        
         <form action="<?= URL_RAIZ . 'frota'?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">

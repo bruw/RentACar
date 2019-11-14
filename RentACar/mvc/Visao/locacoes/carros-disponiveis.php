@@ -30,7 +30,7 @@
         </div>
     </div>
 </section>
-
+            
 <?php if (!empty($veiculo)) : ?>
     <section>
         <div class="container">

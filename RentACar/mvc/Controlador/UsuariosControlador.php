@@ -9,7 +9,8 @@ class UsuariosControlador extends Controlador
 {
     public function criar()
     {
-        $this->visao('usuarios/criar.php',[],'principal.php');
+        $mensagem = DW3Sessao::getFlash('mensagem');
+        $this->visao('usuarios/criar.php',['mensagem' => $mensagem],'principal.php');
     }
 
     public function atualizar()
@@ -48,7 +49,9 @@ class UsuariosControlador extends Controlador
 
         if($usuario->isValido() && !Usuario::cpfExiste($usuario)){
             $usuario->salvar();
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            DW3Sessao::setFlash('mensagem', 'Usuário cadastrado com sucesso!');
+
+            $this->redirecionar(URL_RAIZ . 'usuarios/criar');
         }else{
             $this->setErros($usuario->getValidacaoErros());
             $this->visao('usuarios/criar.php',[],'principal.php');

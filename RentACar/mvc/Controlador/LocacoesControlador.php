@@ -1,6 +1,7 @@
 <?php
 namespace Controlador;
 
+use Framework\DW3Sessao;
 use Modelo\Veiculo;
 
 class LocacoesControlador extends Controlador
@@ -8,6 +9,7 @@ class LocacoesControlador extends Controlador
     public function carrosDisponiveis()
     {
         $veiculo = Veiculo::buscarRegistroVeiculo(0001);
+
         $this->visao('locacoes/carros-disponiveis.php',['veiculo' => $veiculo],'principal.php');
     }
 

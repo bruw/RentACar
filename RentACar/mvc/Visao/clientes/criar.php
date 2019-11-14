@@ -1,7 +1,14 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Cadastro de Cliente</h1>
-        <form action="<?= URL_RAIZ . 'clientes'?>" method="post">
+
+        <?php if (!empty($mensagem)) : ?>
+            <div class="msg-flash balaoFlash">
+                <p><?= $mensagem ?></p>
+            </div>
+        <?php endif ?>
+
+        <form action="<?= URL_RAIZ . 'clientes' ?>" method="post">
             <div class="row">
                 <div class="input-field col s12 m12 l6">
                     <i class="material-icons prefix">person</i>

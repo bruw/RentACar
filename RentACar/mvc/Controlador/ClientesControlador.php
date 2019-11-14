@@ -10,12 +10,16 @@ class ClientesControlador extends Controlador
 
     public function criar()
     {
-        $this->visao('clientes/criar.php', [], 'principal.php');
+       $mensagem = DW3Sessao::getFlash('mensagem');
+       $this->visao('clientes/criar.php', ['mensagem' => $mensagem], 'principal.php');
     }
 
     public function editar()
     {
-        $this->visao('clientes/atualizar.php', [], 'principal.php');
+        $mensagem = DW3Sessao::getFlash('mensagem');
+        $naoEncontrado = DW3Sessao::getFlash('naoEncontrado');
+        $this->visao('clientes/atualizar.php', ['mensagem' => $mensagem, 'naoEncontrado' => $naoEncontrado],
+        'principal.php');
     }
 
     public function pesquisar()
@@ -23,7 +27,12 @@ class ClientesControlador extends Controlador
         $cpf = $_POST['cpf-busca'];
         $cliente = Cliente::buscarRegistroCliente(self::removerMascara($cpf));
 
-        $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
+        if($cliente->getCpf() == null){
+            DW3Sessao::setFlash('naoEncontrado', 'Cliente inexistente em nossa base de dados');
+            $this->redirecionar(URL_RAIZ . 'clientes/editar');
+        }else{
+            $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
+        }
     }
 
     public function armazenar()
@@ -49,10 +58,9 @@ class ClientesControlador extends Controlador
 
         if ($cliente->isValido() && !Cliente::cpfExiste($cliente)) {
             $cliente->salvar();
-            DW3Sessao::setFlash('mensagemFlash', 'Mensagem cadastrada.');
-
-           
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            DW3Sessao::setFlash('mensagem', 'Cliente cadastrado com sucesso!');
+            
+            $this->redirecionar('clientes/criar');
         } else {
             $this->setErros($cliente->getValidacaoErros());
             $this->visao('clientes/criar.php', [], 'principal.php');
@@ -85,7 +93,9 @@ class ClientesControlador extends Controlador
 
         if ($cliente->isValido()) {
             $cliente->salvar();
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            DW3Sessao::setFlash('mensagem', 'Cadastro Atualizado com sucesso!');
+            
+            $this->redirecionar(URL_RAIZ . 'clientes/editar');
         } else {
             $this->setErros($cliente->getValidacaoErros());
             $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
