@@ -55,7 +55,7 @@ class FrotaControlador extends Controlador
 
     public function pesquisar()
     {
-        $chassi = $_POST['chassi-busca'];
+        $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
 
         if($veiculo->getChassi() == null){

@@ -16,9 +16,22 @@ $rotas = [
         'GET' => '\Controlador\LocacoesControlador#carrosDisponiveis',
     ],
 
-    '/locacoes/devolucao' => [
-        'GET' => '\Controlador\LocacoesControlador#devolucao',
+    '/locacoes/criar/?' => [
+        'GET' => '\Controlador\LocacoesControlador#criar',
     ],
+
+    '/locacoes/pesquisar/?' => [
+        'GET' => '\Controlador\LocacoesControlador#pesquisar',
+    ],
+
+    '/locacoes/total/?/?' => [
+        'GET' => '\Controlador\LocacoesControlador#calcularTotal',
+    ],
+
+    '/locacoes' => [
+        'POST' => '\Controlador\LocacoesControlador#armazenar',
+    ],
+
 
 
 
@@ -35,7 +48,7 @@ $rotas = [
     ],
 
     '/clientes/pesquisar' => [
-        'POST' => '\Controlador\ClientesControlador#pesquisar',
+        'GET' => '\Controlador\ClientesControlador#pesquisar',
     ],
 
     '/clientes/atualizar/?' => [
@@ -51,12 +64,6 @@ $rotas = [
     '/usuarios/criar' => [
         'GET' => '\Controlador\UsuariosControlador#criar',
     ],
-
-    '/usuarios/atualizar' => [
-        'GET' => '\Controlador\UsuariosControlador#atualizar',
-    ],
-
-
 
 
     '/frota' => [
@@ -76,7 +83,7 @@ $rotas = [
     ],
 
     '/frota/pesquisar' => [
-        'POST' => '\Controlador\FrotaControlador#pesquisar',
+        'GET' => '\Controlador\FrotaControlador#pesquisar',
     ],
 
     '/frota/enviar-oficina' => [

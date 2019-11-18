@@ -3,6 +3,12 @@
     margin-bottom: 40px;
 }
 
+#total-locacao{
+    color: #228B22;
+    text-align: center;
+    font-size: 30px;
+}
+
 .balao-flash-sucesso{
     border: 1px solid #228B22;
     background-color: #a4ffa4;

@@ -145,14 +145,14 @@ class Usuario extends Modelo
     {
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
-        $comando->bindValue(1, $this->primeiroNome, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->sobrenome, PDO::PARAM_STR);
-        $comando->bindValue(3, $this->cpf, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->celular, PDO::PARAM_STR);
-        $comando->bindValue(5, $this->email, PDO::PARAM_STR);
-        $comando->bindValue(6, $this->cep, PDO::PARAM_STR);
-        $comando->bindValue(7, $this->numero, PDO::PARAM_STR);
-        $comando->bindValue(8, $this->senha, PDO::PARAM_STR);
+        $comando->bindValue(1, $this->primeiroNome);
+        $comando->bindValue(2, $this->sobrenome);
+        $comando->bindValue(3, $this->cpf);
+        $comando->bindValue(4, $this->celular);
+        $comando->bindValue(5, $this->email);
+        $comando->bindValue(6, $this->cep);
+        $comando->bindValue(7, $this->numero);
+        $comando->bindValue(8, $this->senha);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
@@ -161,7 +161,7 @@ class Usuario extends Modelo
     public static function buscarRegistroUsuario($cpf)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
-        $comando->bindValue(1, $cpf, PDO::PARAM_STR);
+        $comando->bindValue(1, $cpf);
         $comando->execute();
         $registro = $comando->fetch();
         $usuario = null;
@@ -188,7 +188,7 @@ class Usuario extends Modelo
     public static function buscarId($id)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
-        $comando->bindValue(1, $id, PDO::PARAM_INT);
+        $comando->bindValue(1, $id);
         $comando->execute();
         $registro = $comando->fetch();
        

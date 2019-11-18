@@ -30,7 +30,13 @@
         </div>
     </div>
 </section>
-            
+
+<?php if (!empty($sucesso)) : ?>
+    <div class="msg-flash balao-flash-sucesso">
+        <p><?= $sucesso ?></p>
+    </div>
+<?php endif ?>
+
 <?php if (!empty($veiculo)) : ?>
     <section>
         <div class="container">
@@ -47,6 +53,22 @@
                         </div>
                         <div class="card-action">
                             <p>Diária: R$<?= $veiculo->getPrecoDiaria() ?></p>
+                            <a href="<?= URL_RAIZ . 'locacoes/criar/' . $veiculo->getChassi() ?>">Alugar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= URL_IMG . $veiculo2->getImagem() ?>">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title"><?= ucfirst($veiculo2->getModelo()) ?></span>
+                            <p>Montadora: <?= ucfirst($veiculo2->getMontadora()) ?></p>
+                            <p>Categoria: <?= $veiculo2->nomeCategoria($veiculo2->getIdCategoria()) ?></p>
+                        </div>
+                        <div class="card-action">
+                            <p>Diária: R$<?= $veiculo2->getPrecoDiaria() ?></p>
                             <a href="nova-locacao.html">Alugar</a>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
             </div>
         <?php endif ?>
 
-        <form action="<?= URL_RAIZ . 'clientes/pesquisar' ?>" method="post">
+        <form action="<?= URL_RAIZ . 'clientes/pesquisar' ?>" method="get">
             <div class="row">
                 <div class="input-field col s12 m7">
                     <i class="material-icons prefix">person</i>

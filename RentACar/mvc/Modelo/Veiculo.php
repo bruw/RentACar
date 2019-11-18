@@ -137,13 +137,13 @@ class Veiculo extends Modelo
     {
         DW3BancoDeDados::getPdo()->beginTransaction();
         $comando = DW3BancoDeDados::prepare(self::INSERIR);
-        $comando->bindValue(1, $this->chassi, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->montadora, PDO::PARAM_STR);
-        $comando->bindValue(3, $this->modelo, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->idCategoria, PDO::PARAM_STR);
-        $comando->bindValue(5, $this->precoDiaria, PDO::PARAM_STR);
-        $comando->bindValue(6, $this->statusOficina, PDO::PARAM_STR);
-        $comando->bindValue(7, $this->statusLocacao, PDO::PARAM_STR);
+        $comando->bindValue(1, $this->chassi);
+        $comando->bindValue(2, $this->montadora);
+        $comando->bindValue(3, $this->modelo);
+        $comando->bindValue(4, $this->idCategoria);
+        $comando->bindValue(5, $this->precoDiaria);
+        $comando->bindValue(6, $this->statusOficina);
+        $comando->bindValue(7, $this->statusLocacao);
         $comando->execute();
         $this->id = DW3BancoDeDados::getPdo()->lastInsertId();
         DW3BancoDeDados::getPdo()->commit();
@@ -152,11 +152,11 @@ class Veiculo extends Modelo
     public function atualizar()
     {
         $comando = DW3BancoDeDados::prepare(self::ATUALIZAR);
-        $comando->bindValue(1, $this->montadora, PDO::PARAM_STR);
-        $comando->bindValue(2, $this->modelo, PDO::PARAM_STR);
-        $comando->bindValue(3, $this->idCategoria, PDO::PARAM_STR);
-        $comando->bindValue(4, $this->precoDiaria, PDO::PARAM_STR);
-        $comando->bindValue(5, $this->id, PDO::PARAM_INT);
+        $comando->bindValue(1, $this->montadora);
+        $comando->bindValue(2, $this->modelo);
+        $comando->bindValue(3, $this->idCategoria);
+        $comando->bindValue(4, $this->precoDiaria);
+        $comando->bindValue(5, $this->id);
         $comando->execute();
     }
 
@@ -180,7 +180,7 @@ class Veiculo extends Modelo
     public static function buscarId($id)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);
-        $comando->bindValue(1, $id, PDO::PARAM_INT);
+        $comando->bindValue(1, $id);
         $comando->execute();
         $registro = $comando->fetch();
 
@@ -220,7 +220,7 @@ class Veiculo extends Modelo
     public function nomeCategoria($idCategoria)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_NOME_CATEGORIA);
-        $comando->bindValue(1, $idCategoria, PDO::PARAM_INT);
+        $comando->bindValue(1, $idCategoria);
         $comando->execute();
         $registro = $comando->fetch();
 

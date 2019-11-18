@@ -4,7 +4,12 @@
         $('.sidenav').sidenav();
         $('.modal').modal();
         $('select').formSelect();
-        $('.datepicker').datepicker();
+      // $('.datepicker').datepicker();
+        $('.datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            minDate: new Date()
+           
+        });
 
         //máscaras
         $('.cep').mask('00000-000');

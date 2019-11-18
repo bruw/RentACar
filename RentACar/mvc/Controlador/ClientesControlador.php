@@ -24,7 +24,8 @@ class ClientesControlador extends Controlador
 
     public function pesquisar()
     {
-        $cpf = $_POST['cpf-busca'];
+        $cpf = $_GET['cpf-busca'];
+
         $cliente = Cliente::buscarRegistroCliente(self::removerMascara($cpf));
 
         if($cliente->getCpf() == null){

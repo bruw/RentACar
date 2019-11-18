@@ -156,12 +156,6 @@
                         <p>Adicionar Usuário</p>
                     </a>
                 </div>
-                <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'usuarios/atualizar' ?>">
-                        <img src="<?= URL_RAIZ . 'publico/img/servicos/atualizar-dados.png' ?>">
-                        <p>Atualizar Dados do Usuário</p>
-                    </a>
-                </div>
             </div>
         </div>
         <div class="modal-footer">

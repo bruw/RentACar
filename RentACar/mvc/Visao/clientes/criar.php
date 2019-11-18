@@ -3,7 +3,7 @@
         <h1 class="font-edgeracer">Cadastro de Cliente</h1>
 
         <?php if (!empty($mensagem)) : ?>
-            <div class="msg-flash balaoFlash">
+            <div class="msg-flash balao-flash-sucesso">
                 <p><?= $mensagem ?></p>
             </div>
         <?php endif ?>
