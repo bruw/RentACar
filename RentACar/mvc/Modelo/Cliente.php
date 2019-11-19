@@ -221,7 +221,7 @@ class Cliente extends Modelo
 
     protected function verificarErros()
     {
-        $patternPrimeiroNome = "/^([A-Z]|[a-z]){2,25}\s{0,1}$/";
+        $patternPrimeiroNome = "/^([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}\s{0,1}$/";
         $patternSobrenome = "/^(([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}(\s)?)+$/";
         $patternCpf = "/^[0-9]{11}$/";
         $patternCelular = "/^[0-9]{10,20}$/";

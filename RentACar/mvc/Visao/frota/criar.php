@@ -7,7 +7,7 @@
                 <p><?= $mensagem ?></p>
             </div>
         <?php endif ?>
-        
+
         <form action="<?= URL_RAIZ . 'frota'?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
@@ -35,13 +35,15 @@
                 <div class="row">
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">filter_list</i>
-                        <select name="categoria">
-                            <option value="1">Hatch</option>
-                            <option value="2">Sedãn</option>
-                            <option value="3">SUV</option>
-                            <option value="4">Pick-Ups</option>
+                        <select name="categoriaId">
+                            <option value="">Selecione uma Categoria</option>
+                            <?php foreach ($categorias as $categoria) : ?>
+                                <?php $selected = $this->getPost('categoriaId') == $categoria->getId() ? 'selected' : ''?>
+                                <option value="<?=$categoria->getId()?>" <?=$selected ?>><?=$categoria->getNome()?></option>
+                            <?php endforeach?>
                         </select>
                         <label>Categoria</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'selecioneCategoria']) ?>
                     </div>
                     <div class="input-field col s12 m6">
                         <i class="material-icons prefix">monetization_on</i>

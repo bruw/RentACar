@@ -10,15 +10,16 @@ class ClientesControlador extends Controlador
 
     public function criar()
     {
-       $mensagem = DW3Sessao::getFlash('mensagem');
-       $this->visao('clientes/criar.php', ['mensagem' => $mensagem], 'principal.php');
+       $this->visao('clientes/criar.php', 
+       ['mensagem' => DW3Sessao::getFlash('mensagem')], 
+       'principal.php');
     }
 
     public function editar()
     {
-        $mensagem = DW3Sessao::getFlash('mensagem');
-        $naoEncontrado = DW3Sessao::getFlash('naoEncontrado');
-        $this->visao('clientes/atualizar.php', ['mensagem' => $mensagem, 'naoEncontrado' => $naoEncontrado],
+        $this->visao('clientes/atualizar.php', 
+        ['mensagem' => DW3Sessao::getFlash('mensagem'), 
+        'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')],
         'principal.php');
     }
 

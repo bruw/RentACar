@@ -29,6 +29,7 @@
             </div>
         <?php endif ?>
 
+
         <?php if (!empty($veiculo)) : ?>
             <form action="<?= URL_RAIZ . 'frota/atualizar/' . $veiculo->getId() ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
@@ -49,27 +50,17 @@
 
                 <div class="row">
                     <div class="input-field col s12 m6">
-                        <i class="material-icons prefix">directions_car</i>
-                        <input type="text" disabled value="<?= $categoria ?>">
-                        <label>Categoria Atual</label>
-                    </div>
-
-                    <div class="input-field col s12 m6">
                         <i class="material-icons prefix">filter_list</i>
-                        <select name="categoria">
-                            <option value="" disabled selected>Selecionar Categoria</option>
-                            <option value="1">Hatch</option>
-                            <option value="2">Sedãn</option>
-                            <option value="3">SUV</option>
-                            <option value="4">Pick-Ups</option>
+                        <select name="categoriaId">
+                            <?php foreach ($categorias as $categoria) : ?>
+                                <?php $selected = $veiculo->getIdCategoria() == $categoria->getId() ? 'selected' : '' ?>
+                                <option value="<?= $categoria->getId() ?>" <?= $selected ?>><?= $categoria->getNome() ?></option>
+                            <?php endforeach ?>
                         </select>
-                        <label>Mudar Categoria</label>
+                        <label>Categoria</label>
+                        <?php $this->incluirVisao('util/formErro.php', ['campo' => 'selecioneCategoria']) ?>
                     </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s12">
+                    <div class="input-field col s12 m6">
                         <i class="material-icons prefix">monetization_on</i>
                         <input type="text" name="precoDiaria" value="<?= $veiculo->getPrecoDiaria() ?>" placeholder="95,00">
                         <label for="icon_prefix">Preço Diária</label>

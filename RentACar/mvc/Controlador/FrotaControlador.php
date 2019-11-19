@@ -4,21 +4,32 @@ namespace Controlador;
 
 use \Framework\DW3Sessao;
 use \Modelo\Veiculo;
+use \Modelo\Categoria;
 
 class FrotaControlador extends Controlador
 {
     public function criar()
     {
-        $mensagem = DW3Sessao::getFlash('mensagem');
-        $this->visao('frota/criar.php', ['mensagem' => $mensagem], 'principal.php');
+        $this->visao(
+            'frota/criar.php',
+            [
+                'mensagem' => DW3Sessao::getFlash('mensagem'),
+                'categorias' => Categoria::buscarTodos()
+            ],
+            'principal.php'
+        );
     }
 
     public function editar()
     {
-        $mensagem = DW3Sessao::getFlash('mensagem');
-        $naoEncontrado = DW3Sessao::getFlash('naoEncontrado');
-
-        $this->visao('frota/atualizar.php', ['mensagem' => $mensagem, 'naoEncontrado' => $naoEncontrado], 'principal.php');
+        $this->visao(
+            'frota/atualizar.php',
+            [
+                'mensagem' => DW3Sessao::getFlash('mensagem'),
+                'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')
+            ],
+            'principal.php'
+        );
     }
 
 
@@ -26,16 +37,10 @@ class FrotaControlador extends Controlador
     {
         $veiculo = Veiculo::buscarId($id);
 
-        if (empty($_POST['categoria'])) {
-            $registroDoVeiculo = $veiculo->buscarRegistroVeiculo($veiculo->getChassi());
-            $veiculo->setIdCategoria($registroDoVeiculo->getIdCategoria());
-        } else {
-            $veiculo->setIdCategoria($_POST['categoria']);
-        }
-
         $veiculo->setMontadora($_POST['montadora']);
         $veiculo->setModelo($_POST['modelo']);
         $veiculo->setPrecoDiaria($_POST['precoDiaria']);
+        $veiculo->setIdCategoria($_POST['categoriaId']);
 
         $veiculo->setMontadora(mb_strtolower($veiculo->getMontadora(), 'UTF-8'));
         $veiculo->setModelo(mb_strtolower($veiculo->getModelo(), 'UTF-8'));
@@ -49,7 +54,14 @@ class FrotaControlador extends Controlador
             $this->setErros($veiculo->getValidacaoErros());
             $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
 
-            $this->visao('frota/atualizar.php', ['veiculo' => $veiculo, 'categoria' => $categoria], 'principal.php');
+            $this->visao(
+                'frota/atualizar.php',
+                [
+                    'veiculo' => $veiculo,
+                    'categoria' => $categoria
+                ],
+                'principal.php'
+            );
         }
     }
 
@@ -58,12 +70,16 @@ class FrotaControlador extends Controlador
         $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
 
-        if($veiculo->getChassi() == null){
+        if ($veiculo->getChassi() == null) {
             DW3Sessao::setFlash('naoEncontrado', 'Este veículo não existe em nossa base de dados...');
             $this->redirecionar(URL_RAIZ . 'frota/editar');
-        }else{
+        } else {
             $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
-            $this->visao('frota/atualizar.php', ['veiculo' => $veiculo, 'categoria' => $categoria], 'principal.php');
+            $this->visao('frota/atualizar.php', 
+            ['veiculo' => $veiculo, 
+            'categoria' => $categoria, 
+            'categorias' => Categoria::buscarTodos()],
+            'principal.php');
         }
     }
 
@@ -85,7 +101,7 @@ class FrotaControlador extends Controlador
             $_POST['chassi'],
             $_POST['montadora'],
             $_POST['modelo'],
-            $_POST['categoria'],
+            $_POST['categoriaId'],
             $_POST['preco'],
             $foto
         );
@@ -101,7 +117,15 @@ class FrotaControlador extends Controlador
             $this->redirecionar(URL_RAIZ . 'frota/criar');
         } else {
             $this->setErros($veiculo->getValidacaoErros());
-            $this->visao('frota/criar.php', ['veiculo' => $veiculo], 'principal.php');
+
+            $this->visao(
+                'frota/criar.php',
+                [
+                    'categoriaId' => $_POST['categoriaId'],
+                    'categorias' => Categoria::buscarTodos()
+                ],
+                'principal.php'
+            );
         }
     }
 

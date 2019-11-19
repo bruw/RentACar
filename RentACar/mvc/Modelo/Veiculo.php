@@ -244,29 +244,31 @@ class Veiculo extends Modelo
         $patternChassi = "/^([0-9]|[a-z]){4,17}$/";
         $patternMontadora = "/^(([0-9]|[a-z]){2,10}\s{0,1}){1,5}$/";
         $patternModelo = "/^(([0-9]|[a-z]){1,10}\s{0,1}){1,3}$/";
-        $patternPrecoDiaria = "/^[1-9]{1}([0-9]{1,2})?\.([0-9]{1,3})?$/";
+        $patternPrecoDiaria = "/^[1-9]{1}\d{1,4}$/";
 
         if (preg_match($patternChassi, $this->chassi) == false) {
             $this->setErroMensagem('chassi', 'Chassi não pode ser vazio. Deve conter no mínimo 4 
             e no máximo 17 carácter.');
         }
 
-
         if (preg_match($patternMontadora, $this->montadora) == false) {
             $this->setErroMensagem('montadora', 'Não pode ser vazio. Deve conter no mínimo 2
             e no máximo 60 carácter.');
         }
 
-
         if (preg_match($patternModelo, $this->modelo) == false) {
-            $this->setErroMensagem('modelo', 'Não pode ser vazio. Deve conter no mínimo 32
+            $this->setErroMensagem('modelo', 'Não pode ser vazio. Deve conter no mínimo 2
             e no máximo 25 carácter.');
         }
 
-
         if (preg_match($patternPrecoDiaria, $this->precoDiaria) == false) {
-            $this->setErroMensagem('precoDiaria', 'Valor mínimo R$1 e máximo R$999.999.
-            Usar "."(ponto) para valores fracionado e não ","(vírgula).');
+            $this->setErroMensagem('precoDiaria', 'Valor mínimo R$10 e máximo R$99999. Não usar 
+            "." ponto ou "," virgula...');
         }
+
+        if ($this->idCategoria == null) {
+            $this->setErroMensagem('selecioneCategoria', 'Categoria não pode ser vazio...');
+        }
+
     }
 }
