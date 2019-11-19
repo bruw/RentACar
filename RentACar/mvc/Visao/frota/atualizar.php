@@ -1,18 +1,6 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Atualizar dados do Veículo</h1>
-        
-        <?php if (!empty($mensagem)) : ?>
-            <div class="msg-flash balao-flash-sucesso">
-                <p><?= $mensagem ?></p>
-            </div>
-        <?php endif ?>
-
-        <?php if (!empty($naoEncontrado)) : ?>
-            <div class="msg-flash balao-flash-erro">
-                <p><?= $naoEncontrado?></p>
-            </div>
-        <?php endif ?>
 
         <form action="<?= URL_RAIZ . 'frota/pesquisar' ?>" method="get">
             <div class="row">
@@ -28,6 +16,18 @@
                 </div>
             </div>
         </form>
+
+        <?php if (!empty($mensagem)) : ?>
+            <div class="msg-flash balao-flash-sucesso">
+                <p><?= $mensagem ?></p>
+            </div>
+        <?php endif ?>
+
+        <?php if (!empty($naoEncontrado)) : ?>
+            <div class="msg-flash balao-flash-erro">
+                <p><?= $naoEncontrado ?></p>
+            </div>
+        <?php endif ?>
 
         <?php if (!empty($veiculo)) : ?>
             <form action="<?= URL_RAIZ . 'frota/atualizar/' . $veiculo->getId() ?>" method="post">

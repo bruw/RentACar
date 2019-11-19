@@ -39,7 +39,7 @@
                                     <div class="row">
                                         <div class="input-field col s12 m6">
                                             <i class="material-icons prefix">date_range</i>
-                                            <label for="icon_prefix">Data Atual: <?= date('d-m-Y') ?></label>
+                                            <label class="black-text" for="icon_prefix">Data Atual: <?= date('d-m-Y') ?></label>
                                         </div>
                                         <div class="input-field col s12 m6">
                                             <i class="material-icons prefix">date_range</i>
@@ -50,7 +50,7 @@
                                         </div>
                                         <div class="input-field col s12 m6">
                                             <i class="material-icons prefix">attach_money</i>
-                                            <label for="icon_prefix"> Diária do Veículo:R$ <?= $veiculo->getPrecoDiaria() ?></label><br>
+                                            <label class="black-text" for="icon_prefix"> Diária do Veículo:R$ <?= $veiculo->getPrecoDiaria() ?></label><br>
                                         </div>
                                     </div>
                                     <div class="row">

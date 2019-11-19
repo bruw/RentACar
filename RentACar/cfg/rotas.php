@@ -16,12 +16,25 @@ $rotas = [
         'GET' => '\Controlador\LocacoesControlador#carrosDisponiveis',
     ],
 
+    '/locacoes/devolucao' => [
+        'GET' => '\Controlador\LocacoesControlador#devolucao',
+    ],
+
     '/locacoes/criar/?' => [
         'GET' => '\Controlador\LocacoesControlador#criar',
     ],
 
+    '/locacoes/devolucao/?' => [
+        'PATCH' => '\Controlador\LocacoesControlador#atualizarLocacao',
+    ],
+
+
     '/locacoes/pesquisar/?' => [
         'GET' => '\Controlador\LocacoesControlador#pesquisar',
+    ],
+
+    '/locacoes/pesquisar-cliente' => [
+        'GET' => '\Controlador\LocacoesControlador#pesquisarCliente',
     ],
 
     '/locacoes/total/?/?' => [
