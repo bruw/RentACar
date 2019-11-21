@@ -9,7 +9,7 @@ class Locacao extends Modelo
 {
     const INSERIR = 'INSERT INTO locacoes(data_locacao, data_prevista_entrega, total, 
     id_veiculo, id_cliente, status_locacao, data_devolucao, multa_atraso) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    const BUSCAR_ID = 'SELECT id FROM locacoes WHERE (id_cliente = ? AND status_locacao = 0)';
+    const BUSCAR_ID = 'SELECT id FROM locacoes WHERE (id_cliente = ? AND status_locacao = 1)';
     const BUSCAR_REGISTRO = 'SELECT id, data_locacao, data_prevista_entrega, data_devolucao, multa_atraso,
     total, status_locacao, id_veiculo, id_cliente FROM locacoes WHERE id = ?';
     const ATUALIZAR = 'UPDATE locacoes SET data_devolucao = ?, multa_atraso = ?, total = ?, status_locacao = ? WHERE id = ?';

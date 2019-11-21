@@ -10,13 +10,17 @@ class ClientesControlador extends Controlador
 
     public function criar()
     {
-       $this->visao('clientes/criar.php', 
-       ['mensagem' => DW3Sessao::getFlash('mensagem')], 
+        $this->verificarLogado();
+
+        $this->visao('clientes/criar.php', 
+        ['mensagem' => DW3Sessao::getFlash('mensagem')], 
        'principal.php');
     }
 
     public function editar()
     {
+        $this->verificarLogado();
+
         $this->visao('clientes/atualizar.php', 
         ['mensagem' => DW3Sessao::getFlash('mensagem'), 
         'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')],
@@ -25,6 +29,7 @@ class ClientesControlador extends Controlador
 
     public function pesquisar()
     {
+        $this->verificarLogado();
         $cpf = $_GET['cpf-busca'];
 
         $cliente = Cliente::buscarRegistroCliente(self::removerMascara($cpf));
@@ -39,6 +44,7 @@ class ClientesControlador extends Controlador
 
     public function armazenar()
     {
+        $this->verificarLogado();
         $cliente = new Cliente(
             $_POST['primeiroNome'],
             $_POST['sobrenome'],
@@ -56,7 +62,6 @@ class ClientesControlador extends Controlador
         $cliente->setCpf($cliente->removerMascara($cliente->getCpf()));
         $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
         $cliente->setCep($cliente->removerMascara($cliente->getCep()));
-        
 
         if ($cliente->isValido() && !Cliente::cpfExiste($cliente)) {
             $cliente->salvar();
@@ -71,6 +76,7 @@ class ClientesControlador extends Controlador
 
     public function atualizar($id)
     {
+        $this->verificarLogado();
         $cliente = Cliente::buscarId($id);
 
         $registroCliente = $cliente->buscarRegistroCliente($cliente->getCpf());

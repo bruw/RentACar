@@ -10,16 +10,16 @@ use Modelo\Locacao;
 
 class LocacoesControlador extends Controlador
 {
-    public function carrosDisponiveis()
+    public function index()
     {
-        $veiculo = Veiculo::buscarRegistroVeiculo(0001);
-        $veiculo2 = Veiculo::buscarRegistroVeiculo(0002);
+        $this->verificarLogado();
+
+        $veiculos = Veiculo::buscarTodos();
 
         $this->visao(
-            'locacoes/carros-disponiveis.php',
+            'locacoes/index.php',
             [
-                'veiculo' => $veiculo,
-                'veiculo2' => $veiculo2,
+                'veiculos' => $veiculos,
                 'sucesso' => DW3Sessao::getFlash('locacaoSucesso')
             ],
             'principal.php'
@@ -28,6 +28,8 @@ class LocacoesControlador extends Controlador
 
     public function devolucao()
     {
+        $this->verificarLogado();
+
         $this->visao(
             'locacoes/devolucao.php',
             ['devolucaoSucesso' => DW3Sessao::getFlash('devolucaoSucesso')],
@@ -38,12 +40,16 @@ class LocacoesControlador extends Controlador
 
     public function criar($chassi)
     {
+        $this->verificarLogado();
+
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
         $this->visao('locacoes/criar.php', ['veiculo' => $veiculo], 'principal.php');
     }
 
-    public function pesquisar($chassi)
+    public function clienteExiste($chassi)
     {
+        $this->verificarLogado();
+
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
 
         $cpf = $_GET['cpf-busca'];
@@ -73,88 +79,10 @@ class LocacoesControlador extends Controlador
         }
     }
 
-    public function armazenar()
+    public function existeLocacaoCliente()
     {
-        $dataAtual = date('Y-m-d');
-        $dataPrevistaEntrega = date_format(date_create($_POST['dataPrevistaEntrega']), 'Y-m-d');
+        $this->verificarLogado();
 
-        $total = $_POST['total'];
-        $idVeiculo = $_POST['veiculo'];
-        $idCliente = $_POST['cliente'];
-
-        $locacao = new Locacao(
-            $dataAtual,
-            $dataPrevistaEntrega,
-            $total,
-            $idVeiculo,
-            $idCliente
-        );
-
-        if ($locacao->isValido() && (floatval($total) != null)) {
-            $locacao->salvar();
-
-            DW3Sessao::setFlash('locacaoSucesso', 'Locação realizada com Sucesso!');
-
-            $this->redirecionar('locacoes/carros-disponiveis');
-        } else {
-            $veiculo = Veiculo::buscarId($_POST['veiculo']);
-            $veiculo = Veiculo::buscarRegistroVeiculo($veiculo->getChassi());
-
-            $cliente = Cliente::buscarId($_POST['cliente']);
-            $cliente = Cliente::buscarRegistroCliente($cliente->getCpf());
-
-            $totalNulo = 'Nenhuma data para devolução foi selecioanda....';
-
-            $this->setErros($locacao->getValidacaoErros());
-            $this->visao(
-                'locacoes/criar.php',
-                [
-                    'veiculo' => $veiculo,
-                    'cliente' => $cliente,
-                    'totalNulo' => $totalNulo
-                ],
-                'principal.php'
-            );
-        }
-    }
-
-    public function calcularTotal($chassi, $cpfCliente)
-    {
-        $cliente = Cliente::buscarRegistroCliente($cpfCliente);
-        $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
-        $diaria = $veiculo->getPrecoDiaria();
-        $dataAtual = date('Y-m-d');
-        $dataAtual = date('Y-m-d', strtotime('-1 day', strtotime($dataAtual)));
-        $dataPrevistaEntrega = date_format(date_create($_GET['dataPrevistaEntrega']), 'Y-m-d');
-
-        if (strtotime($dataPrevistaEntrega) >= strtotime($dataAtual)) {
-            $totalSegundos = strtotime($dataPrevistaEntrega) - strtotime($dataAtual);
-            $totalDias = (int) ceil($totalSegundos / (60 * 60 * 24));
-            $valorTotal = $totalDias * $diaria;
-
-            $this->visao(
-                'locacoes/criar.php',
-                [
-                    'veiculo' => $veiculo,
-                    'cliente' => $cliente,
-                    'valorTotal' => $valorTotal
-                ],
-                'principal.php'
-            );
-        } else {
-            $this->visao(
-                'locacoes/criar.php',
-                [
-                    'veiculo' => $veiculo,
-                    'cliente' => $cliente
-                ],
-                'principal.php'
-            );
-        }
-    }
-
-    public function pesquisarCliente()
-    {
         $cpf = self::removerMascara($_GET['cpf-busca']);
         $cliente = Cliente::buscarRegistroCliente($cpf);
         $idLocacao = Locacao::buscarId($cliente->getId());
@@ -186,9 +114,103 @@ class LocacoesControlador extends Controlador
             );
         } else {
             $naoEncontrado = "Não existe locações abertas vinculadas a este cpf...";
-            $this->visao('locacoes/devolucao.php', ['naoEncontrado' => $naoEncontrado], 'principal.php');
+            $this->visao(
+                'locacoes/devolucao.php',
+                ['naoEncontrado' => $naoEncontrado],
+                'principal.php'
+            );
         }
     }
+    
+
+    public function armazenar()
+    {
+        $this->verificarLogado();
+
+        $dataAtual = date('Y-m-d');
+        $dataPrevistaEntrega = date_format(date_create($_POST['dataPrevistaEntrega']), 'Y-m-d');
+
+        $total = $_POST['total'];
+        $idVeiculo = $_POST['veiculo'];
+        $idCliente = $_POST['cliente'];
+        $statusLocacao = 1;
+        $veiculo = Veiculo::buscarId($_POST['veiculo']);
+        $veiculo = Veiculo::buscarRegistroVeiculo($veiculo->getChassi());
+        $veiculo->setStatusLocacao($statusLocacao);
+
+        $locacao = new Locacao(
+            $dataAtual,
+            $dataPrevistaEntrega,
+            $total,
+            $idVeiculo,
+            $idCliente,
+            $statusLocacao
+        );
+
+        if ($locacao->isValido() && (floatval($total) != null)) {
+            $locacao->salvar();
+            $veiculo->salvar();
+
+            DW3Sessao::setFlash('locacaoSucesso', 'Locação realizada com Sucesso!');
+
+            $this->redirecionar('locacoes');
+        } else {
+            $cliente = Cliente::buscarId($_POST['cliente']);
+            $cliente = Cliente::buscarRegistroCliente($cliente->getCpf());
+
+            $totalNulo = 'Nenhuma data para devolução foi selecioanda....';
+
+            $this->setErros($locacao->getValidacaoErros());
+            $this->visao(
+                'locacoes/criar.php',
+                [
+                    'veiculo' => $veiculo,
+                    'cliente' => $cliente,
+                    'totalNulo' => $totalNulo
+                ],
+                'principal.php'
+            );
+        }
+    }
+
+    public function calcularTotal()
+    {
+        $this->verificarLogado();
+
+        $cliente = Cliente::buscarRegistroCliente($_GET['cliente-cpf']);
+        $veiculo = Veiculo::buscarRegistroVeiculo($_GET['veiculo-chassi']);
+        $diaria = $veiculo->getPrecoDiaria();
+        $dataAtual = date('Y-m-d');
+        $dataAtual = date('Y-m-d', strtotime('-1 day', strtotime($dataAtual)));
+        $dataPrevistaEntrega = date_format(date_create($_GET['dataPrevistaEntrega']), 'Y-m-d');
+
+        if (strtotime($dataPrevistaEntrega) >= strtotime($dataAtual)) {
+            $totalSegundos = strtotime($dataPrevistaEntrega) - strtotime($dataAtual);
+            $totalDias = (int) ceil($totalSegundos / (60 * 60 * 24));
+            $valorTotal = $totalDias * $diaria;
+
+            $this->visao(
+                'locacoes/criar.php',
+                [
+                    'veiculo' => $veiculo,
+                    'cliente' => $cliente,
+                    'valorTotal' => $valorTotal
+                ],
+                'principal.php'
+            );
+        } else {
+            $this->visao(
+                'locacoes/criar.php',
+                [
+                    'veiculo' => $veiculo,
+                    'cliente' => $cliente
+                ],
+                'principal.php'
+            );
+        }
+    }
+
+    
 
     public static function calcularMultaAtraso($locacao, $veiculo)
     {
@@ -210,8 +232,10 @@ class LocacoesControlador extends Controlador
         }
     }
 
-    public function atualizarLocacao($id)
+    public function editar($id)
     {
+        $this->verificarLogado();
+
         $locacao = Locacao::buscarRegistro($id);
         $chassiVeiculo = Veiculo::buscarId($locacao->getIdVeiculo());
         $veiculo = Veiculo::buscarRegistroVeiculo($chassiVeiculo->getChassi());
@@ -219,14 +243,16 @@ class LocacoesControlador extends Controlador
         $dataDevolucao = date('Y-m-d');
         $multaAtraso = self::calcularMultaAtraso($locacao, $veiculo);
         $total = $locacao->getTotal() + $multaAtraso;
-        $statusLocacao = 1;
+        $statusLocacao = 0;
 
         $locacao->setDataDevolucao($dataDevolucao);
         $locacao->setMultaAtraso($multaAtraso);
         $locacao->setTotal($total);
         $locacao->setStatusLocacao($statusLocacao);
+        $veiculo->setStatusLocacao($statusLocacao);
 
         $locacao->salvar();
+        $veiculo->salvar();
 
         DW3Sessao::setFlash('devolucaoSucesso', 'Devolução realizada com sucesso!');
         $this->redirecionar(URL_RAIZ . 'locacoes/devolucao');

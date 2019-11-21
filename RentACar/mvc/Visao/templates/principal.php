@@ -104,7 +104,7 @@
             <h4>Gerenciar locações</h4>
             <div class="row">
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'locacoes/carros-disponiveis' ?>">
+                    <a href="<?= URL_RAIZ . 'locacoes' ?>">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/locacao.png' ?>">
                         <p>Veículos disponíveis</p>
                     </a>
@@ -180,15 +180,15 @@
                     </a>
                 </div>
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'frota/enviar-oficina' ?>">
+                    <a href="<?= URL_RAIZ . 'oficina/enviar-oficina' ?>">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/enviar-oficina.png' ?>">
                         <p>Enviar Veículo para oficina</p>
                     </a>
                 </div>
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'frota/oficina' ?>">
+                    <a href="<?= URL_RAIZ . 'oficina' ?>">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/retornar-oficina.png' ?>">
-                        <p>Retornar Veículo da Oficina</p>
+                        <p>Oficina</p>
                     </a>
                 </div>
             </div>

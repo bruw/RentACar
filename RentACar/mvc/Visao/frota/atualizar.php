@@ -69,20 +69,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s12 m12 l6">
+                    <div class="col s12">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar Alterações
                         </button>
                     </div>
-                    <div class="col s12 m12 l6">
-                        <button class="waves-effect waves-light btn button-cancelar" type="submit">
-                            <i class="material-icons left">cancel</i>Cancelar
-                        </button>
-                    </div>
-
                 </div>
+            </form>
+        <?php endif ?>
     </div>
-    </form>
-<?php endif ?>
-</div>
 </section>

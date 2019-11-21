@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="input-field col s12 m7">
                     <i class="material-icons prefix">person</i>
-                    <input id="input-cpf" class="cpf" name="cpf-busca" type="text" value="<?= $this->getPost('cpf-busca') ?>" placeholder="000.000.000-00">
+                    <input id="input-cpf" class="cpf" name="cpf-busca" type="text" value="<?= $this->getGet('cpf-busca') ?>" placeholder="000.000.000-00">
                     <label for="icon_prefix">CPF</label>
                 </div>
                 <div class="col s12 m5">
@@ -78,14 +78,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s12 m12 l6">
+                    <div class="col s12">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar mudanças
-                        </button>
-                    </div>
-                    <div class="col s12 m12 l6">
-                        <button class="waves-effect waves-light btn button-cancelar">
-                            <i class="material-icons left">cancel</i>Cancelar
                         </button>
                     </div>
                 </div>

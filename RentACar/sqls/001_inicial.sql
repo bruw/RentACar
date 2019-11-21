@@ -38,13 +38,13 @@ CREATE TABLE categorias (
 
 CREATE TABLE veiculos(
 	id INT NOT NULL AUTO_INCREMENT,
-    chassi CHAR(17) NOT NULL,
+    chassi VARCHAR(17) NOT NULL,
     montadora VARCHAR(60) NOT NULL,
     modelo VARCHAR(30) NOT NULL,
     id_categoria INT NOT NULL,
     preco_diaria DOUBLE NOT NULL,
-    status_oficina  BOOLEAN NOT NULL DEFAULT 0,
-    status_locacao BOOLEAN NOT NULL DEFAULT 0,
+    status_oficina  TINYINT NOT NULL NOT NULL DEFAULT 0,
+    status_locacao  TINYINT NOT NULL NOT NULL DEFAULT 0,
 
     PRIMARY KEY(id),
     FOREIGN KEY(id_categoria) REFERENCES categorias (id)
@@ -58,7 +58,7 @@ CREATE TABLE locacoes(
     data_devolucao DATE DEFAULT NULL,
     multa_atraso DOUBLE DEFAULT NULL,
     total DOUBLE NOT NULL,
-    status_locacao CHAR(1) NOT NULL,
+    status_locacao TINYINT NOT NULL DEFAULT 0,
     id_veiculo INT NOT NULL,
     id_cliente INT NOT NULL,
 
@@ -70,17 +70,14 @@ CREATE TABLE locacoes(
 
 CREATE TABLE reparos(
 	id INT NOT NULL AUTO_INCREMENT,
-   	data_inicio DATE NOT NULL,
-    data_fim DATE DEFAULT NULL,
-    descricao_problema TEXT NOT NULL,
-    total DOUBLE DEFAULT NULL,
-    status_reparo CHAR(1) NOT NULL,
     id_veiculo INT NOT NULL,
-
-
+    data_entrada DATE NOT NULL,
+    data_saida DATE DEFAULT NULL,
+    total FLOAT DEFAULT NULL,
+    status_reparo TINYINT NOT NULL DEFAULT 0,
+    
     PRIMARY KEY(id),
     FOREIGN KEY(id_veiculo) REFERENCES veiculos (id)
-
 );
 
 

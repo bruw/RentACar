@@ -1,7 +1,7 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Devolução de Veículo</h1>
-        <form action="<?= URL_RAIZ . 'locacoes/pesquisar-cliente' ?>" method="get">
+        <form action="<?= URL_RAIZ . 'locacoes/existe-locacao-cliente' ?>" method="get">
             <div class="row">
                 <div class="input-field col s12 m8">
                     <i class="material-icons prefix">assignment</i>
@@ -99,7 +99,7 @@
                 </div>
             </div>
 
-            <form action="<?= URL_RAIZ . 'locacoes/devolucao/' . $locacao->getId() ?>" method="post">
+            <form action="<?= URL_RAIZ . 'locacoes/'. $locacao->getId() . '/editar' ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
                 <div class="row">
                     <button class="waves-effect waves-light btn right button-confirmar" type="submit">

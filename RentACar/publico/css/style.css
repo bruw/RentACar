@@ -95,6 +95,11 @@
     font-size: 20px;
 }
 
+.veiculo-alugado{
+-webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
 #div-problema-veiculo {
     margin-top: 30px;
 }
@@ -191,6 +196,11 @@ label span {
 
 .pagination li.active {
     background-color: #228B22;
+}
+
+.img-veiculos {
+    width: 100%;
+    height: 270px;
 }
 
 #div-imagens-veiculo>img {

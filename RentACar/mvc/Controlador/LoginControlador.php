@@ -4,7 +4,6 @@ namespace Controlador;
 
 use \Modelo\Usuario;
 use \Framework\DW3Sessao;
-use Modelo\Veiculo;
 
 class LoginControlador extends Controlador
 {
@@ -30,7 +29,7 @@ class LoginControlador extends Controlador
         if(empty(DW3Sessao::get('usuario'))){
             $this->visao('inicial/index.php',[],'index.php');
         }else{
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            $this->redirecionar(URL_RAIZ . 'locacoes');
         }
            
     }
@@ -41,8 +40,7 @@ class LoginControlador extends Controlador
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario->getId());
-            DW3Sessao::setFlash('mensagemFlash', 'Ok.');
-            $this->redirecionar(URL_RAIZ . 'locacoes/carros-disponiveis');
+            $this->redirecionar(URL_RAIZ . 'locacoes');
         } else {
             $this->setErros(['login' => 'CPF ou Senha Inválida']);
             $this->visao('inicial/index.php');

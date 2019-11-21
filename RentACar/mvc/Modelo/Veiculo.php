@@ -10,10 +10,13 @@ class Veiculo extends Modelo
 {
     const INSERIR = 'INSERT INTO veiculos(chassi, montadora, modelo, id_categoria, preco_diaria,
     status_oficina, status_locacao) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    const ATUALIZAR = 'UPDATE veiculos SET montadora = ?, modelo = ?, id_categoria = ?, preco_diaria = ? WHERE id = ?';
+    const ATUALIZAR = 'UPDATE veiculos SET montadora = ?, modelo = ?, id_categoria = ?, 
+    preco_diaria = ?, status_oficina = ?, status_locacao = ? WHERE id = ?';
     const BUSCAR_NOME_CATEGORIA = 'SELECT nome from categorias where categorias.id = ?';
     const BUSCAR_ID = 'SELECT id, chassi FROM veiculos WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM veiculos WHERE chassi= ?';
+    const BUSCAR_TODOS = 'SELECT * FROM veiculos WHERE status_oficina = 0 ORDER BY status_locacao';
+    const OFICINA = 'SELECT * FROM veiculos WHERE status_oficina = 1 ORDER BY id';
 
     private $chassi;
     private $montadora;
@@ -156,13 +159,16 @@ class Veiculo extends Modelo
         $comando->bindValue(2, $this->modelo);
         $comando->bindValue(3, $this->idCategoria);
         $comando->bindValue(4, $this->precoDiaria);
-        $comando->bindValue(5, $this->id);
+        $comando->bindValue(5, $this->statusOficina);
+        $comando->bindValue(6, $this->statusLocacao);
+        $comando->bindValue(7, $this->id);
         $comando->execute();
     }
 
     public function getImagem()
     {
         $imagemNome = "{$this->id}.jpg";
+
         if (!DW3ImagemUpload::existe($imagemNome)) {
             $imagemNome = 'padrao.jpg';
         }
@@ -200,7 +206,7 @@ class Veiculo extends Modelo
     public static function buscarRegistroVeiculo($chassi)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
-        $comando->bindValue(1, $chassi, PDO::PARAM_INT);
+        $comando->bindValue(1, $chassi, PDO::PARAM_STR);
         $comando->execute();
         $registro = $comando->fetch();
 
@@ -237,6 +243,52 @@ class Veiculo extends Modelo
         } else {
             return false;
         }
+    }
+
+    public static function buscarTodos()
+    {
+        $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
+
+        $objetos = [];
+        foreach ($registros as $registro) {
+            $objetos[] = new Veiculo(
+               
+                $registro['chassi'],
+                $registro['montadora'],
+                $registro['modelo'],
+                $registro['id_categoria'],
+                $registro['preco_diaria'],
+                $registro['status_oficina'],
+                null,
+                $registro['status_locacao'],
+                $registro['id']
+            );
+        }
+
+        return $objetos;
+    }
+
+    public static function veiculosOficina()
+    {
+        $registros = DW3BancoDeDados::query(self::OFICINA);
+
+        $objetos = [];
+        foreach ($registros as $registro) {
+            $objetos[] = new Veiculo(
+               
+                $registro['chassi'],
+                $registro['montadora'],
+                $registro['modelo'],
+                $registro['id_categoria'],
+                null,
+                $registro['status_oficina'],
+                null,
+                null['status_locacao'],
+                $registro['id']
+            );
+        }
+
+        return $objetos;
     }
 
     protected function verificarErros()

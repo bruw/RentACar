@@ -9,17 +9,16 @@ class UsuariosControlador extends Controlador
 {
     public function criar()
     {
+        $this->verificarLogado();
+
         $mensagem = DW3Sessao::getFlash('mensagem');
         $this->visao('usuarios/criar.php',['mensagem' => $mensagem],'principal.php');
     }
 
-    public function atualizar()
-    {
-        $this->visao('usuarios/atualizar.php',[],'principal.php');
-    }
-
     public function pesquisar()
     {
+        $this->verificarLogado();
+
         $cpf = $_POST['cpf-busca'];
         $usuario = Usuario::buscarRegistroUsuario(self::removerMascara($cpf));
         
@@ -28,6 +27,8 @@ class UsuariosControlador extends Controlador
 
     public function armazenar()
     {
+        $this->verificarLogado();
+
         $usuario = new Usuario(
             $_POST['primeiroNome'],
             $_POST['sobrenome'],

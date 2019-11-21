@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="font-edgeracer">Novo pedido de Locação</h1>
 
-        <form id="form-nova-locacao" action="<?= URL_RAIZ . 'locacoes/pesquisar/' . $veiculo->getChassi() ?>" method="get">
+        <form id="form-nova-locacao" action="<?= URL_RAIZ . 'locacoes/cliente-existe/' . $veiculo->getChassi() ?>" method="get">
             <div class="row">
                 <div class="input-field col s12 m7">
                     <i class="material-icons prefix">person</i>
@@ -30,7 +30,10 @@
         <?php endif ?>
 
         <?php if (!empty($cliente)) : ?>
-            <form action="<?= URL_RAIZ . 'locacoes/total/' . $veiculo->getChassi() . '/' . $cliente->getCpf() ?>" method="get">
+            <form action="<?= URL_RAIZ . 'locacoes/calcular-total'?>" method="get">
+                <input type="hidden" name="cliente-cpf" value="<?= $cliente->getCpf()?>">
+                <input type="hidden" name="veiculo-chassi" value="<?= $veiculo->getChassi()?>">
+
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
@@ -97,8 +100,8 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title black-text">Dados do Veículo</span>
-                            <p><span>Modelo:</span><?= ucfirst($veiculo->getModelo()) ?></p>
-                            <p><span>Montadora:</span><?= ucfirst($veiculo->getMontadora()) ?></p>
+                            <p><span>Modelo: </span><?= ucfirst($veiculo->getModelo()) ?></p>
+                            <p><span>Montadora: </span><?= ucfirst($veiculo->getMontadora()) ?></p>
                             <p><span>Número do Chassi: </span><?= $veiculo->getChassi() ?></p>
                             <p><span>Preço da Diária: R$</span><?= $veiculo->getPrecoDiaria() ?></p>
                         </div>
@@ -113,14 +116,9 @@
                 <input type="hidden" name="dataPrevistaEntrega" value="<?= $this->getGet('dataPrevistaEntrega') ?>">
 
                 <div class="row">
-                    <div class="col s12 m12 l6">
+                    <div class="col s12">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar Locação
-                        </button>
-                    </div>
-                    <div class="col s12 m12 l6">
-                        <button class="waves-effect waves-light btn button-cancelar" type="submit">
-                            <i class="material-icons left">cancel</i>Cancelar
                         </button>
                     </div>
                 </div>
