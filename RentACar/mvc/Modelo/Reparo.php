@@ -12,6 +12,7 @@ class Reparo extends Modelo
     const BUSCAR_ID = 'SELECT id FROM reparos WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM reparos WHERE id = ?';
     const BUSCAR_TODOS = 'SELECT * FROM reparos WHERE status_reparo = 0 ORDER BY data_entrada DESC';
+    const TOTAL_REPAROS = 'SELECT SUM(total) FROM reparos WHERE status_reparo = 1 AND (data_entrada >= ?) AND (data_saida <= ?)';
 
     private $idVeiculo;
     private $id;
@@ -178,6 +179,18 @@ class Reparo extends Modelo
 
         return $objetos;
     }
+
+    public static function totalReparos($dataInicio, $dataFim)
+    {
+        $comando = DW3BancoDeDados::prepare(self::TOTAL_REPAROS);
+        $comando->bindValue(1, $dataInicio);
+        $comando->bindValue(2, $dataFim);
+        $comando->execute();
+        $registro = $comando->fetch();
+      
+        return $registro;
+    }
+
 
     protected function verificarErros()
     {

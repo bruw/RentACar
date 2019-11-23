@@ -10,6 +10,7 @@ class OficinaControlador extends Controlador
 {
     public function index()
     {
+        $this->verificarLogado();
         $reparos = Reparo::buscarTodos();
         $veiculos = [];
 
@@ -29,6 +30,8 @@ class OficinaControlador extends Controlador
 
     public function enviarOficina()
     {
+        $this->verificarLogado();
+
         $this->visao(
             'oficina/enviar-oficina.php',
             [
@@ -43,6 +46,8 @@ class OficinaControlador extends Controlador
 
     public function armazenar()
     {   
+        $this->verificarLogado();
+
         $chassi = $_POST['veiculo-oficina'];
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
         $statusOficina = 1;
@@ -64,6 +69,8 @@ class OficinaControlador extends Controlador
 
     public function atualizar($chassi)
     {   
+        $this->verificarLogado();
+
         $statusOficina = 0;
         $statusReparo = 1;
 
@@ -111,6 +118,8 @@ class OficinaControlador extends Controlador
 
     public function pesquisar()
     {
+        $this->verificarLogado();
+        
         $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
 

@@ -110,7 +110,15 @@ $rotas = [
     ],
 
 
-    '/relatorios/relatorios' => [
-        'GET' => '\Controlador\RelatoriosControlador#relatorios',
+    '/relatorios' => [
+        'GET' => '\Controlador\RelatoriosControlador#index',
+    ],
+
+    '/relatorio/veiculo' => [
+        'GET' => '\Controlador\RelatoriosControlador#mostrarReparos',
+    ],
+
+    '/relatorio/balanco-empresa' => [
+        'GET' => '\Controlador\RelatoriosControlador#mostrarBalanco',
     ],
 ];

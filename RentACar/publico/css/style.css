@@ -3,6 +3,15 @@
     margin-bottom: 40px;
 }
 
+#div-informacao-veiculo{
+    margin-top: 20px;
+    margin-bottom: 105px;
+}
+
+#div-conteudo-reparos{
+    margin-bottom: 180px;
+}
+
 #multa{
     color: #ff0000;
     text-align: center;
@@ -67,11 +76,15 @@
 }
 
 #div-relatorio-lucro {
-    margin-top: 80px;
+    margin-bottom: 180px;
 }
 
-#div-relatorio-locacao table {
+#div-cabecalho-reparos table {
     text-align: center;
+}
+
+#div-cabecalho-reparos{
+    margin-bottom: 20px;
 }
 
 #form-nova-locacao h4 {

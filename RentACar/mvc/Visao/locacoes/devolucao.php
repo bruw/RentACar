@@ -57,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="card-action">
-                                    <p id="multa"><span>Multa R$<?=  number_format($multaAtraso, 2, ',', '.') ?></span></p>
+                                    <p id="multa"><span>Multa R$<?= number_format($multaAtraso, 2, ',', '.') ?></span></p>
                                 </div>
                             </div>
                         </div>
@@ -65,12 +65,11 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="<?= URL_IMG . 'servicos/teste.jpg' ?>">
+                            <img class="img-veiculos" src="<?= URL_IMG . 'servicos/teste.jpg' ?>">
                         </div>
                         <div class="card-content">
                             <span class="card-title black-text">Dados do Cliente</span>
@@ -86,7 +85,7 @@
                 <div class="col s12 m6">
                     <div class="card">
                         <div class="card-image">
-                            <img src="<?= URL_IMG . $veiculo->getImagem() ?>">
+                            <img class="img-veiculos" src="<?= URL_IMG . $veiculo->getImagem() ?>">
                         </div>
                         <div class="card-content">
                             <span class="card-title black-text">Dados do Veículo</span>
@@ -99,7 +98,7 @@
                 </div>
             </div>
 
-            <form action="<?= URL_RAIZ . 'locacoes/'. $locacao->getId() . '/editar' ?>" method="post">
+            <form action="<?= URL_RAIZ . 'locacoes/' . $locacao->getId() . '/editar' ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
                 <div class="row">
                     <button class="waves-effect waves-light btn right button-confirmar" type="submit">

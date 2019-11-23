@@ -14,7 +14,7 @@ class LocacoesControlador extends Controlador
     {
         $this->verificarLogado();
 
-        $veiculos = Veiculo::buscarTodos();
+        $veiculos = Veiculo::buscarVeiculosDisponives();
 
         $this->visao(
             'locacoes/index.php',
@@ -121,7 +121,7 @@ class LocacoesControlador extends Controlador
             );
         }
     }
-    
+
 
     public function armazenar()
     {
@@ -210,7 +210,7 @@ class LocacoesControlador extends Controlador
         }
     }
 
-    
+
 
     public static function calcularMultaAtraso($locacao, $veiculo)
     {

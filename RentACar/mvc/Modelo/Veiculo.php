@@ -5,6 +5,8 @@ namespace Modelo;
 use \PDO;
 use \Framework\DW3BancoDeDados;
 use \Framework\DW3ImagemUpload;
+use \Modelo\Locacao;
+use \Modelo\Reparo;
 
 class Veiculo extends Modelo
 {
@@ -15,8 +17,10 @@ class Veiculo extends Modelo
     const BUSCAR_NOME_CATEGORIA = 'SELECT nome from categorias where categorias.id = ?';
     const BUSCAR_ID = 'SELECT id, chassi FROM veiculos WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM veiculos WHERE chassi= ?';
-    const BUSCAR_TODOS = 'SELECT * FROM veiculos WHERE status_oficina = 0 ORDER BY status_locacao';
-    const OFICINA = 'SELECT * FROM veiculos WHERE status_oficina = 1 ORDER BY id';
+    const VEICULOS_DISPONIVEIS = 'SELECT * FROM veiculos WHERE status_oficina = 0 AND status_locacao = 0 ORDER BY status_locacao';
+    const LOCACOES = 'SELECT locacoes.id, data_locacao, data_devolucao, total FROM locacoes JOIN veiculos ON locacoes.id_veiculo = veiculos.id WHERE veiculos.chassi = ? AND locacoes.status_locacao = 0';
+    const REPAROS = 'SELECT reparos.id, data_entrada, data_saida, total FROM reparos JOIN veiculos ON reparos.id_veiculo = veiculos.id WHERE veiculos.chassi = ? AND reparos.status_reparo = 1';
+
 
     private $chassi;
     private $montadora;
@@ -223,6 +227,55 @@ class Veiculo extends Modelo
         );
     }
 
+    public static function buscarLocacoesFinalizadas($chassi)
+    {
+        $comando = DW3BancoDeDados::prepare(self::LOCACOES);
+        $comando->bindValue(1, $chassi, PDO::PARAM_STR);
+        $comando->execute();
+        $registros = $comando->fetchAll();
+
+        $objetos = [];
+
+        foreach ($registros as $registro) {
+            $objetos[] = new Locacao(
+                $registro['data_locacao'],
+                null,
+                $registro['total'],
+                null,
+                null,
+                null,
+                $registro['data_devolucao'],
+                null,
+                $registro['id']
+            );
+        }
+
+        return $objetos;
+    }
+
+    public static function buscarReparosFinalizados($chassi)
+    {
+        $comando = DW3BancoDeDados::prepare(self::REPAROS);
+        $comando->bindValue(1, $chassi, PDO::PARAM_STR);
+        $comando->execute();
+        $registros = $comando->fetchAll();
+
+        $objetos = [];
+
+        foreach ($registros as $registro) {
+            $objetos[] = new Reparo(
+                $registro['data_entrada'],
+                $registro['data_saida'],
+                $registro['total'],
+                null,
+                null,
+                $registro['id']
+            );
+        }
+
+        return $objetos;
+    }
+
     public function nomeCategoria($idCategoria)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_NOME_CATEGORIA);
@@ -233,7 +286,7 @@ class Veiculo extends Modelo
         return $registro['nome'];
     }
 
-    public function chassiExiste($veiculo)
+    public static function chassiExiste($veiculo)
     {
         $registroVeiculo = self::buscarRegistroVeiculo($veiculo->getChassi());
 
@@ -245,14 +298,14 @@ class Veiculo extends Modelo
         }
     }
 
-    public static function buscarTodos()
+    public static function buscarVeiculosDisponives()
     {
-        $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
+        $registros = DW3BancoDeDados::query(self::VEICULOS_DISPONIVEIS);
 
         $objetos = [];
         foreach ($registros as $registro) {
             $objetos[] = new Veiculo(
-               
+
                 $registro['chassi'],
                 $registro['montadora'],
                 $registro['modelo'],
@@ -275,7 +328,7 @@ class Veiculo extends Modelo
         $objetos = [];
         foreach ($registros as $registro) {
             $objetos[] = new Veiculo(
-               
+
                 $registro['chassi'],
                 $registro['montadora'],
                 $registro['modelo'],
@@ -295,7 +348,7 @@ class Veiculo extends Modelo
     {
         $patternChassi = "/^([0-9]|[a-z]){4,17}$/";
         $patternMontadora = "/^(([0-9]|[a-z]){2,10}\s{0,1}){1,5}$/";
-        $patternModelo = "/^(([0-9]|[a-z]){1,10}\s{0,1}){1,3}$/";
+        $patternModelo = "/^(([0-9]|[a-z]){2,10}\s{0,1}){1,3}$/";
         $patternPrecoDiaria = "/^[1-9]{1}\d{1,4}$/";
 
         if (preg_match($patternChassi, $this->chassi) == false) {
@@ -321,6 +374,5 @@ class Veiculo extends Modelo
         if ($this->idCategoria == null) {
             $this->setErroMensagem('selecioneCategoria', 'Categoria não pode ser vazio...');
         }
-
     }
 }

@@ -43,8 +43,8 @@ CREATE TABLE veiculos(
     modelo VARCHAR(30) NOT NULL,
     id_categoria INT NOT NULL,
     preco_diaria DOUBLE NOT NULL,
-    status_oficina  TINYINT NOT NULL NOT NULL DEFAULT 0,
-    status_locacao  TINYINT NOT NULL NOT NULL DEFAULT 0,
+    status_oficina  TINYINT NOT NULL DEFAULT 0,
+    status_locacao  TINYINT NOT NULL DEFAULT 0,
 
     PRIMARY KEY(id),
     FOREIGN KEY(id_categoria) REFERENCES categorias (id)

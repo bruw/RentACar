@@ -87,7 +87,7 @@
                     </a>
                 </div>
                 <div class="col s6 m2">
-                    <a href="<?= URL_RAIZ . 'relatorios/relatorios' ?>" class="modal-trigger">
+                    <a href="<?= URL_RAIZ . 'relatorios' ?>" class="modal-trigger">
                         <img src="<?= URL_RAIZ . 'publico/img/servicos/relatorio.png' ?>">
                         <p>Relátorios</p>
                     </a>

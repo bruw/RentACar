@@ -13,6 +13,7 @@ class Locacao extends Modelo
     const BUSCAR_REGISTRO = 'SELECT id, data_locacao, data_prevista_entrega, data_devolucao, multa_atraso,
     total, status_locacao, id_veiculo, id_cliente FROM locacoes WHERE id = ?';
     const ATUALIZAR = 'UPDATE locacoes SET data_devolucao = ?, multa_atraso = ?, total = ?, status_locacao = ? WHERE id = ?';
+    const TOTAL_LOCACOES = 'SELECT SUM(total) FROM locacoes WHERE status_locacao = 0 AND (data_locacao >= ?) AND (data_devolucao <= ?)';
 
     private $id;
     private $dataLocacao;
@@ -193,6 +194,17 @@ class Locacao extends Modelo
             $registro['multa_atraso'],
             $registro['id']
         );
+    }
+
+    public static function totalLocacoes($dataInicio, $dataFim)
+    {
+        $comando = DW3BancoDeDados::prepare(self::TOTAL_LOCACOES);
+        $comando->bindValue(1, $dataInicio);
+        $comando->bindValue(2, $dataFim);
+        $comando->execute();
+        $registro = $comando->fetch();
+      
+        return $registro;
     }
 
     public function inserir()
