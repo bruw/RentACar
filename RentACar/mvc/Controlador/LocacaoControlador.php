@@ -226,9 +226,7 @@ class LocacaoControlador extends Controlador
     }
 
     public static function calcularMultaAtraso($locacao, $veiculo)
-    {
-        $this->verificarLogado();
-        
+    { 
         $dataLocacao = $locacao->getDataLocacao();
         $dataPrevistaEntrega = $locacao->getDataPrevistaEntrega();
         $dataEntrega = date('Y-m-d');

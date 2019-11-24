@@ -212,7 +212,7 @@ class Veiculo extends Modelo
     public static function buscarRegistroVeiculo($chassi)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
-        $comando->bindValue(1, $chassi, PDO::PARAM_STR);
+        $comando->bindValue(1, $chassi);
         $comando->execute();
         $registro = $comando->fetch();
 

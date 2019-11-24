@@ -99,10 +99,14 @@
 
     <div class="container">
         <?php if ($pagina > 1) : ?>
-            <a href="<?= URL_RAIZ . 'oficina?p=' . ($pagina - 1) ?>" class="btn button-pagina left">Página anterior</a>
+            <a href="<?= URL_RAIZ . 'oficina?p=' . ($pagina - 1) ?>" class="btn button-pagina left">
+                <i class="material-icons left">navigate_before</i>Página anterior
+            </a>
         <?php endif ?>
         <?php if (($pagina < $ultimaPagina) && ($existeProximo)) : ?>
-            <a href="<?= URL_RAIZ . 'oficina?p=' . ($pagina + 1) ?>" class="btn button-pagina right">Próxima página</a>
+            <a href="<?= URL_RAIZ . 'oficina?p=' . ($pagina + 1) ?>" class="btn button-pagina right">
+                <i class="material-icons right">navigate_next</i>Próxima página
+            </a>
         <?php endif ?>
     </div>
 </section>

@@ -17,15 +17,27 @@
             </div>
         </form>
 
-        <?php if (!empty($mensagem)) : ?>
+        <?php if (!empty($mensagemAtualizado)) : ?>
             <div class="msg-flash balao-flash-sucesso">
-                <p><?= $mensagem ?></p>
+                <p><?= $mensagemAtualizado ?></p>
             </div>
         <?php endif ?>
 
         <?php if (!empty($naoEncontrado)) : ?>
             <div class="msg-flash balao-flash-erro">
                 <p><?= $naoEncontrado ?></p>
+            </div>
+        <?php endif ?>
+
+        <?php if (!empty($estaAlugado)) : ?>
+            <div class="msg-flash balao-flash-erro">
+                <p><?= $estaAlugado ?></p>
+            </div>
+        <?php endif ?>
+
+        <?php if (!empty($estaNaOficina)) : ?>
+            <div class="msg-flash balao-flash-erro">
+                <p><?= $estaNaOficina ?></p>
             </div>
         <?php endif ?>
 

@@ -29,7 +29,9 @@ class FrotaControlador extends Controlador
         $this->visao(
             'frota/atualizar.php',
             [
-                'mensagem' => DW3Sessao::getFlash('mensagem'),
+                'mensagemAtualizado' => DW3Sessao::getFlash('mensagemAtualizado'),
+                'estaAlugado' => DW3Sessao::getFlash('estaAlugado'),
+                'estaNaOficina' => DW3Sessao::getFlash('estaNaOficina'),
                 'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')
             ],
             'principal.php'
@@ -90,7 +92,7 @@ class FrotaControlador extends Controlador
 
         if ($veiculo->isValido()) {
             $veiculo->salvar();
-            DW3Sessao::setFlash('mensagem', 'Veículo atualizado com sucesso!');
+            DW3Sessao::setFlash('mensagemAtualizado', 'Veículo atualizado com sucesso!');
 
             $this->redirecionar(URL_RAIZ . 'frota/editar');
         } else {
@@ -114,6 +116,16 @@ class FrotaControlador extends Controlador
 
         $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(Controlador::removerMascara($chassi));
+
+        if($veiculo->getStatusLocacao() == 1){
+            DW3Sessao::setFlash('estaAlugado','Ação impossível para veículos Alugados...');
+            $this->redirecionar(URL_RAIZ . 'frota/editar');
+        }
+
+        if($veiculo->getStatusOficina() == 1){
+            DW3Sessao::setFlash('estaNaOficina', 'Ação impossível para veículos na Oficina...');
+            $this->redirecionar(URL_RAIZ . 'frota/editar');
+        }
 
         if ($veiculo->getChassi() == null) {
             DW3Sessao::setFlash('naoEncontrado', 'Este veículo não existe em nossa base de dados...');
