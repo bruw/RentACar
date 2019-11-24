@@ -14,7 +14,6 @@ class Cliente extends Modelo
     cep = ?, numero = ? WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM clientes WHERE cpf = ?';
 
-
     private $id;
     private $primeiroNome;
     private $sobrenome;
@@ -129,16 +128,6 @@ class Cliente extends Modelo
         }
     }
 
-    public function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
-    }
-
     public static function buscarRegistroCliente($cpf)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_REGISTRO);
@@ -218,7 +207,7 @@ class Cliente extends Modelo
         $comando->bindValue(8, $this->id);
         $comando->execute();
     }
-
+    
     protected function verificarErros()
     {
         $patternPrimeiroNome = "/^([A-Z]|[a-z]|[Á-Ú]|[á-ú]){2,25}\s{0,1}$/";

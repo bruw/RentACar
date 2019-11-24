@@ -8,24 +8,60 @@ use \Modelo\Reparo;
 
 class OficinaControlador extends Controlador
 {
+
+    public static function calcularPaginacao()
+    {
+        if($_POST){
+            $pagina = array_key_exists('pagina-atual', $_POST) ? intval($_POST['pagina-atual']) : 1;
+
+            $limit = 4;
+            $offset = ($pagina - 1) * $limit;
+            $reparos = Reparo::buscarTodos($limit, $offset);
+            $ultimaPagina = ceil(Reparo::contarTodos() / $limit);
+            $existeProximo =  Reparo::buscarTodos($limit, $offset+$limit);
+
+            return compact('pagina', 'reparos', 'ultimaPagina', 'existeProximo');
+        }else{
+            $pagina = array_key_exists('p', $_GET) ? intval($_GET['p']) : 1;
+
+            $limit = 4;
+            $offset = ($pagina - 1) * $limit;
+            $reparos = Reparo::buscarTodos($limit, $offset);
+            $ultimaPagina = ceil(Reparo::contarTodos() / $limit);
+            $existeProximo =  Reparo::buscarTodos($limit, $offset+$limit);
+
+            return compact('pagina', 'reparos', 'ultimaPagina', 'existeProximo');
+        }
+    }
+
     public function index()
     {
         $this->verificarLogado();
-        $reparos = Reparo::buscarTodos();
+        
+        $paginacao = self::calcularPaginacao();
+
+        $reparos = $paginacao['reparos'];
         $veiculos = [];
 
-        foreach($reparos as $reparo){
-                $idVeiculo = $reparo->getIdVeiculo();
-                $idVeiculo = Veiculo::buscarId($idVeiculo);
-                $veiculo = Veiculo::buscarRegistroVeiculo($idVeiculo->getChassi());
-                $veiculos [] = $veiculo;
+        foreach ($reparos as $reparo) {
+            $idVeiculo = $reparo->getIdVeiculo();
+            $idVeiculo = Veiculo::buscarId($idVeiculo);
+            $veiculo = Veiculo::buscarRegistroVeiculo($idVeiculo->getChassi());
+            $veiculos[] = $veiculo;
         }
 
-        $this->visao('oficina/index.php', 
-        ['veiculos' => $veiculos,
-        'reparos' => $reparos,
-        'reparoFinalizado' => DW3Sessao::getFlash('reparoFinalizado')],
-        'principal.php');
+        $this->visao(
+            'oficina/index.php',
+            [
+                'veiculos' => $veiculos,
+                'reparos' => $reparos,
+                'pagina' => $paginacao['pagina'],
+                'ultimaPagina' => $paginacao['ultimaPagina'],
+                'existeProximo' => $paginacao['existeProximo'],
+                'reparoFinalizado' => DW3Sessao::getFlash('reparoFinalizado')
+            ],
+            'principal.php'
+        );
     }
 
     public function enviarOficina()
@@ -45,7 +81,7 @@ class OficinaControlador extends Controlador
     }
 
     public function armazenar()
-    {   
+    {
         $this->verificarLogado();
 
         $chassi = $_POST['veiculo-oficina'];
@@ -68,16 +104,16 @@ class OficinaControlador extends Controlador
     }
 
     public function atualizar($chassi)
-    {   
+    {
         $this->verificarLogado();
 
         $statusOficina = 0;
         $statusReparo = 1;
 
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
-       
+
         $veiculo->setStatusOficina($statusOficina);
-        
+
         $idReparo = $_POST['id-reparo'];
         $reparo = Reparo::buscarRegistroReparo($idReparo);
         $dataSaida = date('Y-m-d');
@@ -87,41 +123,50 @@ class OficinaControlador extends Controlador
         $reparo->setTotal($total);
         $reparo->setStatusReparo($statusReparo);
 
-        if($reparo->isValido()){
+        if ($reparo->isValido()) {
             $veiculo->salvar();
             $reparo->salvar();
             DW3Sessao::setFlash('reparoFinalizado', 'Reparo finalizado!');
 
             $this->redirecionar(URL_RAIZ . 'oficina');
-        }
-        else {
+        } else {
             $this->setErros($reparo->getValidacaoErros());
-            $inputErro = $chassi;
+            $inputErroVeiculo = $chassi;
 
-            $reparos = Reparo::buscarTodos();
+            $paginacao = self::calcularPaginacao();
+
+            $reparos = $paginacao['reparos'];
             $veiculos = [];
-    
-            foreach($reparos as $reparo){
-                    $idVeiculo = $reparo->getIdVeiculo();
-                    $idVeiculo = Veiculo::buscarId($idVeiculo);
-                    $veiculo = Veiculo::buscarRegistroVeiculo($idVeiculo->getChassi());
-                    $veiculos [] = $veiculo;
+
+            foreach ($reparos as $reparo) {
+                $idVeiculo = $reparo->getIdVeiculo();
+                $idVeiculo = Veiculo::buscarId($idVeiculo);
+                $veiculo = Veiculo::buscarRegistroVeiculo($idVeiculo->getChassi());
+                $veiculos[] = $veiculo;
             }
-            
-            $this->visao('oficina/index.php',[
-                'inputErro' =>  $inputErro,
-                'reparos' => $reparos,
-                'veiculos' => $veiculos,
-            ],'principal.php');
+           
+            $this->visao(
+                'oficina/index.php',
+                [
+                    'veiculos' => $veiculos,
+                    'reparos' => $reparos,
+                    'inputErroVeiculo' => $inputErroVeiculo,
+                    'pagina' => $paginacao['pagina'],
+                    'ultimaPagina' => $paginacao['ultimaPagina'],
+                    'existeProximo' => $paginacao['existeProximo'],
+                    'reparoFinalizado' => DW3Sessao::getFlash('reparoFinalizado')
+                ],
+                'principal.php'
+            );
         }
     }
 
     public function pesquisar()
     {
         $this->verificarLogado();
-        
+
         $chassi = $_GET['chassi-busca'];
-        $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
+        $veiculo = Veiculo::buscarRegistroVeiculo(Controlador::removerMascara($chassi));
 
         if ($veiculo->getChassi() == null) {
             DW3Sessao::setFlash('naoEncontrado', 'Este veículo não existe em nossa base de dados...');
@@ -143,15 +188,5 @@ class OficinaControlador extends Controlador
                 }
             }
         }
-    }
-
-    public static function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
     }
 }

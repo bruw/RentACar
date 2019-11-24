@@ -126,16 +126,6 @@ class Usuario extends Modelo
         return password_verify($senhaPlana, $this->senha);
     }
 
-    public function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
-    }
-
     public function salvar()
     {
         $this->inserir();

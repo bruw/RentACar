@@ -1,4 +1,5 @@
 <?php
+
 namespace Modelo;
 
 use \PDO;
@@ -11,7 +12,8 @@ class Categoria extends Modelo
     private $id;
     private $nome;
 
-    public function __construct($id, $nome) {
+    public function __construct($id, $nome)
+    {
         $this->id = $id;
         $this->nome = $nome;
     }

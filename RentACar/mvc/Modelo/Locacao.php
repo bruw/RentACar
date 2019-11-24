@@ -146,16 +146,6 @@ class Locacao extends Modelo
        
     }
 
-    public function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
-    }
-
     public static function buscarId($id)
     {
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_ID);

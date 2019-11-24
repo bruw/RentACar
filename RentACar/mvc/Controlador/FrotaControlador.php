@@ -113,7 +113,7 @@ class FrotaControlador extends Controlador
         $this->verificarLogado();
 
         $chassi = $_GET['chassi-busca'];
-        $veiculo = Veiculo::buscarRegistroVeiculo(self::removerMascara($chassi));
+        $veiculo = Veiculo::buscarRegistroVeiculo(Controlador::removerMascara($chassi));
 
         if ($veiculo->getChassi() == null) {
             DW3Sessao::setFlash('naoEncontrado', 'Este veículo não existe em nossa base de dados...');
@@ -128,15 +128,5 @@ class FrotaControlador extends Controlador
                 'principal.php'
             );
         }
-    }
-
-    public static function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
     }
 }

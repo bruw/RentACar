@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?= URL_RAIZ . 'encerrar-sessao'?>" class="modal-trigger">
+                            <a href="<?= URL_RAIZ . 'encerrar-sessao' ?>" class="modal-trigger">
                                 <i class="material-icons left">power_settings_new</i>Encerrar Sessão
                             </a>
                         </li>
@@ -43,17 +43,17 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?= URL_RAIZ . 'encerrar-sessao'?>" class="modal-trigger">
+                            <a href="<?= URL_RAIZ . 'encerrar-sessao' ?>" class="modal-trigger">
                                 <i class="material-icons left">power_settings_new</i>Encerar Sessão
                             </a>
                         </li>
                     </ul>
-                   
+
                 </div>
             </div>
         </nav>
     </div>
-    
+
     <Main>
         <?php $this->imprimirConteudo() ?>
     </Main>
@@ -208,7 +208,6 @@
     <script src=<?= URL_JS . "jquery.mask.min.js" ?>></script>
     <script src=<?= URL_JS . "materialize.min.js" ?>></script>
     <script src=<?= URL_JS . "inicializacao-bibliotecas.js" ?>></script>
-    <script src=<?= URL_JS . "pesquisa-categoria.js" ?>></script>
     <script src=<?= URL_JS . "imagem-veiculo.js" ?>></script>
     <script src=<?= URL_JS . "relatorios.js" ?>></script>
     <script src=<?= URL_JS . "mensagem-flash.js" ?>></script>

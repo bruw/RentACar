@@ -8,18 +8,34 @@ use Modelo\Veiculo;
 use Modelo\Locacao;
 
 
-class LocacoesControlador extends Controlador
+class LocacaoControlador extends Controlador
 {
+    public static function calcularPaginacao()
+    {
+        $pagina = array_key_exists('p', $_GET) ? intval($_GET['p']) : 1;
+
+        $limit = 4;
+        $offset = ($pagina - 1) * $limit;
+        $veiculos = Veiculo::buscarTodos($limit, $offset);
+        $ultimaPagina = ceil(Veiculo::contarTodos() / $limit);
+        $existeProximo =  Veiculo::buscarTodos($limit, $offset+$limit);
+
+        return compact('pagina', 'veiculos', 'ultimaPagina', 'existeProximo');
+    }
+
     public function index()
     {
         $this->verificarLogado();
 
-        $veiculos = Veiculo::buscarVeiculosDisponives();
+        $paginacao = self::calcularPaginacao();
 
         $this->visao(
             'locacoes/index.php',
             [
-                'veiculos' => $veiculos,
+                'veiculos' => $paginacao['veiculos'],
+                'pagina' =>   $paginacao['pagina'],
+                'ultimaPagina' => $paginacao['ultimaPagina'],
+                'existeProximo' => $paginacao['existeProximo'],
                 'sucesso' => DW3Sessao::getFlash('locacaoSucesso')
             ],
             'principal.php'
@@ -53,7 +69,7 @@ class LocacoesControlador extends Controlador
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
 
         $cpf = $_GET['cpf-busca'];
-        $cliente = Cliente::buscarRegistroCliente(self::removerMascara($cpf));
+        $cliente = Cliente::buscarRegistroCliente(Controlador::removerMascara($cpf));
 
 
         if ($cliente->getCpf() == null) {
@@ -83,7 +99,7 @@ class LocacoesControlador extends Controlador
     {
         $this->verificarLogado();
 
-        $cpf = self::removerMascara($_GET['cpf-busca']);
+        $cpf = Controlador::removerMascara($_GET['cpf-busca']);
         $cliente = Cliente::buscarRegistroCliente($cpf);
         $idLocacao = Locacao::buscarId($cliente->getId());
 
@@ -121,7 +137,6 @@ class LocacoesControlador extends Controlador
             );
         }
     }
-
 
     public function armazenar()
     {
@@ -210,10 +225,10 @@ class LocacoesControlador extends Controlador
         }
     }
 
-
-
     public static function calcularMultaAtraso($locacao, $veiculo)
     {
+        $this->verificarLogado();
+        
         $dataLocacao = $locacao->getDataLocacao();
         $dataPrevistaEntrega = $locacao->getDataPrevistaEntrega();
         $dataEntrega = date('Y-m-d');
@@ -256,15 +271,5 @@ class LocacoesControlador extends Controlador
 
         DW3Sessao::setFlash('devolucaoSucesso', 'Devolução realizada com sucesso!');
         $this->redirecionar(URL_RAIZ . 'locacoes/devolucao');
-    }
-
-    public static function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
     }
 }

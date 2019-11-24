@@ -25,13 +25,13 @@
             </div>
 
             <div class="row">
-            <div class="input-field col s12 m12 l6">
+                <div class="input-field col s12 m12 l6">
                     <i class="material-icons prefix">person</i>
                     <input class="cpf" name="cpf" type="text" value="<?= $this->getPost('cpf') ?>" placeholder="000.000.000-00">
                     <label for="icon_prefix">CPF</label>
                     <?php $this->incluirVisao('util/formErro.php', ['campo' => 'cpf']) ?>
                 </div>
-                
+
 
                 <div id="div-celular" class="input-field col s12 m6">
                     <i class="material-icons prefix">phone_iphone</i>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="row">
-            <div class="input-field col s12">
+                <div class="input-field col s12">
                     <i class="material-icons prefix">mail</i>
                     <input type="text" name="email" value="<?= $this->getPost('email') ?>" placeholder="larissai@gmail.com">
                     <label for="icon_prefix">Email</label>
@@ -75,10 +75,15 @@
             </div>
 
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m6">
                     <button class="waves-effect waves-light btn button-confirmar" type="submit">
                         <i class="material-icons left">check_circle</i>Cadastrar
                     </button>
+                </div>
+                <div class="col s12 m6">
+                    <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                        <i class="material-icons left">cancel</i>Cancelar
+                    </a>
                 </div>
             </div>
         </form>

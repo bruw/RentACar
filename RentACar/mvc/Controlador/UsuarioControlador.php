@@ -5,14 +5,14 @@ namespace Controlador;
 use \Framework\DW3Sessao;
 use \Modelo\Usuario;
 
-class UsuariosControlador extends Controlador
+class UsuarioControlador extends Controlador
 {
     public function criar()
     {
         $this->verificarLogado();
 
         $mensagem = DW3Sessao::getFlash('mensagem');
-        $this->visao('usuarios/criar.php',['mensagem' => $mensagem],'principal.php');
+        $this->visao('usuarios/criar.php', ['mensagem' => $mensagem], 'principal.php');
     }
 
     public function pesquisar()
@@ -20,8 +20,8 @@ class UsuariosControlador extends Controlador
         $this->verificarLogado();
 
         $cpf = $_POST['cpf-busca'];
-        $usuario = Usuario::buscarRegistroUsuario(self::removerMascara($cpf));
-        
+        $usuario = Usuario::buscarRegistroUsuario(Controlador::removerMascara($cpf));
+
         $this->visao('usuarios/atualizar.php', ['usuario' => $usuario], 'principal.php');
     }
 
@@ -40,22 +40,22 @@ class UsuariosControlador extends Controlador
             $_POST['senha']
         );
 
-        $usuario->setCpf($usuario->removerMascara($usuario->getCpf()));
-        $usuario->setCelular($usuario->removerMascara($usuario->getCelular()));
-        $usuario->setCep($usuario->removerMascara($usuario->getCep()));
+        $usuario->setCpf(Controlador::removerMascara($usuario->getCpf()));
+        $usuario->setCelular(Controlador::removerMascara($usuario->getCelular()));
+        $usuario->setCep(Controlador::removerMascara($usuario->getCep()));
 
-        $usuario->setPrimeiroNome(mb_strtolower($usuario->getPrimeiroNome(),'UTF-8'));
+        $usuario->setPrimeiroNome(mb_strtolower($usuario->getPrimeiroNome(), 'UTF-8'));
         $usuario->setSobrenome(mb_strtolower($usuario->getSobrenome(), 'UTF-8'));
         $usuario->setEmail(mb_strtolower($usuario->getEmail(), 'UTF-8'));
 
-        if($usuario->isValido() && !Usuario::cpfExiste($usuario)){
+        if ($usuario->isValido() && !Usuario::cpfExiste($usuario)) {
             $usuario->salvar();
             DW3Sessao::setFlash('mensagem', 'Usuário cadastrado com sucesso!');
 
             $this->redirecionar(URL_RAIZ . 'usuarios/criar');
-        }else{
+        } else {
             $this->setErros($usuario->getValidacaoErros());
-            $this->visao('usuarios/criar.php',[],'principal.php');
+            $this->visao('usuarios/criar.php', [], 'principal.php');
         }
     }
 }

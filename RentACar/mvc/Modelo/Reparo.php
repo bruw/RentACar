@@ -11,8 +11,10 @@ class Reparo extends Modelo
     const ATUALIZAR = 'UPDATE reparos SET data_saida = ?, total = ?, status_reparo = ?  WHERE id = ?';
     const BUSCAR_ID = 'SELECT id FROM reparos WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM reparos WHERE id = ?';
-    const BUSCAR_TODOS = 'SELECT * FROM reparos WHERE status_reparo = 0 ORDER BY data_entrada DESC';
     const TOTAL_REPAROS = 'SELECT SUM(total) FROM reparos WHERE status_reparo = 1 AND (data_entrada >= ?) AND (data_saida <= ?)';
+    
+    const BUSCAR_TODOS = 'SELECT * FROM reparos WHERE status_reparo = 0 ORDER BY data_entrada LIMIT ? OFFSET ?';
+    const CONTAR_TODOS = 'SELECT count(id) FROM reparos';
 
     private $idVeiculo;
     private $id;
@@ -161,11 +163,17 @@ class Reparo extends Modelo
         );
     }
 
-    public static function buscarTodos()
+    public static function buscarTodos($limit = 4, $offset = 0)
     {
-        $registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
+        //$registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
+        $comando = DW3BancoDeDados::prepare(self::BUSCAR_TODOS);
+        $comando->bindValue(1, $limit, PDO::PARAM_INT);
+        $comando->bindValue(2, $offset, PDO::PARAM_INT);
+        $comando->execute();
 
+        $registros = $comando->fetchAll();
         $objetos = [];
+
         foreach ($registros as $registro) {
             $objetos[] = new Reparo(
                 $registro['data_entrada'],
@@ -178,6 +186,13 @@ class Reparo extends Modelo
         }
 
         return $objetos;
+    }
+
+    public static function contarTodos()
+    {
+        $registros = DW3BancoDeDados::query(self::CONTAR_TODOS);
+        $total = $registros->fetch();
+        return intval($total[0]);
     }
 
     public static function totalReparos($dataInicio, $dataFim)

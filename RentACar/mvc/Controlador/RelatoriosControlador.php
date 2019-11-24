@@ -22,6 +22,8 @@ class RelatoriosControlador extends Controlador
 
     public function mostrarReparos()
     {
+        $this->verificarLogado();
+
         $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo($chassi);
 
@@ -64,18 +66,20 @@ class RelatoriosControlador extends Controlador
 
     public function mostrarBalanco()
     {
+        $this->verificarLogado();
+        
         $dataInicio =  date_format(date_create($_GET['data-inicio']), 'Y-m-d');
         $dataFim = date_format(date_create($_GET['data-fim']), 'Y-m-d');
         $relatorioSelecionado = $_GET['relatorio-selecionado'];
-       
-        if(strtotime($dataInicio) <= strtotime($dataFim)){
+
+        if (strtotime($dataInicio) <= strtotime($dataFim)) {
             $totalLocacoes = Locacao::totalLocacoes($dataInicio, $dataFim);
             $totalLocacoes = $totalLocacoes[0];
-        
+
             $totalReparos = Reparo::totalReparos($dataInicio, $dataFim);
             $totalReparos = $totalReparos[0];
 
-            if(($totalReparos === null) || ($totalLocacoes === null)){
+            if (($totalReparos === null) || ($totalLocacoes === null)) {
                 $naoExisteRegistro = 'Não existe registros para o período informado...';
 
                 $this->visao(
@@ -86,9 +90,9 @@ class RelatoriosControlador extends Controlador
                     ],
                     'principal.php'
                 );
-            }else{
+            } else {
                 $lucroEmpresa = $totalLocacoes - $totalReparos;
-           
+
 
                 $this->visao(
                     'relatorios/index.php',
@@ -99,14 +103,14 @@ class RelatoriosControlador extends Controlador
                         'totalReparos'  => $totalReparos,
                         'lucroEmpresa' => $lucroEmpresa,
                         'relatorioSelecionado' => $relatorioSelecionado,
-                        
+
                     ],
                     'principal.php'
                 );
             }
-        }else{
+        } else {
             $dataInferior = 'Data de ínicio deve ser menor do que data de fim...';
-            
+
             $this->visao(
                 'relatorios/index.php',
                 [
@@ -115,7 +119,6 @@ class RelatoriosControlador extends Controlador
                 ],
                 'principal.php'
             );
-
         }
     }
 }

@@ -30,9 +30,9 @@
         <?php endif ?>
 
         <?php if (!empty($cliente)) : ?>
-            <form action="<?= URL_RAIZ . 'locacoes/calcular-total'?>" method="get">
-                <input type="hidden" name="cliente-cpf" value="<?= $cliente->getCpf()?>">
-                <input type="hidden" name="veiculo-chassi" value="<?= $veiculo->getChassi()?>">
+            <form action="<?= URL_RAIZ . 'locacoes/calcular-total' ?>" method="get">
+                <input type="hidden" name="cliente-cpf" value="<?= $cliente->getCpf() ?>">
+                <input type="hidden" name="veiculo-chassi" value="<?= $veiculo->getChassi() ?>">
 
                 <div class="row">
                     <div class="col s12">
@@ -53,7 +53,7 @@
                                         </div>
                                         <div class="input-field col s12 m6">
                                             <i class="material-icons prefix">attach_money</i>
-                                            <label class="black-text" for="icon_prefix"> Diária do Veículo:R$ <?= $veiculo->getPrecoDiaria() ?></label><br>
+                                            <label class="black-text" for="icon_prefix"> Diária do Veículo: R$ <?= number_format($veiculo->getPrecoDiaria(), 2, ',', '.') ?></label><br>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -103,7 +103,7 @@
                             <p><span>Modelo: </span><?= ucfirst($veiculo->getModelo()) ?></p>
                             <p><span>Montadora: </span><?= ucfirst($veiculo->getMontadora()) ?></p>
                             <p><span>Número do Chassi: </span><?= $veiculo->getChassi() ?></p>
-                            <p><span>Preço da Diária: R$</span><?= $veiculo->getPrecoDiaria() ?></p>
+                            <p><span>Preço da Diária: R$</span><?= number_format($veiculo->getPrecoDiaria(), 2, ',', '.') ?></p>
                         </div>
                     </div>
                 </div>
@@ -116,10 +116,15 @@
                 <input type="hidden" name="dataPrevistaEntrega" value="<?= $this->getGet('dataPrevistaEntrega') ?>">
 
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m6">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar Locação
                         </button>
+                    </div>
+                    <div class="col s12 m6">
+                        <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                            <i class="material-icons left">cancel</i>Cancelar
+                        </a>
                     </div>
                 </div>
             </form>

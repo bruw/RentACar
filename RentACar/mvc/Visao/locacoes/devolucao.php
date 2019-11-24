@@ -92,7 +92,7 @@
                             <p><span>Modelo: <?= $veiculo->getModelo() ?></span></p>
                             <p><span>Montadora: <?= $veiculo->getMontadora() ?></span></p>
                             <p><span>Número do Chassi: <?= $veiculo->getChassi() ?></span></p>
-                            <p><span>Preço da Diária: R$<?= $veiculo->getPrecoDiaria() ?></span></p>
+                            <p><span>Preço da Diária: R$<?= number_format($veiculo->getPrecoDiaria(), 2, ',', '.') ?></span></p>
                         </div>
                     </div>
                 </div>
@@ -101,9 +101,16 @@
             <form action="<?= URL_RAIZ . 'locacoes/' . $locacao->getId() . '/editar' ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
                 <div class="row">
-                    <button class="waves-effect waves-light btn right button-confirmar" type="submit">
-                        <i class="material-icons left">check</i>confirmar Devolução
-                    </button>
+                    <div class="col s12 m6">
+                        <button class="waves-effect waves-light btn right button-confirmar" type="submit">
+                            <i class="material-icons left">check</i>confirmar Devolução
+                        </button>
+                    </div>
+                    <div class="col s12 m6">
+                        <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                            <i class="material-icons left">cancel</i>Cancelar
+                        </a>
+                    </div>
                 </div>
             </form>
 

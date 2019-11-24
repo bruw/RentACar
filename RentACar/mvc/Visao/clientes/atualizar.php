@@ -27,7 +27,7 @@
                 <p><?= $naoEncontrado ?></p>
             </div>
         <?php endif ?>
-        
+
         <?php if (!empty($cliente)) : ?>
             <form action="<?= URL_RAIZ . 'clientes/atualizar/' . $cliente->getId() ?>" method="post">
                 <input type="hidden" name="_metodo" value="PATCH">
@@ -78,10 +78,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m6">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar mudanças
                         </button>
+                    </div>
+                    <div class="col s12 m6">
+                        <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                            <i class="material-icons left">cancel</i>Cancelar
+                        </a>
                     </div>
                 </div>
             </form>

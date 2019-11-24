@@ -8,12 +8,12 @@ use \Framework\DW3Sessao;
 class LoginControlador extends Controlador
 {
     public function index()
-    {   
-        $usuario= Usuario::buscarRegistroUsuario('00000000001');
+    {
+        $usuario = Usuario::buscarRegistroUsuario('00000000001');
 
-        if(empty($usuario)){
+        if (empty($usuario)) {
             $usuario = new Usuario(
-                'Fernanda', 
+                'Fernanda',
                 'Minueto',
                 '00000000001',
                 '42999999999',
@@ -26,17 +26,16 @@ class LoginControlador extends Controlador
             $usuario->salvar();
         }
 
-        if(empty(DW3Sessao::get('usuario'))){
-            $this->visao('inicial/index.php',[],'index.php');
-        }else{
+        if (empty(DW3Sessao::get('usuario'))) {
+            $this->visao('inicial/index.php', [], 'index.php');
+        } else {
             $this->redirecionar(URL_RAIZ . 'locacoes');
         }
-           
     }
 
     public function armazenar()
     {
-        $usuario = Usuario::buscarRegistroUsuario(self::removerMascara($_POST['cpf']));
+        $usuario = Usuario::buscarRegistroUsuario(Controlador::removerMascara($_POST['cpf']));
 
         if ($usuario && $usuario->verificarSenha($_POST['senha'])) {
             DW3Sessao::set('usuario', $usuario->getId());
@@ -52,15 +51,4 @@ class LoginControlador extends Controlador
         DW3Sessao::deletar('usuario');
         $this->redirecionar(URL_RAIZ);
     }
-
-    public static function removerMascara($atributo)
-    {
-       $atributo = str_replace("(", "", $atributo);
-       $atributo = str_replace(")", "", $atributo);
-       $atributo = str_replace("-", "", $atributo);
-       $atributo = str_replace(".", "", $atributo);
-       
-       return $atributo;
-    }
-
 }

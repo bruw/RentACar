@@ -10,65 +10,65 @@ $rotas = [
         'GET' => '\Controlador\LoginControlador#destruir',
     ],
 
-    '/locacoes' => [
-        'GET'  => '\Controlador\LocacoesControlador#index',
-        'POST' => '\Controlador\LocacoesControlador#armazenar',
 
+    '/locacoes' => [
+        'GET'  => '\Controlador\LocacaoControlador#index',
+        'POST' => '\Controlador\LocacaoControlador#armazenar',
     ],
 
     '/locacoes/devolucao' => [
-        'GET' => '\Controlador\LocacoesControlador#devolucao',
+        'GET' => '\Controlador\LocacaoControlador#devolucao',
     ],
 
     '/locacoes/criar/?' => [
-        'GET' => '\Controlador\LocacoesControlador#criar',
+        'GET' => '\Controlador\LocacaoControlador#criar',
     ],
 
     '/locacoes/?/editar' => [
-        'PATCH' => '\Controlador\LocacoesControlador#editar',
+        'PATCH' => '\Controlador\LocacaoControlador#editar',
     ],
 
     '/locacoes/cliente-existe/?' => [
-        'GET' => '\Controlador\LocacoesControlador#clienteExiste',
+        'GET' => '\Controlador\LocacaoControlador#clienteExiste',
     ],
 
     '/locacoes/existe-locacao-cliente' => [
-        'GET' => '\Controlador\LocacoesControlador#existeLocacaoCliente',
+        'GET' => '\Controlador\LocacaoControlador#existeLocacaoCliente',
     ],
 
     '/locacoes/calcular-total' => [
-        'GET' => '\Controlador\LocacoesControlador#calcularTotal',
+        'GET' => '\Controlador\LocacaoControlador#calcularTotal',
     ],
 
 
     '/clientes' => [
-        'POST' => '\Controlador\ClientesControlador#armazenar',
+        'POST' => '\Controlador\ClienteControlador#armazenar',
     ],
 
     '/clientes/criar' => [
-        'GET' => '\Controlador\ClientesControlador#criar',
+        'GET' => '\Controlador\ClienteControlador#criar',
     ],
 
     '/clientes/editar' => [
-        'GET' => '\Controlador\ClientesControlador#editar',
+        'GET' => '\Controlador\ClienteControlador#editar',
     ],
 
     '/clientes/pesquisar' => [
-        'GET' => '\Controlador\ClientesControlador#pesquisar',
+        'GET' => '\Controlador\ClienteControlador#pesquisar',
     ],
 
     '/clientes/atualizar/?' => [
-        'PATCH' => '\Controlador\ClientesControlador#atualizar',
+        'PATCH' => '\Controlador\ClienteControlador#atualizar',
     ],
 
 
 
     '/usuarios' => [
-        'POST' => '\Controlador\UsuariosControlador#armazenar',
+        'POST' => '\Controlador\UsuarioControlador#armazenar',
     ],
 
     '/usuarios/criar' => [
-        'GET' => '\Controlador\UsuariosControlador#criar',
+        'GET' => '\Controlador\UsuarioControlador#criar',
     ],
 
 
@@ -92,6 +92,7 @@ $rotas = [
         'GET' => '\Controlador\FrotaControlador#pesquisar',
     ],
 
+    
     '/oficina' => [
         'GET'   => '\Controlador\OficinaControlador#index',
         'POST'  => '\Controlador\OficinaControlador#armazenar',

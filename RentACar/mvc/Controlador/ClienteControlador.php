@@ -5,9 +5,8 @@ namespace Controlador;
 use \Framework\DW3Sessao;
 use \Modelo\Cliente;
 
-class ClientesControlador extends Controlador
+class ClienteControlador extends Controlador
 {
-
     public function criar()
     {
         $this->verificarLogado();
@@ -32,7 +31,7 @@ class ClientesControlador extends Controlador
         $this->verificarLogado();
         $cpf = $_GET['cpf-busca'];
 
-        $cliente = Cliente::buscarRegistroCliente(self::removerMascara($cpf));
+        $cliente = Cliente::buscarRegistroCliente(Controlador::removerMascara($cpf));
 
         if($cliente->getCpf() == null){
             DW3Sessao::setFlash('naoEncontrado', 'Cliente inexistente em nossa base de dados');
@@ -59,9 +58,9 @@ class ClientesControlador extends Controlador
         $cliente->setSobrenome(mb_strtolower($cliente->getSobrenome(), 'UTF-8'));
         $cliente->setEmail(mb_strtolower($cliente->getEmail(), 'UTF-8'));
 
-        $cliente->setCpf($cliente->removerMascara($cliente->getCpf()));
-        $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
-        $cliente->setCep($cliente->removerMascara($cliente->getCep()));
+        $cliente->setCpf(Controlador::removerMascara($cliente->getCpf()));
+        $cliente->setCelular(Controlador::removerMascara($cliente->getCelular()));
+        $cliente->setCep(Controlador::removerMascara($cliente->getCep()));
 
         if ($cliente->isValido() && !Cliente::cpfExiste($cliente)) {
             $cliente->salvar();
@@ -95,9 +94,9 @@ class ClientesControlador extends Controlador
         $cliente->setSobrenome(mb_strtolower($cliente->getSobrenome(), 'UTF-8'));
         $cliente->setEmail(mb_strtolower($cliente->getEmail(), 'UTF-8'));
 
-        $cliente->setCpf($cliente->removerMascara($cliente->getCpf()));
-        $cliente->setCelular($cliente->removerMascara($cliente->getCelular()));
-        $cliente->setCep($cliente->removerMascara($cliente->getCep()));
+        $cliente->setCpf(Controlador::removerMascara($cliente->getCpf()));
+        $cliente->setCelular(Controlador::removerMascara($cliente->getCelular()));
+        $cliente->setCep(Controlador::removerMascara($cliente->getCep()));
 
         if ($cliente->isValido()) {
             $cliente->salvar();
@@ -108,15 +107,5 @@ class ClientesControlador extends Controlador
             $this->setErros($cliente->getValidacaoErros());
             $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
         }
-    }
-
-    public static function removerMascara($atributo)
-    {
-        $atributo = str_replace("(", "", $atributo);
-        $atributo = str_replace(")", "", $atributo);
-        $atributo = str_replace("-", "", $atributo);
-        $atributo = str_replace(".", "", $atributo);
-
-        return $atributo;
     }
 }

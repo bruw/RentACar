@@ -8,7 +8,7 @@
             </div>
         <?php endif ?>
 
-        <form action="<?= URL_RAIZ . 'frota'?>" method="post" enctype="multipart/form-data">
+        <form action="<?= URL_RAIZ . 'frota' ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">directions_car</i>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <i class="material-icons prefix">directions_car</i>
-                        <input type="text" name="modelo" value="<?= $this->getPost('modelo') ?>"placeholder="Argo">
+                        <input type="text" name="modelo" value="<?= $this->getPost('modelo') ?>" placeholder="Argo">
                         <label for="icon_prefix">Modelo</label>
                         <?php $this->incluirVisao('util/formErro.php', ['campo' => 'modelo']) ?>
                     </div>
@@ -38,9 +38,9 @@
                         <select name="categoriaId">
                             <option value="">Selecione uma Categoria</option>
                             <?php foreach ($categorias as $categoria) : ?>
-                                <?php $selected = $this->getPost('categoriaId') == $categoria->getId() ? 'selected' : ''?>
-                                <option value="<?=$categoria->getId()?>" <?=$selected ?>><?=$categoria->getNome()?></option>
-                            <?php endforeach?>
+                                <?php $selected = $this->getPost('categoriaId') == $categoria->getId() ? 'selected' : '' ?>
+                                <option value="<?= $categoria->getId() ?>" <?= $selected ?>><?= $categoria->getNome() ?></option>
+                            <?php endforeach ?>
                         </select>
                         <label>Categoria</label>
                         <?php $this->incluirVisao('util/formErro.php', ['campo' => 'selecioneCategoria']) ?>
@@ -63,10 +63,15 @@
                     </div>
 
                     <div class="row">
-                        <div class="col s12">
+                        <div class="col s12 m6">
                             <button class="waves-effect waves-light btn button-confirmar" type="submit">
                                 <i class="material-icons left">check_circle</i>Cadastrar Veículo
                             </button>
+                        </div>
+                        <div class="col s12 m6">
+                            <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                                <i class="material-icons left">cancel</i>Cancelar
+                            </a>
                         </div>
                     </div>
                 </div>

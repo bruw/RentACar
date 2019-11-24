@@ -69,10 +69,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m6">
                         <button class="waves-effect waves-light btn button-confirmar" type="submit">
                             <i class="material-icons left">check_circle</i>Confirmar Alterações
                         </button>
+                    </div>
+                    <div class="col s12 m6">
+                        <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                            <i class="material-icons left">cancel</i>Cancelar
+                        </a>
                     </div>
                 </div>
             </form>
