@@ -12,7 +12,7 @@
  - [x] Validação de todos os formulários dos requisitos.
  - [ ] Paginação e filtro em todas as listagens
  - [x] Mensagens flash após toda modificação no banco de dados.
- - [ ] Testar todos os métodos dos modelos. Não precisa testar gets e sets.
+ - [x] Testar todos os métodos dos modelos. Não precisa testar gets e sets.
  - [ ] Testar todas as rotas.
   
 **Requisitos funcionais**
