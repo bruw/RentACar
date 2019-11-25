@@ -7,7 +7,6 @@ use Modelo\Cliente;
 use Modelo\Veiculo;
 use Modelo\Locacao;
 
-
 class LocacaoControlador extends Controlador
 {
     public static function calcularPaginacao()
@@ -28,7 +27,7 @@ class LocacaoControlador extends Controlador
         $this->verificarLogado();
 
         $paginacao = self::calcularPaginacao();
-
+        
         $this->visao(
             'locacoes/index.php',
             [

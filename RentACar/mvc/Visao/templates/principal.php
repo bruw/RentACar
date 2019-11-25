@@ -30,29 +30,33 @@
                             </a>
                         </li>
                         <li>
-                            <a href="<?= URL_RAIZ . 'encerrar-sessao' ?>" class="modal-trigger">
+                            <a href="" onclick="event.preventDefault();$('#form-encerrar-sessao').submit()">
                                 <i class="material-icons left">power_settings_new</i>Encerrar Sessão
                             </a>
                         </li>
                     </ul>
-
                     <ul class="sidenav" id="barra-mobile">
                         <li>
                             <a href="#modal-menu-servicos" class="modal-trigger">
                                 <i class="material-icons left">apps</i>Serviços
                             </a>
                         </li>
-                        <li>
-                            <a href="<?= URL_RAIZ . 'encerrar-sessao' ?>" class="modal-trigger">
-                                <i class="material-icons left">power_settings_new</i>Encerar Sessão
-                            </a>
-                        </li>
+                        <form action="">
+                            <li>
+                                <a href="" onclick="event.preventDefault();$('#form-encerrar-sessao').submit()">
+                                    <i class="material-icons left">power_settings_new</i>Encerrar Sessão
+                                </a>
+                            </li>
+                        </form>
                     </ul>
-
                 </div>
             </div>
         </nav>
     </div>
+
+    <form id="form-encerrar-sessao" class="ocultar-conteudo" action="<?= URL_RAIZ ?>" method="post">
+        <input id="input-encerrar-sessao" type="hidden" value="DELETE" name="_metodo">
+    </form>
 
     <Main>
         <?php $this->imprimirConteudo() ?>

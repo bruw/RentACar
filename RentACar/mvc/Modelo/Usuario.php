@@ -190,6 +190,7 @@ class Usuario extends Modelo
             null,
             null,
             null,
+            null,
             $registro['id']
         );
     }

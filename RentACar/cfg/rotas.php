@@ -4,12 +4,8 @@ $rotas = [
     '/' => [
         'GET' => '\Controlador\LoginControlador#index',
         'POST' => '\Controlador\LoginControlador#armazenar',
+        'DELETE' => '\Controlador\LoginControlador#destruir',
     ],
-
-    '/encerrar-sessao' => [
-        'GET' => '\Controlador\LoginControlador#destruir',
-    ],
-
 
     '/locacoes' => [
         'GET'  => '\Controlador\LocacaoControlador#index',

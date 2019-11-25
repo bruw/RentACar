@@ -15,7 +15,8 @@ class RelatoriosControlador extends Controlador
 
         $this->visao(
             'relatorios/index.php',
-            ['naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')],
+            ['naoEncontrado' => DW3Sessao::getFlash('naoEncontrado'),
+            'naoPossuiMovimentacao' => DW3Sessao::getFlash('naoPossuiMovimentacao')],
             'principal.php'
         );
     }
@@ -43,25 +44,32 @@ class RelatoriosControlador extends Controlador
                 $totalReparos += $reparo->getTotal();
             }
 
+           if(($totalLocacoes == 0) && ($totalReparos == 0)){
+                DW3Sessao::setFlash('naoPossuiMovimentacao', 'Este veículo ainda não possui registros 
+                de locação e manutenção');
 
-            $lucro = $totalLocacoes - $totalReparos;
+                $this->redirecionar(URL_RAIZ . 'relatorios');
 
-            $this->visao(
-                'relatorios/index.php',
-                [
-                    'veiculo' => $veiculo,
-                    'locacoes' => $locacoes,
-                    'totalLocacao' => $totalLocacoes,
-                    'reparos' => $reparos,
-                    'totalReparos' => $totalReparos,
-                    'lucro' => $lucro
-                ],
-                'principal.php'
-            );
-        } else {
-            DW3Sessao::setFlash('naoEncontrado', 'Veículo inexistente em nossa base de dados...');
-            $this->redirecionar(URL_RAIZ . 'relatorios');
-        }
+           }else{
+                $lucro = $totalLocacoes - $totalReparos;
+
+                $this->visao(
+                    'relatorios/index.php',
+                    [
+                        'veiculo' => $veiculo,
+                        'locacoes' => $locacoes,
+                        'totalLocacao' => $totalLocacoes,
+                        'reparos' => $reparos,
+                        'totalReparos' => $totalReparos,
+                        'lucro' => $lucro
+                    ],
+                    'principal.php'
+                );
+            }
+            } else {
+                DW3Sessao::setFlash('naoEncontrado', 'Veículo inexistente em nossa base de dados...');
+                $this->redirecionar(URL_RAIZ . 'relatorios');
+            }
     }
 
     public function mostrarBalanco()
@@ -79,7 +87,7 @@ class RelatoriosControlador extends Controlador
             $totalReparos = Reparo::totalReparos($dataInicio, $dataFim);
             $totalReparos = $totalReparos[0];
 
-            if (($totalReparos === null) || ($totalLocacoes === null)) {
+            if (($totalReparos === null) && ($totalLocacoes === null)) {
                 $naoExisteRegistro = 'Não existe registros para o período informado...';
 
                 $this->visao(
@@ -91,8 +99,17 @@ class RelatoriosControlador extends Controlador
                     'principal.php'
                 );
             } else {
-                $lucroEmpresa = $totalLocacoes - $totalReparos;
-
+                if($totalLocacoes === null){
+                    $lucroEmpresa = $totalReparos * -1;
+                    $totalLocacoes = 0;
+                }else{
+                    if($totalReparos === null){
+                        $lucroEmpresa = $totalLocacoes;
+                        $totalReparos = 0;
+                    }else{
+                        $lucroEmpresa = $totalLocacoes - $totalReparos;
+                    }
+                }
 
                 $this->visao(
                     'relatorios/index.php',
@@ -103,6 +120,7 @@ class RelatoriosControlador extends Controlador
                         'totalReparos'  => $totalReparos,
                         'lucroEmpresa' => $lucroEmpresa,
                         'relatorioSelecionado' => $relatorioSelecionado,
+                        'exibirBalanco' => 'exibirBalanco'
 
                     ],
                     'principal.php'

@@ -46,6 +46,12 @@
             </div>
         <?php endif ?>
 
+        <?php if (!empty($naoPossuiMovimentacao)) : ?>
+            <div class="msg-flash balao-flash-erro">
+                <p><?= $naoPossuiMovimentacao ?></p>
+            </div>
+        <?php endif ?>
+
 
         <form action="<?= URL_RAIZ . 'relatorio/veiculo' ?>" method="get">
             <div id="div-pesquisa-chassi" class="row">
@@ -157,7 +163,7 @@
             </div>
         </form>
 
-        <?php if (!empty($totalLocacoes)) : ?>   
+        <?php if (!empty($exibirBalanco)) : ?>   
         <div id="div-relatorio-lucro" class="row ocultar-conteudo">
             <h4>Relatório de Lucros</h4>
             <div class="col s12 table-total">

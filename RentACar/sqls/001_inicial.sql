@@ -81,7 +81,11 @@ CREATE TABLE reparos(
 );
 
 
+INSERT INTO usuarios (primeiro_nome, cpf, senha) 
+VALUES ('admin', '00000000000', '$2y$10$roNGa2IJ2vGE2b9ibOOpbOX0y/xwHHA./QKf.Sp7JOJ6f.zXpiN4O');
+
 INSERT INTO categorias (nome) VALUES ('Hatch');
 INSERT INTO categorias (nome) VALUES ('Sedan');
 INSERT INTO categorias (nome) VALUES ('SUV');
 INSERT INTO categorias (nome) VALUES ('Pick-Ups');
+

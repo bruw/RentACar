@@ -2,6 +2,12 @@
     <div class="container">
         <h1 class="font-edgeracer">Cadastro de Veículo</h1>
 
+        <?php if (!empty($cadastroSucesso)) : ?>
+            <div class="msg-flash balao-flash-sucesso">
+                <p><?= $cadastroSucesso ?></p>
+            </div>
+        <?php endif ?>
+
         <?php if (!empty($mensagemAtualizado)) : ?>
             <div class="msg-flash balao-flash-sucesso">
                 <p><?= $mensagemAtualizado ?></p>

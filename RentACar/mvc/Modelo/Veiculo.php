@@ -19,7 +19,7 @@ class Veiculo extends Modelo
     const BUSCAR_REGISTRO = 'SELECT * FROM veiculos WHERE chassi= ?';
     const VEICULOS_DISPONIVEIS = 'SELECT * FROM veiculos WHERE status_oficina = 0 AND status_locacao = 0 ORDER BY status_locacao';
     const LOCACOES = 'SELECT locacoes.id, data_locacao, data_devolucao, total FROM locacoes JOIN veiculos ON locacoes.id_veiculo = veiculos.id WHERE veiculos.chassi = ? AND locacoes.status_locacao = 0';
-    const REPAROS = 'SELECT reparos.id, data_entrada, data_saida, total FROM reparos JOIN veiculos ON reparos.id_veiculo = veiculos.id WHERE veiculos.chassi = ? AND reparos.status_reparo = 1';
+    const REPAROS = 'SELECT reparos.id, data_entrada, data_saida, total, id_veiculo, status_reparo FROM reparos JOIN veiculos ON reparos.id_veiculo = veiculos.id WHERE veiculos.chassi = ? AND reparos.status_reparo = 1';
    
     const BUSCAR_TODOS = 'SELECT * FROM veiculos WHERE status_locacao = 0 AND status_oficina = 0 ORDER BY id LIMIT ? OFFSET ?';
     const CONTAR_TODOS = 'SELECT count(id) FROM veiculos';
@@ -304,8 +304,8 @@ class Veiculo extends Modelo
                 $registro['data_entrada'],
                 $registro['data_saida'],
                 $registro['total'],
-                null,
-                null,
+                $registro['id_veiculo'],
+                $registro['status_reparo'],
                 $registro['id']
             );
         }

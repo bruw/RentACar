@@ -16,12 +16,12 @@ class Reparo extends Modelo
     const BUSCAR_TODOS = 'SELECT * FROM reparos WHERE status_reparo = 0 ORDER BY data_entrada LIMIT ? OFFSET ?';
     const CONTAR_TODOS = 'SELECT count(id) FROM reparos';
 
-    private $idVeiculo;
-    private $id;
     private $dataEntrada;
     private $dataSaida;
     private $total;
+    private $idVeiculo;
     private $statusReparo;
+    private $id;
 
     public function __construct(
         $dataEntrada,
@@ -58,7 +58,7 @@ class Reparo extends Modelo
 
     public function getStatusReparo()
     {
-        return $this->reparo;
+        return $this->statusReparo;
     }
 
     public function setStatusReparo($statusReparo)
@@ -165,7 +165,6 @@ class Reparo extends Modelo
 
     public static function buscarTodos($limit = 4, $offset = 0)
     {
-        //$registros = DW3BancoDeDados::query(self::BUSCAR_TODOS);
         $comando = DW3BancoDeDados::prepare(self::BUSCAR_TODOS);
         $comando->bindValue(1, $limit, PDO::PARAM_INT);
         $comando->bindValue(2, $offset, PDO::PARAM_INT);

@@ -15,7 +15,7 @@ class FrotaControlador extends Controlador
         $this->visao(
             'frota/criar.php',
             [
-                'mensagem' => DW3Sessao::getFlash('mensagem'),
+                'cadastroSucesso' => DW3Sessao::getFlash('cadastroSucesso'),
                 'categorias' => Categoria::buscarTodos()
             ],
             'principal.php'
@@ -53,14 +53,13 @@ class FrotaControlador extends Controlador
             $foto
         );
 
-
         $veiculo->setChassi(mb_strtolower($veiculo->getChassi(), 'UTF-8'));
         $veiculo->setMontadora(mb_strtolower($veiculo->getMontadora(), 'UTF-8'));
         $veiculo->setModelo(mb_strtolower($veiculo->getModelo(), 'UTF-8'));
 
         if ($veiculo->isValido() && !Veiculo::chassiExiste($veiculo)) {
             $veiculo->salvar();
-            DW3Sessao::setFlash('mensagem', 'Veiculo cadastrado com sucesso!');
+            DW3Sessao::setFlash('cadastroSucesso', 'Veiculo cadastrado com sucesso!');
             $this->redirecionar(URL_RAIZ . 'frota/criar');
         } else {
             $this->setErros($veiculo->getValidacaoErros());
@@ -97,13 +96,12 @@ class FrotaControlador extends Controlador
             $this->redirecionar(URL_RAIZ . 'frota/editar');
         } else {
             $this->setErros($veiculo->getValidacaoErros());
-            $categoria = $veiculo->nomeCategoria($veiculo->getIdCategoria());
 
             $this->visao(
                 'frota/atualizar.php',
                 [
                     'veiculo' => $veiculo,
-                    'categoria' => $categoria
+                    'categorias' => Categoria::buscarTodos()
                 ],
                 'principal.php'
             );

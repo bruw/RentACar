@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'edgeracer';
+    src: url('../fonts/edgeracer.ttf');
+}
+
+.font-edgeracer {
+    font-family: 'edgeracer';
+}
+
 .table-total{
     border: 1px solid black;
     margin-bottom: 40px;
@@ -54,10 +63,6 @@
 .balaoFlash > p{
     color: black;
     font-size: 16px;
-}
-
-.font-edgeracer {
-    font-family: 'edgeracer';
 }
 
 .exibir-conteudo {

@@ -9,23 +9,6 @@ class LoginControlador extends Controlador
 {
     public function index()
     {
-        $usuario = Usuario::buscarRegistroUsuario('00000000001');
-
-        if (empty($usuario)) {
-            $usuario = new Usuario(
-                'Fernanda',
-                'Minueto',
-                '00000000001',
-                '42999999999',
-                'fernanda@email.com',
-                '85000000',
-                '212',
-                '1234'
-            );
-
-            $usuario->salvar();
-        }
-
         if (empty(DW3Sessao::get('usuario'))) {
             $this->visao('inicial/index.php', [], 'index.php');
         } else {

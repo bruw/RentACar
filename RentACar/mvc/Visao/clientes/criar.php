@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="input-field col s12 m12 l6">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="primeiroNome" value="<?= $this->getPost('primeiroNome') ?>" placeholder="Darth">
+                    <input type="text" name="primeiro-nome" value="<?= $this->getPost('primeiro-nome') ?>" placeholder="Darth">
                     <label for="icon_prefix">Primeiro Nome</label>
                     <?php $this->incluirVisao('util/formErro.php', ['campo' => 'primeiroNome']) ?>
                 </div>

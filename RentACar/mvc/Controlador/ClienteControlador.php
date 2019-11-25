@@ -45,7 +45,7 @@ class ClienteControlador extends Controlador
     {
         $this->verificarLogado();
         $cliente = new Cliente(
-            $_POST['primeiroNome'],
+            $_POST['primeiro-nome'],
             $_POST['sobrenome'],
             $_POST['cpf'],
             $_POST['celular'],
@@ -66,7 +66,7 @@ class ClienteControlador extends Controlador
             $cliente->salvar();
             DW3Sessao::setFlash('mensagem', 'Cliente cadastrado com sucesso!');
             
-            $this->redirecionar('clientes/criar');
+            $this->redirecionar(URL_RAIZ . 'clientes/criar');
         } else {
             $this->setErros($cliente->getValidacaoErros());
             $this->visao('clientes/criar.php', [], 'principal.php');
@@ -81,7 +81,7 @@ class ClienteControlador extends Controlador
         $registroCliente = $cliente->buscarRegistroCliente($cliente->getCpf());
         $cliente->setCpf($registroCliente->getCpf());
 
-        $cliente->setPrimeiroNome($_POST['primeiroNome']);
+        $cliente->setPrimeiroNome($_POST['primeiro-nome']);
         $cliente->setSobrenome($_POST['sobrenome']);
 
         $cliente->setCelular($_POST['celular']);
