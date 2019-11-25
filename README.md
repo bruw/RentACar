@@ -10,7 +10,7 @@
  - [ ] Padronização das rotas.
  - [x] Autenticação com criptografia segura.
  - [x] Validação de todos os formulários dos requisitos.
- - [parcial] Paginação e filtro em todas as listagens.
+ - [ ] Paginação e filtro em todas as listagens.[parcial]
  - [x] Mensagens flash após toda modificação no banco de dados.
  - [ ] Testar todos os métodos dos modelos. Não precisa testar gets e sets.
  - [ ] Testar todas as rotas.
