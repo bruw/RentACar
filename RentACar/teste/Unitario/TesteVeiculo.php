@@ -137,5 +137,35 @@
             $this->verificar($reparos[0]->getTotal() == 100);
         }
 
+        public function testeNomeCategoria()
+        {
+            $id = 1;
+           
+            $nomeCategoriaSalva = Veiculo::nomeCategoria($id);
+            $this->verificar($nomeCategoriaSalva == 'Hatch');
+        }
+
+        public function testeChassiBusca()
+        {
+            $this->testeInserir();
+
+            $veiculo = Veiculo::buscarRegistroVeiculo($this->chassi);
+            $chassiExiste = Veiculo::chassiExiste($veiculo);
+
+            $this->verificar($chassiExiste == true);
+        }
+
+        public function testeBuscarVeiculosDisponiveis()
+        {
+            $this->testeInserir();
+
+            $veiculoKombi = new Veiculo('0001','vw','kombi', '1', '3000', null, 0, 1);
+            $veiculoKombi->salvar();
+
+            $veiculos = Veiculo::buscarVeiculosDisponives();
+
+           $this->verificar(count($veiculos) == 1);
+           $this->verificar($veiculos[0]->getChassi() == $this->chassi);
+        }
     }
 ?>
