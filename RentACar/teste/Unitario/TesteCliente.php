@@ -3,7 +3,6 @@
     
     use \Teste\Teste;
     use \Modelo\Cliente;
-    use \Framework\DW3BancoDeDados;
 
     class TesteCliente extends Teste
     {
