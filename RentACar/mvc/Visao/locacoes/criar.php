@@ -112,7 +112,9 @@
             <form id="form-nova-locacao" action="<?= URL_RAIZ . 'locacoes' ?>" method="post">
                 <input type="hidden" name="veiculo" value="<?= $veiculo->getId() ?>">
                 <input type="hidden" name="cliente" value="<?= $cliente->getId() ?>">
+                <?php if(!empty($valorTotal)) : ?>
                 <input type="hidden" name="total" value="<?= $valorTotal ?>">
+                <?php endif?>
                 <input type="hidden" name="dataPrevistaEntrega" value="<?= $this->getGet('dataPrevistaEntrega') ?>">
 
                 <div class="row">

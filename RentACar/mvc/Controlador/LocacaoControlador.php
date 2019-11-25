@@ -167,7 +167,7 @@ class LocacaoControlador extends Controlador
 
             DW3Sessao::setFlash('locacaoSucesso', 'Locação realizada com Sucesso!');
 
-            $this->redirecionar('locacoes');
+            $this->redirecionar(URL_RAIZ . 'locacoes');
         } else {
             $cliente = Cliente::buscarId($_POST['cliente']);
             $cliente = Cliente::buscarRegistroCliente($cliente->getCpf());

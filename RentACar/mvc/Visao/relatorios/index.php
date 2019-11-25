@@ -1,8 +1,8 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">RELATÓRIOS</h1>
-        
-        <?php if(empty($relatorioSelecionado) || ($relatorioSelecionado == 1)) : ?>
+
+        <?php if (empty($relatorioSelecionado) || ($relatorioSelecionado == 1)) : ?>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">filter_list</i>
@@ -13,9 +13,9 @@
                     <label>Categorias Relatório</label>
                 </div>
             </div>
-        <?php endif?>
+        <?php endif ?>
 
-        <?php if(!empty($relatorioSelecionado) && ($relatorioSelecionado == 2)) : ?>
+        <?php if (!empty($relatorioSelecionado) && ($relatorioSelecionado == 2)) : ?>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">filter_list</i>
@@ -26,7 +26,7 @@
                     <label>Categorias Relatório</label>
                 </div>
             </div>
-        <?php endif?>
+        <?php endif ?>
 
         <?php if (!empty($naoEncontrado)) : ?>
             <div class="msg-flash balao-flash-erro">
@@ -152,7 +152,7 @@
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">date_range</i>
-                    <input type="text" id="relatorio-data-fim" name="data-fim" class="datepicker date-relatorio"  placeholder="Clique aqui para selecionar a data final">
+                    <input type="text" id="relatorio-data-fim" name="data-fim" class="datepicker date-relatorio" placeholder="Clique aqui para selecionar a data final">
                     <label for="icon_prefix">Data de Fim</label>
                 </div>
                 <div class="col s12">
@@ -163,42 +163,42 @@
             </div>
         </form>
 
-        <?php if (!empty($exibirBalanco)) : ?>   
-        <div id="div-relatorio-lucro" class="row ocultar-conteudo">
-            <h4>Relatório de Lucros</h4>
-            <div class="col s12 table-total">
-                <table>
-                    <tr>
-                        <th>TOTAL LOCAÇÕES PERÍODO</th>
-                        <th>TOTAL REPAROS PERÍODO</th>
-                        <th>LUCRO TOTAL</th>
-                    </tr>
-                    <tr>
-                        <th>R$<?= number_format($totalLocacoes, 2, ',', '.') ?></th>
-                        <th>R$<?= number_format($totalReparos, 2, ',', '.') ?></th>
-                        <th>R$<?= number_format($lucroEmpresa, 2, ',', '.') ?></th>
-                    </tr>
-                </table>
-            </div>
+        <?php if (!empty($exibirBalanco)) : ?>
+            <div id="div-relatorio-lucro" class="row ocultar-conteudo">
+                <h4>Relatório de Lucros</h4>
+                <div class="col s12 table-total">
+                    <table>
+                        <tr>
+                            <th>TOTAL LOCAÇÕES PERÍODO</th>
+                            <th>TOTAL REPAROS PERÍODO</th>
+                            <th>LUCRO TOTAL</th>
+                        </tr>
+                        <tr>
+                            <th>R$<?= number_format($totalLocacoes, 2, ',', '.') ?></th>
+                            <th>R$<?= number_format($totalReparos, 2, ',', '.') ?></th>
+                            <th>R$<?= number_format($lucroEmpresa, 2, ',', '.') ?></th>
+                        </tr>
+                    </table>
+                </div>
 
-            <div>
-                <table>
-                    <tr>
-                        <th>DATA INÍCIO</th>
-                        <th>DATA FIM</th>
-                        <th>TOTAL LOCAÇÕES PERÍODO</th>
-                        <th>TOTAL REPAROS PERÍODO</th>
-                    </tr>
-                    <tr>
-                        <th><?= date_format(date_create($dataInicio), 'd-m-Y') ?></th>
-                        <th><?= date_format(date_create($dataFim), 'd-m-Y') ?></th>
-                        <th>R$<?= number_format($totalLocacoes, 2, ',', '.') ?></th>
-                        <th>R$<?= number_format($totalReparos, 2, ',', '.') ?></th>
-                    </tr>
-                </table>
+                <div>
+                    <table>
+                        <tr>
+                            <th>DATA INÍCIO</th>
+                            <th>DATA FIM</th>
+                            <th>TOTAL LOCAÇÕES PERÍODO</th>
+                            <th>TOTAL REPAROS PERÍODO</th>
+                        </tr>
+                        <tr>
+                            <th><?= date_format(date_create($dataInicio), 'd-m-Y') ?></th>
+                            <th><?= date_format(date_create($dataFim), 'd-m-Y') ?></th>
+                            <th>R$<?= number_format($totalLocacoes, 2, ',', '.') ?></th>
+                            <th>R$<?= number_format($totalReparos, 2, ',', '.') ?></th>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-        <?php endif?>
+        <?php endif ?>
 
     </div>
 </section>

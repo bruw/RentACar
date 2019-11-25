@@ -88,7 +88,7 @@ $rotas = [
         'GET' => '\Controlador\FrotaControlador#pesquisar',
     ],
 
-    
+
     '/oficina' => [
         'GET'   => '\Controlador\OficinaControlador#index',
         'POST'  => '\Controlador\OficinaControlador#armazenar',

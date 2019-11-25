@@ -23,6 +23,24 @@
             $this->verificarContem($resposta, 'Atualizar Dados do Cliente');
         }
 
+        public function testePesquisar()
+        {
+            $this->logar();
+
+            $resposta = $this->post(URL_RAIZ . 'clientes', [
+                'primeiro-nome' => 'creiton',
+                'sobrenome' => 'olavo',
+                'cpf' => '00000000010',
+                'celular' => '42000000000',
+                'email' => 'creito@creito.com',
+                'cep' => '85000000', 
+                'numero' => '7'
+            ]);
+
+            $resposta = $this->get(URL_RAIZ . 'clientes/pesquisar', ['cpf-busca' => '00000000010']);
+            $this->verificarContem($resposta, 'creiton');            
+        }
+
         public function testeArmazenar()
         {
             $this->logar();
@@ -44,25 +62,25 @@
             $bdClientes = $query->fetchAll();
             $this->verificar(count($bdClientes) == 1);
         }
-
-        public function testePesquisar()
+        
+        public function testeAtualizar()
         {
             $this->logar();
+           
+            $cliente = new Cliente('darth','vader','00000000001','42999998888','darthvader@disney.com','85000000','8');
+            $cliente->salvar();
 
-            $resposta = $this->post(URL_RAIZ . 'clientes', [
+            $resposta = $this->patch(URL_RAIZ . 'clientes/atualizar/' . $cliente->getId(),[
                 'primeiro-nome' => 'creiton',
                 'sobrenome' => 'olavo',
-                'cpf' => '00000000010',
                 'celular' => '42000000000',
                 'email' => 'creito@creito.com',
                 'cep' => '85000000', 
                 'numero' => '7'
             ]);
-
-            $resposta = $this->get(URL_RAIZ . 'clientes/pesquisar', ['cpf-busca' => '00000000010']);
             
-            $this->verificarContem($resposta, 'value="creiton"');
-            
+            $this->verificarRedirecionar($resposta, URL_RAIZ . 'clientes/editar'); 
+            $resposta = $this->get(URL_RAIZ . 'clientes/editar');
+            $this->verificarContem($resposta, 'Cadastro Atualizado com sucesso!');
         }
-        
     }

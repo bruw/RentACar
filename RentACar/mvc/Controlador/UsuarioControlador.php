@@ -15,22 +15,12 @@ class UsuarioControlador extends Controlador
         $this->visao('usuarios/criar.php', ['mensagem' => $mensagem], 'principal.php');
     }
 
-    public function pesquisar()
-    {
-        $this->verificarLogado();
-
-        $cpf = $_POST['cpf-busca'];
-        $usuario = Usuario::buscarRegistroUsuario(Controlador::removerMascara($cpf));
-
-        $this->visao('usuarios/atualizar.php', ['usuario' => $usuario], 'principal.php');
-    }
-
     public function armazenar()
     {
         $this->verificarLogado();
 
         $usuario = new Usuario(
-            $_POST['primeiroNome'],
+            $_POST['primeiro-nome'],
             $_POST['sobrenome'],
             $_POST['cpf'],
             $_POST['celular'],

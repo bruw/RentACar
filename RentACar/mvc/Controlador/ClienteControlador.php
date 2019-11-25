@@ -78,9 +78,6 @@ class ClienteControlador extends Controlador
         $this->verificarLogado();
         $cliente = Cliente::buscarId($id);
 
-        $registroCliente = $cliente->buscarRegistroCliente($cliente->getCpf());
-        $cliente->setCpf($registroCliente->getCpf());
-
         $cliente->setPrimeiroNome($_POST['primeiro-nome']);
         $cliente->setSobrenome($_POST['sobrenome']);
 

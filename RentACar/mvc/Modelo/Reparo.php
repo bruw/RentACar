@@ -12,7 +12,7 @@ class Reparo extends Modelo
     const BUSCAR_ID = 'SELECT id FROM reparos WHERE id = ?';
     const BUSCAR_REGISTRO = 'SELECT * FROM reparos WHERE id = ?';
     const TOTAL_REPAROS = 'SELECT SUM(total) FROM reparos WHERE status_reparo = 1 AND (data_entrada >= ?) AND (data_saida <= ?)';
-    
+
     const BUSCAR_TODOS = 'SELECT * FROM reparos WHERE status_reparo = 0 ORDER BY data_entrada LIMIT ? OFFSET ?';
     const CONTAR_TODOS = 'SELECT count(id) FROM reparos';
 
@@ -201,19 +201,17 @@ class Reparo extends Modelo
         $comando->bindValue(2, $dataFim);
         $comando->execute();
         $registro = $comando->fetch();
-      
+
         return $registro;
     }
-
 
     protected function verificarErros()
     {
         $patternTotalManutencao = "/^[1-9]{1}\d{1,4}$/";
 
-       if (preg_match($patternTotalManutencao, $this->total) == false) {
+        if (preg_match($patternTotalManutencao, $this->total) == false) {
             $this->setErroMensagem('totalReparo', 'Valor mínimo R$10 e máximo R$99999. Não usar 
             "." ponto ou "," virgula...');
         }
-
     }
 }

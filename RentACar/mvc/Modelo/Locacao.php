@@ -60,12 +60,11 @@ class Locacao extends Modelo
 
     public function setDataLocacao($data)
     {
-        if($data == null){
+        if ($data == null) {
             $this->dataLocacao = date('d-m-Y');
-        }else{
+        } else {
             $this->dataLocacao = $data;
         }
-        
     }
 
     public function getIdVeiculo()
@@ -127,7 +126,7 @@ class Locacao extends Modelo
     {
         return $this->statusLocacao = $statusLocacao;
     }
-    
+
 
     public function formatarDataBr($data)
     {
@@ -138,12 +137,11 @@ class Locacao extends Modelo
 
     public function salvar()
     {
-        if($this->id == null){
+        if ($this->id == null) {
             $this->inserir();
-        }else{
+        } else {
             $this->atualizar();
         }
-       
     }
 
     public static function buscarId($id)
@@ -193,7 +191,7 @@ class Locacao extends Modelo
         $comando->bindValue(2, $dataFim);
         $comando->execute();
         $registro = $comando->fetch();
-      
+
         return $registro;
     }
 
@@ -238,5 +236,4 @@ class Locacao extends Modelo
             $this->setErroMensagem('dataInexistente', 'Informe uma data...');
         }
     }
-
 }
