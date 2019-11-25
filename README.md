@@ -6,14 +6,14 @@
 **Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
 
 **Requisitos específicos**
- - [ ] Padronização do banco de dados.
- - [ ] Padronização das rotas.
+ - [x] Padronização do banco de dados.
+ - [x] Padronização das rotas.
  - [x] Autenticação com criptografia segura.
  - [x] Validação de todos os formulários dos requisitos.
  - [ ] Paginação e filtro em todas as listagens
  - [x] Mensagens flash após toda modificação no banco de dados.
  - [x] Testar todos os métodos dos modelos. Não precisa testar gets e sets.
- - [ ] Testar todas as rotas.
+ - [x] Testar todas as rotas.
   
 **Requisitos funcionais**
 - [x] Cadastrar usuário para gerenciar a empresa.
