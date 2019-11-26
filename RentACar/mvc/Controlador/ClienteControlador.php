@@ -11,19 +11,25 @@ class ClienteControlador extends Controlador
     {
         $this->verificarLogado();
 
-        $this->visao('clientes/criar.php', 
-        ['mensagem' => DW3Sessao::getFlash('mensagem')], 
-       'principal.php');
+        $this->visao(
+            'clientes/criar.php',
+            ['mensagem' => DW3Sessao::getFlash('mensagem')],
+            'principal.php'
+        );
     }
 
     public function editar()
     {
         $this->verificarLogado();
 
-        $this->visao('clientes/atualizar.php', 
-        ['mensagem' => DW3Sessao::getFlash('mensagem'), 
-        'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')],
-        'principal.php');
+        $this->visao(
+            'clientes/atualizar.php',
+            [
+                'mensagem' => DW3Sessao::getFlash('mensagem'),
+                'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado')
+            ],
+            'principal.php'
+        );
     }
 
     public function pesquisar()
@@ -33,10 +39,10 @@ class ClienteControlador extends Controlador
 
         $cliente = Cliente::buscarRegistroCliente(Controlador::removerMascara($cpf));
 
-        if($cliente->getCpf() == null){
+        if ($cliente->getCpf() == null) {
             DW3Sessao::setFlash('naoEncontrado', 'Cliente inexistente em nossa base de dados');
             $this->redirecionar(URL_RAIZ . 'clientes/editar');
-        }else{
+        } else {
             $this->visao('clientes/atualizar.php', ['cliente' => $cliente], 'principal.php');
         }
     }
@@ -65,7 +71,7 @@ class ClienteControlador extends Controlador
         if ($cliente->isValido() && !Cliente::cpfExiste($cliente)) {
             $cliente->salvar();
             DW3Sessao::setFlash('mensagem', 'Cliente cadastrado com sucesso!');
-            
+
             $this->redirecionar(URL_RAIZ . 'clientes/criar');
         } else {
             $this->setErros($cliente->getValidacaoErros());
@@ -98,7 +104,7 @@ class ClienteControlador extends Controlador
         if ($cliente->isValido()) {
             $cliente->salvar();
             DW3Sessao::setFlash('mensagem', 'Cadastro Atualizado com sucesso!');
-            
+
             $this->redirecionar(URL_RAIZ . 'clientes/editar');
         } else {
             $this->setErros($cliente->getValidacaoErros());

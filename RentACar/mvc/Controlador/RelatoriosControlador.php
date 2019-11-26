@@ -15,8 +15,10 @@ class RelatoriosControlador extends Controlador
 
         $this->visao(
             'relatorios/index.php',
-            ['naoEncontrado' => DW3Sessao::getFlash('naoEncontrado'),
-            'naoPossuiMovimentacao' => DW3Sessao::getFlash('naoPossuiMovimentacao')],
+            [
+                'naoEncontrado' => DW3Sessao::getFlash('naoEncontrado'),
+                'naoPossuiMovimentacao' => DW3Sessao::getFlash('naoPossuiMovimentacao')
+            ],
             'principal.php'
         );
     }
@@ -44,13 +46,12 @@ class RelatoriosControlador extends Controlador
                 $totalReparos += $reparo->getTotal();
             }
 
-           if(($totalLocacoes == 0) && ($totalReparos == 0)){
+            if (($totalLocacoes == 0) && ($totalReparos == 0)) {
                 DW3Sessao::setFlash('naoPossuiMovimentacao', 'Este veículo ainda não possui registros 
                 de locação e manutenção');
 
                 $this->redirecionar(URL_RAIZ . 'relatorios');
-
-           }else{
+            } else {
                 $lucro = $totalLocacoes - $totalReparos;
 
                 $this->visao(
@@ -66,16 +67,16 @@ class RelatoriosControlador extends Controlador
                     'principal.php'
                 );
             }
-            } else {
-                DW3Sessao::setFlash('naoEncontrado', 'Veículo inexistente em nossa base de dados...');
-                $this->redirecionar(URL_RAIZ . 'relatorios');
-            }
+        } else {
+            DW3Sessao::setFlash('naoEncontrado', 'Veículo inexistente em nossa base de dados...');
+            $this->redirecionar(URL_RAIZ . 'relatorios');
+        }
     }
 
     public function mostrarBalanco()
     {
         $this->verificarLogado();
-        
+
         $dataInicio =  date_format(date_create($_GET['data-inicio']), 'Y-m-d');
         $dataFim = date_format(date_create($_GET['data-fim']), 'Y-m-d');
         $relatorioSelecionado = $_GET['relatorio-selecionado'];
@@ -99,14 +100,14 @@ class RelatoriosControlador extends Controlador
                     'principal.php'
                 );
             } else {
-                if($totalLocacoes === null){
+                if ($totalLocacoes === null) {
                     $lucroEmpresa = $totalReparos * -1;
                     $totalLocacoes = 0;
-                }else{
-                    if($totalReparos === null){
+                } else {
+                    if ($totalReparos === null) {
                         $lucroEmpresa = $totalLocacoes;
                         $totalReparos = 0;
-                    }else{
+                    } else {
                         $lucroEmpresa = $totalLocacoes - $totalReparos;
                     }
                 }

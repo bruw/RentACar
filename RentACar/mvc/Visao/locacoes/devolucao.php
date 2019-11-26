@@ -1,6 +1,7 @@
 <section>
     <div class="container">
         <h1 class="font-edgeracer">Devolução de Veículo</h1>
+
         <form action="<?= URL_RAIZ . 'locacoes/existe-locacao-cliente' ?>" method="get">
             <div class="row">
                 <div class="input-field col s12 m8">
@@ -114,10 +115,6 @@
                 </div>
             </form>
 
-
         <?php endif ?>
-
-
-
     </div>
 </section>

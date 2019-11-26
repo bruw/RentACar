@@ -18,7 +18,7 @@
                 </div>
                 <div class="input-field col s12 m12 l6">
                     <i class="material-icons prefix">person</i>
-                    <input type="text" name="sobrenome" value="<?= $this->getPost('sobrenome') ?>" placeholder="Vaider">
+                    <input type="text" name="sobrenome" value="<?= $this->getPost('sobrenome') ?>" placeholder="Vader">
                     <label for="icon_prefix">Sobrenome</label>
                     <?php $this->incluirVisao('util/formErro.php', ['campo' => 'sobrenome']) ?>
                 </div>
@@ -71,7 +71,7 @@
                     </button>
                 </div>
                 <div class="col s12 m6">
-                    <a  href="<?= URL_RAIZ ?>" class="btn button-cancelar">
+                    <a href="<?= URL_RAIZ ?>" class="btn button-cancelar">
                         <i class="material-icons left">cancel</i>Cancelar
                     </a>
                 </div>

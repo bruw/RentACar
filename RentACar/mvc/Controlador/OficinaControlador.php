@@ -11,24 +11,24 @@ class OficinaControlador extends Controlador
 
     public static function calcularPaginacao()
     {
-        if($_POST){
+        if ($_POST) {
             $pagina = array_key_exists('pagina-atual', $_POST) ? intval($_POST['pagina-atual']) : 1;
 
             $limit = 4;
             $offset = ($pagina - 1) * $limit;
             $reparos = Reparo::buscarTodos($limit, $offset);
             $ultimaPagina = ceil(Reparo::contarTodos() / $limit);
-            $existeProximo =  Reparo::buscarTodos($limit, $offset+$limit);
+            $existeProximo =  Reparo::buscarTodos($limit, $offset + $limit);
 
             return compact('pagina', 'reparos', 'ultimaPagina', 'existeProximo');
-        }else{
+        } else {
             $pagina = array_key_exists('p', $_GET) ? intval($_GET['p']) : 1;
 
             $limit = 4;
             $offset = ($pagina - 1) * $limit;
             $reparos = Reparo::buscarTodos($limit, $offset);
             $ultimaPagina = ceil(Reparo::contarTodos() / $limit);
-            $existeProximo =  Reparo::buscarTodos($limit, $offset+$limit);
+            $existeProximo =  Reparo::buscarTodos($limit, $offset + $limit);
 
             return compact('pagina', 'reparos', 'ultimaPagina', 'existeProximo');
         }
@@ -37,7 +37,7 @@ class OficinaControlador extends Controlador
     public function index()
     {
         $this->verificarLogado();
-        
+
         $paginacao = self::calcularPaginacao();
 
         $reparos = $paginacao['reparos'];
@@ -144,7 +144,7 @@ class OficinaControlador extends Controlador
                 $veiculo = Veiculo::buscarRegistroVeiculo($idVeiculo->getChassi());
                 $veiculos[] = $veiculo;
             }
-           
+
             $this->visao(
                 'oficina/index.php',
                 [

@@ -115,12 +115,12 @@ class FrotaControlador extends Controlador
         $chassi = $_GET['chassi-busca'];
         $veiculo = Veiculo::buscarRegistroVeiculo(Controlador::removerMascara($chassi));
 
-        if($veiculo->getStatusLocacao() == 1){
-            DW3Sessao::setFlash('estaAlugado','Ação impossível para veículos Alugados...');
+        if ($veiculo->getStatusLocacao() == 1) {
+            DW3Sessao::setFlash('estaAlugado', 'Ação impossível para veículos Alugados...');
             $this->redirecionar(URL_RAIZ . 'frota/editar');
         }
 
-        if($veiculo->getStatusOficina() == 1){
+        if ($veiculo->getStatusOficina() == 1) {
             DW3Sessao::setFlash('estaNaOficina', 'Ação impossível para veículos na Oficina...');
             $this->redirecionar(URL_RAIZ . 'frota/editar');
         }

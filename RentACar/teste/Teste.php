@@ -11,7 +11,7 @@ class Teste extends DW3Teste
 
     public function logar()
     {
-        $this->usuario = new Usuario('Bruno', 'José', '00000000003', '42000000000', 'bruno@email.com', 
+        $this->usuario = new Usuario('bruno', 'jose', '00000000003', '42000000000', 'bruno@email.com', 
         '85000000', '12', '1234');
         
         $this->usuario->salvar();
