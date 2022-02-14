@@ -5,6 +5,11 @@
 
 **Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
 
+
+**USUÁRIO ADMIN:**
+	**CPF =** 000.000.000-00 
+	**SENHA =** 1234
+	
 **Requisitos específicos**
  - [x] Padronização do banco de dados.
  - [x] Padronização das rotas.
@@ -25,6 +30,3 @@
 - [x] Relatório de locações e reparos de um carro.
 - [x] Relatório de lucro da empresa. Considerar as locações e reparos. Filtrar por período.
 
-USUÁRIO ADMIN: 
-	CPF = 000.000.000-00 
-	SENHA = 1234
