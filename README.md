@@ -25,3 +25,6 @@
 - [x] Relatório de locações e reparos de um carro.
 - [x] Relatório de lucro da empresa. Considerar as locações e reparos. Filtrar por período.
 
+USUÁRIO ADMIN: 
+	CPF = 000.000.000-00 
+	SENHA = 1234
