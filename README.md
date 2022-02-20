@@ -3,7 +3,7 @@
 
 **Disciplina:** Desenvolvimento para web 3.  
 
-**Tecnologias utilizadas:** 
+## Tecnologias utilizadas: 
  + HTML
  + CSS
  + Materialize
@@ -13,10 +13,12 @@
 
 **Framework utilizado na disciplina:** https://github.com/guilhermedacsilva/web3
 
-**USUÁRIO ADMIN PARA TESTES:**
+## USUÁRIO ADMIN PARA TESTES:
 	**CPF =** 000.000.000-00 
 	**SENHA =** 1234
-	
+
+## Requisitos
+
 **Requisitos específicos**
  - [x] Padronização do banco de dados.
  - [x] Padronização das rotas.
