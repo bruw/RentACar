@@ -3,11 +3,11 @@
 
 **Disciplina:** Desenvolvimento para web 3.  
 
-**Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
+**Tecnologias utilizadas:** HTML, CSS, Materialize, PHP 7.4, apache2, mysql 5.7 
 
 **Framework utilizado na disciplina:** https://github.com/guilhermedacsilva/web3
 
-**USUÁRIO ADMIN:**
+**USUÁRIO ADMIN PARA TESTES:**
 	**CPF =** 000.000.000-00 
 	**SENHA =** 1234
 	
