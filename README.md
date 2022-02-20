@@ -5,6 +5,7 @@
 
 **Tecnologias utilizadas:** html 5, css, php 7, apache2, mysql 5.7 
 
+**Framework utilizado na disciplina:** https://github.com/guilhermedacsilva/web3
 
 **USUÁRIO ADMIN:**
 	**CPF =** 000.000.000-00 
