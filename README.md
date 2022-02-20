@@ -14,8 +14,8 @@
 **Framework utilizado na disciplina:** https://github.com/guilhermedacsilva/web3
 
 ## USUÁRIO ADMIN PARA TESTES:
-	**CPF =** 000.000.000-00 
-	**SENHA =** 1234
+	CPF = 000.000.000-00 
+	SENHA = 1234
 
 ## Requisitos
 
